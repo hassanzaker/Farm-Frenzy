@@ -14,5 +14,9 @@ public abstract class WildAnimal extends Animal {
         this.volume = volume;
     }
 
-    public abstract void eat(Cell[][] cells);
+    public void makeChangesOnCell(Cell cell, int a) {
+        cell.setWildAnimalAmount(cell.getWildAnimalAmount()+ a);
+    }
+
+    public abstract void eat();
 }

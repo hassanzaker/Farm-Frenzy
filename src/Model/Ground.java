@@ -23,7 +23,57 @@ public class Ground {
     private Truck truck;
     private Helicopter helicopter;
     private WereHouse wereHouse;
+    private int numberOfRows;
+    private int numberOfColumns;
 
+
+    public Well getWell() {
+        return well;
+    }
+
+    public void setWell(Well well) {
+        this.well = well;
+    }
+
+    public Truck getTruck() {
+        return truck;
+    }
+
+    public void setTruck(Truck truck) {
+        this.truck = truck;
+    }
+
+    public Helicopter getHelicopter() {
+        return helicopter;
+    }
+
+    public void setHelicopter(Helicopter helicopter) {
+        this.helicopter = helicopter;
+    }
+
+    public WereHouse getWereHouse() {
+        return wereHouse;
+    }
+
+    public void setWereHouse(WereHouse wereHouse) {
+        this.wereHouse = wereHouse;
+    }
+
+    public int getNumberOfRows() {
+        return numberOfRows;
+    }
+
+    public void setNumberOfRows(int numberOfRows) {
+        this.numberOfRows = numberOfRows;
+    }
+
+    public int getNumberOfColumns() {
+        return numberOfColumns;
+    }
+
+    public void setNumberOfColumns(int numberOfColumns) {
+        this.numberOfColumns = numberOfColumns;
+    }
 
     public Ground() {
         this.cells = new Cell[600][600];

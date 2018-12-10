@@ -6,10 +6,7 @@ public class Bear extends WildAnimal {
 
     }
 
-    @Override
-    public void move() {
 
-    }
 
     @Override
     public void crash() {

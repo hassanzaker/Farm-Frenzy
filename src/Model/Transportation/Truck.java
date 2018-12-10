@@ -5,6 +5,7 @@ public class Truck {
     private int timeToTransit;
 
 
+
     public void sell() {
 
     }

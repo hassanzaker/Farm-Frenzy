@@ -1,40 +1,62 @@
 package Model;
 
 public class Cell {
-    private boolean hasGrass;
-    private boolean hasWildAnimal;
-    private boolean hasDomesticAnimal;
-    private boolean hasItem;
+    private int grassAmount;
+    private int wildAnimalAmount;
+    private int domesticAnimalAmount;
+    private int itemAmount;
+    private int numberOfDogs;
+    private int numberOfCats;
 
-    public boolean isHasGrass() {
-        return hasGrass;
+    public int getNumberOfDogs() {
+        return numberOfDogs;
     }
 
-    public void setHasGrass(boolean hasGrass) {
-        this.hasGrass = hasGrass;
+    public void setNumberOfDogs(int numberOfDogs) {
+        this.numberOfDogs = numberOfDogs;
     }
 
-    public boolean isHasWildAnimal() {
-        return hasWildAnimal;
+    public int getNumberOfCats() {
+        return numberOfCats;
     }
 
-    public void setHasWildAnimal(boolean hasWildAnimal) {
-        this.hasWildAnimal = hasWildAnimal;
+    public void setNumberOfCats(int numberOfCats) {
+        this.numberOfCats = numberOfCats;
     }
 
-    public boolean isHasDomesticAnimal() {
-        return hasDomesticAnimal;
+    public void grassEaten(){
+        this.grassAmount--;
     }
 
-    public void setHasDomesticAnimal(boolean hasDomesticAnimal) {
-        this.hasDomesticAnimal = hasDomesticAnimal;
+    public int getGrassAmount() {
+        return grassAmount;
     }
 
-    public boolean isHasItem() {
-        return hasItem;
+    public void setGrassAmount(int grassAmount) {
+        this.grassAmount = grassAmount;
     }
 
-    public void setHasItem(boolean hasItem) {
-        this.hasItem = hasItem;
+    public int getWildAnimalAmount() {
+        return wildAnimalAmount;
+    }
+
+    public void setWildAnimalAmount(int wildAnimalAmount) {
+        this.wildAnimalAmount = wildAnimalAmount;
+    }
+
+    public int getDomesticAnimalAmount() {
+        return domesticAnimalAmount;
+    }
+
+    public void setDomesticAnimalAmount(int domesticAnimalAmount) {
+        this.domesticAnimalAmount = domesticAnimalAmount;
+    }
+
+    public int getItemAmount() {
+        return itemAmount;
+    }
+
+    public void setItemAmount(int itemAmount) {
+        this.itemAmount = itemAmount;
     }
 }

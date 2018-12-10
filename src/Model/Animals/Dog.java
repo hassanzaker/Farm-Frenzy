@@ -1,11 +1,11 @@
 package Model.Animals;
 
-import Model.Animals.Animal;
+import Model.Cell;
 
 public class Dog extends Animal {
-    @Override
-    public void move() {
 
+    public void makeChangesOnCell(Cell cell, int a) {
+        cell.setNumberOfDogs(cell.getNumberOfDogs()+ a);
     }
 
     @Override

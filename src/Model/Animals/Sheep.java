@@ -1,6 +1,7 @@
 package Model.Animals;
 
 import Model.Animals.ProducerAnimal;
+import Model.Cell;
 
 public class Sheep extends ProducerAnimal {
     @Override
@@ -9,9 +10,10 @@ public class Sheep extends ProducerAnimal {
     }
 
     @Override
-    public void move() {
+    public void produce(Cell[][] cells) {
 
     }
+
 
     @Override
     public void crash() {

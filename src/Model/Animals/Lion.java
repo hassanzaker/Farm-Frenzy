@@ -8,10 +8,7 @@ public class Lion extends WildAnimal {
 
     }
 
-    @Override
-    public void move() {
 
-    }
 
     @Override
     public void crash() {
