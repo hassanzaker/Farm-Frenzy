@@ -6,6 +6,10 @@ import Model.Cell;
 public abstract class WildAnimal extends Animal {
     protected int volume;
 
+    public WildAnimal(int x, int y) {
+        super(x, y);
+    }
+
     public int getVolume() {
         return volume;
     }

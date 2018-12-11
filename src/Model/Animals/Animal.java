@@ -3,10 +3,18 @@ package Model.Animals;
 import Model.Cell;
 import Model.Ground;
 
+import java.util.Random;
+
 public abstract class Animal {
     protected int row;
     protected int column;
     protected int cost;
+
+    public Animal(int x, int y) {
+        Random r = new Random();
+        this.row = r.nextInt(y);
+        this.column = r.nextInt(x);
+    }
 
     public int getCost() {
         return cost;
