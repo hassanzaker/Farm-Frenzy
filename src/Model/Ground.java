@@ -3,22 +3,28 @@ package Model;
 import Model.Animals.Cat;
 import Model.Animals.Dog;
 import Model.Animals.ProducerAnimal;
-import Model.Animals.WildAnimal;
+import Model.Animals.*;
 import Model.Items.Item;
 import Model.Transportation.Helicopter;
 import Model.Transportation.Truck;
 import Model.WorkShop.WorkShop;
+import Model.Items.*;
 
 import java.util.ArrayList;
 
 public class Ground {
     private Cell[][] cells;
     private WorkShop[] workShops;
-    private ArrayList<Item> items = new ArrayList<>();
-    private ArrayList<ProducerAnimal> producerAnimals = new ArrayList<>();
-    private ArrayList<Dog> dogs = new ArrayList<>();
-    private ArrayList<Cat> cats = new ArrayList<>();
-    private ArrayList<WildAnimal> wildAnimals = new ArrayList<>();
+    private ArrayList<Item> eggs = new ArrayList<>();
+    private ArrayList<Item> milks = new ArrayList<>();
+    private ArrayList<Item> wools = new ArrayList<>();
+    private ArrayList<Item> eggPowders = new ArrayList<>();
+    private ArrayList<Item> cookies = new ArrayList<>();
+    private ArrayList<Item> cakes = new ArrayList<>();
+    private ArrayList<Animal> producerAnimals = new ArrayList<>();
+    private ArrayList<Animal> dogs = new ArrayList<>();
+    private ArrayList<Animal> cats = new ArrayList<>();
+    private ArrayList<Animal> wildAnimals = new ArrayList<>();
     private Well well;
     private Truck truck;
     private Helicopter helicopter;
@@ -44,7 +50,7 @@ public class Ground {
         this.catSpeed = 10; //// base speed factor
     }
 
-    public void cageUpgrade(){
+    public void cageUpgrade() {
         this.cageLevel++;
     }
 
@@ -54,17 +60,6 @@ public class Ground {
 
     public void setCageLevel(int cageLevel) {
         this.cageLevel = cageLevel;
-    }
-
-
-    public void addDog(Dog dog){
-        this.dogs.add(dog);
-        dog.makeChangesOnCell(this.cells[dog.getRow()-1][dog.getColumn()-1], 1);
-    }
-
-    public void removeDog(Dog dog){
-        dog.makeChangesOnCell(this.cells[dog.getRow()-1][dog.getColumn()-1], -1);
-        this.dogs.remove(dog);
     }
 
 
@@ -89,15 +84,6 @@ public class Ground {
         this.dogSpeed = dogSpeed;
     }
 
-    public void addCat(Cat cat){
-        this.cats.add(cat);
-        cat.makeChangesOnCell(this.cells[cat.getRow()-1][cat.getColumn()-1], 1);
-    }
-
-    public void removeCat(Cat cat){
-        cat.makeChangesOnCell(this.cells[cat.getRow()-1][cat.getColumn()-1], -1);
-        this.cats.remove(cat);
-    }
 
     public void catUpgrade() {
         this.catLevel++;
@@ -169,20 +155,36 @@ public class Ground {
     }
 
 
-    public ArrayList<WildAnimal> getWildAnimals() {
+    public ArrayList<Animal> getWildAnimals() {
         return wildAnimals;
     }
 
-    public void setWildAnimals(ArrayList<WildAnimal> wildAnimals) {
-        this.wildAnimals = wildAnimals;
-    }
-
     public void addItem(Item item) {
-
+        if (item instanceof Egg) {
+            eggs.add(item);
+        } else if (item instanceof EggPowder) {
+            eggPowders.add(item);
+        } else if (item instanceof Cake) {
+            cakes.add(item);
+        } else if (item instanceof Wool) {
+            wools.add(item);
+        } else if (item instanceof Cookie) {
+            cookies.add(item);
+        } else if (item instanceof Milk) {
+            milks.add(item);
+        }
     }
 
-    public void addProducerAnimal(ProducerAnimal producerAnimal) {
-
+    public void addAnimal(Animal animal) {
+        if (animal instanceof ProducerAnimal) {
+            producerAnimals.add(animal);
+        } else if (animal instanceof WildAnimal) {
+            wildAnimals.add(animal);
+        } else if (animal instanceof Cat) {
+            cats.add(animal);
+        } else if (animal instanceof Dog) {
+            dogs.add(animal);
+        }
     }
 
     public Cell[][] getCells() {
@@ -201,37 +203,107 @@ public class Ground {
         this.workShops = workShops;
     }
 
-    public ArrayList<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(ArrayList<Item> items) {
-        this.items = items;
-    }
-
-    public ArrayList<ProducerAnimal> getProducerAnimals() {
+    public ArrayList<Animal> getProducerAnimals() {
         return producerAnimals;
     }
 
-    public void setProducerAnimals(ArrayList<ProducerAnimal> producerAnimals) {
+    public void setProducerAnimals(ArrayList<Animal> producerAnimals) {
         this.producerAnimals = producerAnimals;
     }
 
-    public ArrayList<Dog> getDogs() {
+    public ArrayList<Animal> getDogs() {
         return dogs;
     }
 
-    public void setDogs(ArrayList<Dog> dogs) {
+    public void setDogs(ArrayList<Animal> dogs) {
         this.dogs = dogs;
     }
 
-    public ArrayList<Cat> getCats() {
+    public ArrayList<Animal> getCats() {
         return cats;
     }
 
-    public void setCats(ArrayList<Cat> cats) {
+    public void setCats(ArrayList<Animal> cats) {
         this.cats = cats;
     }
 
+    public ArrayList<Item> getEggs() {
+        return eggs;
+    }
 
+    public void setEggs(ArrayList<Item> eggs) {
+        this.eggs = eggs;
+    }
+
+    public ArrayList<Item> getMilks() {
+        return milks;
+    }
+
+    public void setMilks(ArrayList<Item> milks) {
+        this.milks = milks;
+    }
+
+    public ArrayList<Item> getWools() {
+        return wools;
+    }
+
+    public void setWools(ArrayList<Item> wools) {
+        this.wools = wools;
+    }
+
+    public ArrayList<Item> getEggPowders() {
+        return eggPowders;
+    }
+
+    public void setEggPowders(ArrayList<Item> eggPowders) {
+        this.eggPowders = eggPowders;
+    }
+
+    public ArrayList<Item> getCookies() {
+        return cookies;
+    }
+
+    public void setCookies(ArrayList<Item> cookies) {
+        this.cookies = cookies;
+    }
+
+    public ArrayList<Item> getCakes() {
+        return cakes;
+    }
+
+    public void setCakes(ArrayList<Item> cakes) {
+        this.cakes = cakes;
+    }
+
+    public void setWildAnimals(ArrayList<Animal> wildAnimals) {
+        this.wildAnimals = wildAnimals;
+    }
+
+    public void deleteAnimal(Animal animal) {
+        if (animal instanceof ProducerAnimal) {
+            producerAnimals.remove(animal);
+        } else if (animal instanceof WildAnimal) {
+            wildAnimals.remove(animal);
+        } else if (animal instanceof Cat) {
+            cats.remove(animal);
+        } else if (animal instanceof Dog) {
+            dogs.remove(animal);
+        }
+    }
+
+    public void deleteItem(Item item) {
+        if (item instanceof Egg) {
+            eggs.remove(item);
+        } else if (item instanceof EggPowder) {
+            eggPowders.remove(item);
+        } else if (item instanceof Cake) {
+            cakes.remove(item);
+        } else if (item instanceof Wool) {
+            wools.remove(item);
+        } else if (item instanceof Cookie) {
+            cookies.remove(item);
+        } else if (item instanceof Milk) {
+            milks.remove(item);
+        }
+    }
 }

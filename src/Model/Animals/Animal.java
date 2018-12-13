@@ -9,11 +9,12 @@ public abstract class Animal {
     protected int row;
     protected int column;
     protected int cost;
-
-    public Animal(int x, int y) {
+    protected String ID;
+    public Animal(int x, int y , String ID) {
         Random r = new Random();
         this.row = r.nextInt(y);
         this.column = r.nextInt(x);
+        this.ID=ID;
     }
 
     public int getCost() {
@@ -64,7 +65,7 @@ public abstract class Animal {
     public abstract void makeChangesOnCell(Cell cell, int a);
 
 
-    public abstract void crash();
+
 
     public int getRow() {
         return row;
@@ -72,6 +73,14 @@ public abstract class Animal {
 
     public void setRow(int row) {
         this.row = row;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public int getColumn() {

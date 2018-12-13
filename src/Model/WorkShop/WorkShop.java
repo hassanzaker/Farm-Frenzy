@@ -7,11 +7,9 @@ import java.util.ArrayList;
 public abstract class WorkShop {
     protected int level;
     protected int timeToWork;
+    protected int rowForOutPut;
+    protected int columnForOutput;
 
-
-    public ArrayList<Item> work(Item item){
-        return new ArrayList<>(0);
-    }
 
     public int getLevel() {
         return level;
@@ -27,5 +25,21 @@ public abstract class WorkShop {
 
     public void setTimeToWork(int timeToWork) {
         this.timeToWork = timeToWork;
+    }
+
+    public int getRowForOutPut() {
+        return rowForOutPut;
+    }
+
+    public void setRowForOutPut(int rowForOutPut) {
+        this.rowForOutPut = rowForOutPut;
+    }
+
+    public int getColumnForOutput() {
+        return columnForOutput;
+    }
+
+    public void setColumnForOutput(int columnForOutput) {
+        this.columnForOutput = columnForOutput;
     }
 }

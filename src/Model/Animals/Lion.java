@@ -3,8 +3,8 @@ package Model.Animals;
 public class Lion extends WildAnimal {
 
 
-    public Lion(int x, int y) {
-        super(x, y);
+    public Lion(int x, int y, String ID) {
+        super(x, y, ID);
     }
 
     @Override
@@ -12,10 +12,4 @@ public class Lion extends WildAnimal {
 
     }
 
-
-
-    @Override
-    public void crash() {
-
-    }
 }
