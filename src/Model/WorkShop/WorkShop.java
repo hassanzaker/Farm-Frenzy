@@ -9,9 +9,6 @@ public abstract class WorkShop {
     protected int timeToWork;
 
 
-    public ArrayList<Item> work(Item item){
-        return new ArrayList<>(0);
-    }
 
     public int getLevel() {
         return level;

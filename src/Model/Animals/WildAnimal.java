@@ -44,11 +44,47 @@ public abstract class WildAnimal extends Animal {
               ground.deleteAnimal(ground.getDogs().get(i));
           }
       }
-      for(int i=0 ; i < ground.getItems().size() ; i++) {
-          if(ground.getItems().get(i).getRow() == this.row &&
-                  ground.getItems().get(i).getColumn() == this.column) {
-              ground.deleteItem(ground.getItems().get(i));
+      for(int i=0 ; i < ground.getEggs().size() ; i++) {
+          if(ground.getEggs().get(i).getRow() == this.row &&
+                  ground.getEggs().get(i).getColumn() == this.column) {
+              ground.deleteItem(ground.getEggs().get(i));
           }
       }
+
+      for(int i=0 ; i < ground.getEggPowders().size() ; i++) {
+          if(ground.getEggPowders().get(i).getRow() == this.row &&
+                  ground.getEggPowders().get(i).getColumn() == this.column) {
+              ground.deleteItem(ground.getEggPowders().get(i));
+          }
+      }
+
+        for(int i=0 ; i < ground.getMilks().size() ; i++) {
+            if(ground.getMilks().get(i).getRow() == this.row &&
+                    ground.getMilks().get(i).getColumn() == this.column) {
+                ground.deleteItem(ground.getMilks().get(i));
+            }
+        }
+
+        for(int i=0 ; i < ground.getWools().size() ; i++) {
+            if(ground.getWools().get(i).getRow() == this.row &&
+                    ground.getWools().get(i).getColumn() == this.column) {
+                ground.deleteItem(ground.getWools().get(i));
+            }
+        }
+
+        for(int i=0 ; i < ground.getCookies().size() ; i++) {
+            if(ground.getCookies().get(i).getRow() == this.row &&
+                    ground.getCookies().get(i).getColumn() == this.column) {
+                ground.deleteItem(ground.getCookies().get(i));
+            }
+        }
+
+        for(int i=0 ; i < ground.getCakes().size() ; i++) {
+            if(ground.getCakes().get(i).getRow() == this.row &&
+                    ground.getCakes().get(i).getColumn() == this.column) {
+                ground.deleteItem(ground.getCakes().get(i));
+            }
+        }
+
     }
 }

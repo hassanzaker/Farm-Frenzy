@@ -6,8 +6,8 @@ public class Dog extends Animal {
     private int level;
     private int speed;
 
-    public Dog(int level, int speed, int x, int y) {
-        super(x, y);
+    public Dog(int level, int speed, int x, int y, String ID) {
+        super(x, y, ID);
         this.level = level;
         this.speed = speed;
     }
@@ -37,8 +37,4 @@ public class Dog extends Animal {
         cell.setNumberOfDogs(cell.getNumberOfDogs()+ a);
     }
 
-    @Override
-    public void crash() {
-
-    }
 }

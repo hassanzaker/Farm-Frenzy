@@ -9,8 +9,8 @@ public abstract class ProducerAnimal extends Animal {
     protected int energyLevel;
     protected int timeToProduce;
 
-    public ProducerAnimal(int x, int y) {
-        super(x, y);
+    public ProducerAnimal(int x, int y, String ID) {
+        super(x, y, ID);
     }
 
     public int getTimeToProduce() {
