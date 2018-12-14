@@ -1,13 +1,13 @@
 package Model.Items;
 
-public class Cake extends Item {
+public class Adornment extends Item {
 
     private final int buyCost = 400;
-    private final int saleCost = 200;
+    private final int saleCost = 300;
 
-    public Cake(int x, int y, String ID) {
+    public Adornment(int x, int y, String ID) {
         super(x, y, ID);
-        this.setVolume(6);
+        this.setVolume(4);
     }
 
     public int getBuyCost() {
@@ -18,4 +18,3 @@ public class Cake extends Item {
         return saleCost;
     }
 }
-

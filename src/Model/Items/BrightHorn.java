@@ -1,11 +1,11 @@
 package Model.Items;
 
-public class Cookie extends Item {
+public class BrightHorn extends Item {
 
-    private final int buyCost = 200;
-    private final int saleCost = 100;
+    private final int buyCost = 3000;
+    private final int saleCost = 1500;
 
-    public Cookie(int x, int y, String ID) {
+    public BrightHorn(int x, int y, String ID) {
         super(x, y, ID);
         this.setVolume(5);
     }

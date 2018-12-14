@@ -1,11 +1,7 @@
 package Model.WorkShop;
 
 import Model.Items.EggPowder;
-import Model.WorkShop.*;
 import Model.Ground;
-import Model.WereHouse;
-
-import java.util.ArrayList;
 
 public class EggPowderPlant extends WorkShop {
     public void workShopInput(Ground ground) throws Exception {

@@ -1,12 +1,11 @@
 package Model.Items;
 
-public class EggPowder extends Item {
+public class InterMediate extends Item {
 
-    private final int buyCost = 100;
-    private final int saleCost = 50;
+    private final int buyCost = 4000;
+    private final int saleCost = 2000;
 
-
-    public EggPowder(int x, int y, String ID) {
+    public InterMediate(int x, int y, String ID) {
         super(x, y, ID);
         this.setVolume(4);
     }

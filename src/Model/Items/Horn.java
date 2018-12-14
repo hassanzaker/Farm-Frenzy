@@ -1,9 +1,15 @@
 package Model.Items;
 
-public class Milk extends Item {
+public class Horn extends Item {
 
     private final int buyCost = 2000;
     private final int saleCost = 1000;
+
+
+    public Horn(int x, int y, String ID) {
+        super(x, y, ID);
+        this.setVolume(6);
+    }
 
     public int getBuyCost() {
         return buyCost;
@@ -12,10 +18,4 @@ public class Milk extends Item {
     public int getSaleCost() {
         return saleCost;
     }
-
-    public Milk(int x, int y , String ID) {
-        super(x, y , ID);
-        this.setVolume(10);
-    }
-
 }

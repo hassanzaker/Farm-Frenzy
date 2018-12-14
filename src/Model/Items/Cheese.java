@@ -1,11 +1,11 @@
 package Model.Items;
 
-public class Cookie extends Item {
+public class Cheese extends Item {
 
-    private final int buyCost = 200;
-    private final int saleCost = 100;
+    private final int buyCost = 5000;
+    private final int saleCost = 2500;
 
-    public Cookie(int x, int y, String ID) {
+    public Cheese(int x, int y, String ID) {
         super(x, y, ID);
         this.setVolume(5);
     }

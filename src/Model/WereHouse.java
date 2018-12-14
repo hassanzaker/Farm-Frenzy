@@ -14,8 +14,9 @@ public class WereHouse {
     private ArrayList<Item> eggPowders = new ArrayList<>();
     private ArrayList<Item> cookies = new ArrayList<>();
     private ArrayList<Item> cakes = new ArrayList<>();
+    private ArrayList<Item> flours = new ArrayList<>();
 
-    public void addItem(Item item) throws Exception{
+    public void addItem(Item item) throws Exception {
         if (item.getVolume() > (this.capacity - this.current))
             throw new Exception("can't be added");
         else if (this.capacity == this.current)
@@ -32,13 +33,14 @@ public class WereHouse {
             cookies.add(item);
         } else if (item instanceof Milk) {
             milks.add(item);
+        } else if (item instanceof Flour) {
+            flours.add(item);
         }
         current += item.getVolume();
     }
 
 
-
-    public void deleteItem(Item item){
+    public void deleteItem(Item item) {
         if (item instanceof Egg) {
             eggs.remove(item);
         } else if (item instanceof EggPowder) {
@@ -51,6 +53,8 @@ public class WereHouse {
             cookies.remove(item);
         } else if (item instanceof Milk) {
             milks.remove(item);
+        } else if (item instanceof Flour){
+            flours.remove(item);
         }
         this.current -= item.getVolume();
     }
@@ -125,5 +129,13 @@ public class WereHouse {
 
     public void setCakes(ArrayList<Item> cakes) {
         this.cakes = cakes;
+    }
+
+    public ArrayList<Item> getFlours() {
+        return flours;
+    }
+
+    public void setFlours(ArrayList<Item> flours) {
+        this.flours = flours;
     }
 }

@@ -18,6 +18,7 @@ public class Ground {
     private ArrayList<Item> eggs = new ArrayList<>();
     private ArrayList<Item> milks = new ArrayList<>();
     private ArrayList<Item> wools = new ArrayList<>();
+    private ArrayList<Item> flours = new ArrayList<>();
     private ArrayList<Item> eggPowders = new ArrayList<>();
     private ArrayList<Item> cookies = new ArrayList<>();
     private ArrayList<Item> cakes = new ArrayList<>();
@@ -172,6 +173,8 @@ public class Ground {
             cookies.add(item);
         } else if (item instanceof Milk) {
             milks.add(item);
+        } else if (item instanceof Flour) {
+            flours.add(item);
         }
     }
 
@@ -304,6 +307,8 @@ public class Ground {
             cookies.remove(item);
         } else if (item instanceof Milk) {
             milks.remove(item);
+        } else if (item instanceof Flour) {
+            flours.remove(item);
         }
     }
 }

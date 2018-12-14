@@ -31,7 +31,7 @@ public abstract class Animal {
                 if (this.row > ground.getNumberOfRows() || this.column >= ground.getNumberOfColumns() || this.row < 0 || this.column < 0) {
                     throw new Exception("out of map");
                 }
-                this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], -1);
+                this.makeChangesOnCell(ground.getCells()[this.row - 1][this.column - 1], -1);
                 this.column++;
                 this.makeChangesOnCell(ground.getCells()[this.row - 1][this.column - 1], 1);
                 break;
