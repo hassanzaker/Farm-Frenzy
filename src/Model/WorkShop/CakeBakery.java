@@ -6,6 +6,13 @@ import Model.Items.Cookie;
 import Model.WorkShop.WorkShop;
 
 public class CakeBakery extends WorkShop {
+    public CakeBakery() {
+        super();
+        inputs.add("Flour");
+        inputs.add("Cookie");
+        outputs.add("Cake");
+    }
+
     public void workShopInput(Ground ground) throws Exception {
         if (ground.getWereHouse().getCookies().size() == 0) {
             throw new Exception("no cookie exist");

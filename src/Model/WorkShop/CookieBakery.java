@@ -6,6 +6,12 @@ import Model.Items.EggPowder;
 import Model.WorkShop.WorkShop;
 
 public class CookieBakery extends WorkShop {
+    public CookieBakery() {
+        super();
+        inputs.add("EggPowder");
+        outputs.add("Cookie");
+    }
+
     public void workShopInput(Ground ground) throws Exception {
         if (ground.getWereHouse().getEggPowders().size() == 0) {
             throw new Exception("no eggpowder exist");

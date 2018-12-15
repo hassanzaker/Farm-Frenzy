@@ -4,6 +4,12 @@ import Model.Items.EggPowder;
 import Model.Ground;
 
 public class EggPowderPlant extends WorkShop {
+    public EggPowderPlant() {
+        super();
+        inputs.add("Egg");
+        outputs.add("EggPowder");
+    }
+
     public void workShopInput(Ground ground) throws Exception {
         if (ground.getWereHouse().getEggs().size() == 0) {
             throw new Exception("no egg exist");

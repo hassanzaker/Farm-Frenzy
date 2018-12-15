@@ -9,8 +9,11 @@ public abstract class WorkShop {
     protected int timeToWork;
     protected int rowForOutPut;
     protected int columnForOutput;
-
-
+    protected ArrayList<String> inputs = new ArrayList<>();
+    protected ArrayList<String> outputs = new ArrayList<>();
+    protected WorkShop(){
+        level=1;
+    }
     public int getLevel() {
         return level;
     }
