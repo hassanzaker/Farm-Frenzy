@@ -8,6 +8,7 @@ public class Cake extends Item {
     public Cake(int x, int y, String ID) {
         super(x, y, ID);
         this.setVolume(6);
+        this.type="Cake";
     }
 
     public int getBuyCost() {

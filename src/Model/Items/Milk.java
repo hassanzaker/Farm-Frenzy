@@ -16,6 +16,7 @@ public class Milk extends Item {
     public Milk(int x, int y , String ID) {
         super(x, y , ID);
         this.setVolume(10);
+        this.type="Milk";
     }
 
 }

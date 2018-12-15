@@ -8,6 +8,7 @@ public class Fabric extends Item {
     public Fabric(int x, int y, String ID) {
         super(x, y, ID);
         this.setVolume(6);
+        this.type="Fabric";
     }
 
     public int getBuyCost() {

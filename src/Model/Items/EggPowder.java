@@ -9,6 +9,7 @@ public class EggPowder extends Item {
     public EggPowder(int x, int y, String ID) {
         super(x, y, ID);
         this.setVolume(4);
+        this.type="EggPowder";
     }
 
     public int getBuyCost() {

@@ -8,6 +8,7 @@ public class Egg extends Item {
     public Egg(int x, int y, String ID) {
         super(x, y, ID);
         this.setVolume(1);
+        this.type="Egg";
     }
 
     public int getBuyCost() {

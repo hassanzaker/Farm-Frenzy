@@ -8,6 +8,7 @@ public class CagesBear extends Item {
     public CagesBear(int x, int y, String ID) {
         super(x, y, ID);
         this.setVolume(20);
+        this.type="CagesBear";
     }
 
     public int getBuyCost() {

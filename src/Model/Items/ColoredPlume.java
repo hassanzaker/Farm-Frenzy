@@ -8,6 +8,7 @@ public class ColoredPlume extends Item {
     public ColoredPlume(int x, int y, String ID) {
         super(x, y, ID);
         this.setVolume(2);
+        this.type="ColoredPlume";
     }
 
     public int getBuyCost() {

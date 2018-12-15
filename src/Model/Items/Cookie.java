@@ -8,6 +8,7 @@ public class Cookie extends Item {
     public Cookie(int x, int y, String ID) {
         super(x, y, ID);
         this.setVolume(5);
+        this.type="Cookie";
     }
 
     public int getBuyCost() {

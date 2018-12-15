@@ -8,6 +8,7 @@ public class Sewing extends Item {
     public Sewing(int x, int y, String ID) {
         super(x, y, ID);
         this.setVolume(3);
+        this.type="Sewing";
     }
 
     public int getBuyCost() {

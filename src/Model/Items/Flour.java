@@ -8,6 +8,7 @@ public class Flour extends Item {
     public Flour(int x, int y, String ID) {
         super(x, y, ID);
         this.setVolume(1);
+        this.type="Flour";
     }
 
     public int getBuyCost() {
