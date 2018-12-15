@@ -16,6 +16,7 @@ public class Wool extends Item {
     public Wool(int x, int y , String ID) {
         super(x, y , ID);
         this.setVolume(5);
+        this.type="Wool";
     }
 
 }
