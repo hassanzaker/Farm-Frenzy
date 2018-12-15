@@ -7,7 +7,9 @@ public abstract class Item {
     protected int column;
     protected String ID;
     protected boolean inGrounad;
-   // protected static final int cost=0;
+    public String type;
+
+    // protected static final int cost=0;
     public Item( int x, int y , String ID) {
         this.row = x;
         this.column = y;
@@ -53,8 +55,8 @@ public abstract class Item {
         return inGrounad;
     }
 
-    public void setInGrounad(boolean inGrounad) {
-        this.inGrounad = inGrounad;
+    public void setInGrounad(boolean inGround) {
+        this.inGrounad = inGround;
     }
 
 }
