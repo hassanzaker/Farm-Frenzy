@@ -58,4 +58,11 @@ public abstract class Item {
         this.inGrounad = inGrounad;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }
