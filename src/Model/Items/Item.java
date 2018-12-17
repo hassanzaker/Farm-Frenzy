@@ -7,7 +7,6 @@ public abstract class Item {
     protected int column;
     protected String ID;
     protected boolean inGrounad;
-    public String type;
 
     // protected static final int cost=0;
     protected String type;
