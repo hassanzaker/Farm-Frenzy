@@ -10,12 +10,18 @@ public abstract class Animal {
     protected int column;
     protected int cost;
     protected String ID;
-    public Animal(int x, int y , String ID) {
+
+    public Animal(int x, int y, String ID) {
         Random r = new Random();
         this.row = r.nextInt(y);
         this.column = r.nextInt(x);
-        this.ID=ID;
+        this.ID = ID;
     }
+
+    public int direction() {
+        return 0;
+    }
+
 
     public int getCost() {
         return cost;
@@ -24,6 +30,7 @@ public abstract class Animal {
     public void setCost(int cost) {
         this.cost = cost;
     }
+
 
     public void move(int direction, Ground ground) throws Exception {
         switch (direction) {
@@ -63,8 +70,6 @@ public abstract class Animal {
     }
 
     public abstract void makeChangesOnCell(Cell cell, int a);
-
-
 
 
     public int getRow() {

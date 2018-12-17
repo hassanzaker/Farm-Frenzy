@@ -8,7 +8,6 @@ public class CarnivalDress extends Item {
     public CarnivalDress(int x, int y, String ID) {
         super(x, y, ID);
         this.setVolume(8);
-        this.type="arnivalDress";
     }
 
     public int getBuyCost() {

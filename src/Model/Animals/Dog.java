@@ -1,15 +1,56 @@
 package Model.Animals;
 
 import Model.Cell;
+import Model.Ground;
+
+import java.util.Random;
 
 public class Dog extends Animal {
     private int level;
     private int speed;
 
-    public Dog(int level, int speed, int x, int y, String ID) {
+    public Dog(int x, int y, String ID) {
         super(x, y, ID);
-        this.level = level;
-        this.speed = speed;
+        this.level = 1;
+        this.speed = 10;
+    }
+
+    public int direction(Ground ground) {
+        if (ground.getWildAnimals().size() == 0) {
+            Random random = new Random();
+            return random.nextInt(4) + 1;
+        } else {
+            WildAnimal wildAnimal = (WildAnimal) ground.getWildAnimals().get(0);
+            int wildAnimalX = wildAnimal.getRow();
+            int wildAnimalY = wildAnimal.getColumn();
+            int x = wildAnimalX - this.row;
+            int y = wildAnimalY - this.column;
+            if (x > 0) {
+                return 4;  //down
+            }
+            else if (x < 0){
+                return 2;  // up
+            }
+            else {
+                if (y>0){
+                    return 1; // right
+                }
+                else{
+                    return 3;  // left
+                }
+            }
+        }
+    }
+
+
+    public void crash(Ground ground){
+        for (int i=0 ; i<ground.getItems().size() ; i++){
+            if (ground.getItems().get(i).getRow() == this.row && ground.getItems().get(i).getColumn() == this.column){
+                ground.deleteItem(ground.getItems().get(i));
+                ground.getWereHouse().addItem(ground.getItems().get(i));
+                break;
+            }
+        }
     }
 
     public void setLevel(int level) {
@@ -29,12 +70,11 @@ public class Dog extends Animal {
         return level;
     }
 
-    public void upgrade(){
-        this.level++;
-    }
+
+
 
     public void makeChangesOnCell(Cell cell, int a) {
-        cell.setNumberOfDogs(cell.getNumberOfDogs()+ a);
+        cell.setNumberOfDogs(cell.getNumberOfDogs() + a);
     }
 
 }

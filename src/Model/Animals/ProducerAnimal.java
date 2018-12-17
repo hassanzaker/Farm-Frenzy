@@ -4,6 +4,8 @@ import Model.Animals.Animal;
 import Model.Cell;
 import Model.Ground;
 
+import java.util.Random;
+
 public abstract class ProducerAnimal extends Animal {
     protected int maxEnergy;
     protected int energyLevel;
@@ -11,6 +13,12 @@ public abstract class ProducerAnimal extends Animal {
 
     public ProducerAnimal(int x, int y, String ID) {
         super(x, y, ID);
+    }
+
+    @Override
+    public int direction() {
+        Random random = new Random();
+        return random.nextInt(4) + 1;
     }
 
     public int getTimeToProduce() {

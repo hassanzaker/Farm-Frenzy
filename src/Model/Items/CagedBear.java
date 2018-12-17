@@ -1,14 +1,14 @@
 package Model.Items;
 
-public class CagesBear extends Item {
+public class CagedBear extends Item {
 
     private final int buyCost = 80;
     private final int saleCost = 80;
 
-    public CagesBear(int x, int y, String ID) {
+    public CagedBear(int x, int y, String ID) {
         super(x, y, ID);
         this.setVolume(20);
-        this.type="CagesBear";
+        this.type="CagedBear";
     }
 
     public int getBuyCost() {
