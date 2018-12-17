@@ -12,4 +12,5 @@ public class CakeBakery extends WorkShop {
         inputs.add("Cookie");
         outputs.add("Cake");
     }
+    int a;
 }
