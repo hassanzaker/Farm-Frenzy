@@ -58,6 +58,6 @@ public abstract class ProducerAnimal extends Animal {
         cell.setDomesticAnimalAmount(cell.getDomesticAnimalAmount() + a);
     }
 
-    public abstract void produce(Cell[][] cells);
+    public abstract void produce(Ground ground);
 
 }

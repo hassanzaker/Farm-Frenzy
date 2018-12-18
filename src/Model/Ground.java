@@ -45,61 +45,6 @@ public class Ground {
         this.catSpeed = 10; //// base speed factor
     }
 
-    public void cageUpgrade() {
-        this.cageLevel++;
-    }
-
-    public int getCageLevel() {
-        return cageLevel;
-    }
-
-    public void setCageLevel(int cageLevel) {
-        this.cageLevel = cageLevel;
-    }
-
-
-    public void dogUpgrade() {
-        this.dogLevel++;
-        this.dogSpeed++; // base speed increase
-    }
-
-    public int getDogLevel() {
-        return dogLevel;
-    }
-
-    public void setDogLevel(int dogLevel) {
-        this.dogLevel = dogLevel;
-    }
-
-    public int getDogSpeed() {
-        return dogSpeed;
-    }
-
-    public void setDogSpeed(int dogSpeed) {
-        this.dogSpeed = dogSpeed;
-    }
-
-
-    public void catUpgrade() {
-        this.catLevel++;
-        this.catSpeed++;  // base speed increase
-    }
-
-    public int getCatLevel() {
-        return catLevel;
-    }
-
-    public void setCatLevel(int catLevel) {
-        this.catLevel = catLevel;
-    }
-
-    public int getCatSpeed() {
-        return catSpeed;
-    }
-
-    public void setCatSpeed(int catSpeed) {
-        this.catSpeed = catSpeed;
-    }
 
     public Well getWell() {
         return well;
