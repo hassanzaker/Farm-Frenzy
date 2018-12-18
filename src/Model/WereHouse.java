@@ -16,6 +16,15 @@ public class WereHouse {
     public void deleteItem(Item item){
         items.remove(item);
     }
+
+    public void upgrade(){
+        this.level++;
+        this.capacity = this.capacity * 2;
+    }
+
+    public int computeUpgradeCost(){
+        return this.level * 200;
+    }
     public int getCapacity() {
         return capacity;
     }
