@@ -71,6 +71,11 @@ public class Cat extends Animal {
         this.level++;
         this.speed += 5;
     }
+
+    public int computeUpgradeCost(){
+        return 2000;
+    }
+
     public int getLevel() {
 
         return level;
