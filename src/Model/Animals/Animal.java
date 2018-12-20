@@ -5,7 +5,6 @@ import Model.Ground;
 
 import java.util.Random;
 
-import static Model.Direction.none;
 
 public abstract class Animal {
     protected int row;
