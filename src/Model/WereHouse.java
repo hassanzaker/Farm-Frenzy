@@ -7,14 +7,25 @@ import java.util.ArrayList;
 public class WereHouse {
     private int capacity;
     private int level;
+    private int curruntCapacity;
     private ArrayList<Item> items = new ArrayList<>();
 
-    public void addItem(Item item){
-          items.add(item);
+    public WereHouse() {
+        curruntCapacity=0;
+    }
+
+    public void addItem(Item item) throws  Exception{
+          if(item.getVolume()+curruntCapacity > capacity){
+              throw new Exception("no free space exists");
+          }else{
+              items.add(item);
+              curruntCapacity+=item.getVolume();
+          }
     }
 
     public void deleteItem(Item item){
         items.remove(item);
+        curruntCapacity -= item.getVolume();
     }
 
     public void upgrade(){

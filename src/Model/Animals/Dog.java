@@ -43,7 +43,7 @@ public class Dog extends Animal {
     }
 
 
-    public void crash(Ground ground){
+    public void crash(Ground ground) throws Exception {
         for (int i=0 ; i<ground.getItems().size() ; i++){
             if (ground.getItems().get(i).getRow() == this.row && ground.getItems().get(i).getColumn() == this.column){
                 ground.deleteItem(ground.getItems().get(i));

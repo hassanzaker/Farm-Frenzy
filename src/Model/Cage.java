@@ -18,7 +18,7 @@ public class Cage {
             for (int i=0 ; i<ground.getWildAnimals().size() ; i++){
                 if (ground.getWildAnimals().get(i).getRow() == x && ground.getWildAnimals().get(i).getColumn() == y){
                     if (ground.getWildAnimals().get(i) instanceof Bear)
-                    ground.getWereHouse().addItem(new CagedBear(-100, -100, "0"));
+                    ground.getWereHouse().addItem(new CagedBear(-100, -100, "0",false));
                     ArrayList<Animal> wildAnimals = ground.getWildAnimals();
                     wildAnimals.remove(ground.getWildAnimals().get(i));    /////////// ????????
                     ground.setWildAnimals(wildAnimals);

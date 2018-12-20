@@ -5,8 +5,8 @@ public class Flour extends Item {
     private final int saleCost = 10;
 
 
-    public Flour(int x, int y, String ID) {
-        super(x, y, ID);
+    public Flour(int x, int y, String ID, Boolean inGrounad) {
+        super(x, y, ID, inGrounad);
         this.setVolume(1);
         this.type="Flour";
     }

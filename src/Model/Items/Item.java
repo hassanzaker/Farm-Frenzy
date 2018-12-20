@@ -2,23 +2,36 @@ package Model.Items;
 
 public abstract class Item {
     private int volume;
-  //  private int cost;
     protected int row;
     protected int column;
     protected String ID;
     protected boolean inGrounad;
-
-    // protected static final int cost=0;
     protected String type;
-   // protected static final int cost=0;
-    public Item( int x, int y , String ID) {
+    protected int sellPrice;
+    protected int  buyPrice;
+    public Item( int x, int y , String ID , Boolean inGrounad) {
         this.row = x;
         this.column = y;
         this.ID = ID;
-        inGrounad = false;
+        this.inGrounad = inGrounad;
     }
 
 
+    public int getSellPrice() {
+        return sellPrice;
+    }
+
+    public void setSellPrice(int sellPrice) {
+        this.sellPrice = sellPrice;
+    }
+
+    public int getBuyPrice() {
+        return buyPrice;
+    }
+
+    public void setBuyPrice(int buyPrice) {
+        this.buyPrice = buyPrice;
+    }
 
     public int getVolume() {
         return volume;

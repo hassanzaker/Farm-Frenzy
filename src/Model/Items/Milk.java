@@ -13,8 +13,8 @@ public class Milk extends Item {
         return saleCost;
     }
 
-    public Milk(int x, int y , String ID) {
-        super(x, y , ID);
+    public Milk(int x, int y , String ID, Boolean inGrounad) {
+        super(x, y , ID, inGrounad);
         this.setVolume(10);
         this.type="Milk";
     }

@@ -5,8 +5,8 @@ public class Cookie extends Item {
     private final int buyCost = 200;
     private final int saleCost = 100;
 
-    public Cookie(int x, int y, String ID) {
-        super(x, y, ID);
+    public Cookie(int x, int y, String ID,Boolean inGrounad) {
+        super(x, y, ID, inGrounad);
         this.setVolume(5);
         this.type="Cookie";
     }

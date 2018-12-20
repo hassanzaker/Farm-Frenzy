@@ -16,7 +16,7 @@ public class Hen extends ProducerAnimal {
     @Override
     public void produce(Ground ground) {
         ground.getCells()[this.row-1][this.column-1].setItemAmount(ground.getCells()[this.row-1][this.column-1].getItemAmount()+1);
-        ground.addItem(new Egg(this.row, this.column, "0"));
+        ground.addItem(new Egg(this.row, this.column, "0",true));
     }
 
 

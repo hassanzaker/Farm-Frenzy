@@ -13,8 +13,8 @@ public class Wool extends Item {
         return saleCost;
     }
 
-    public Wool(int x, int y , String ID) {
-        super(x, y , ID);
+    public Wool(int x, int y , String ID , Boolean inGrounad) {
+        super(x, y , ID, inGrounad);
         this.setVolume(5);
         this.type="Wool";
     }
