@@ -6,8 +6,8 @@ import Model.Items.EggPowder;
 import Model.WorkShop.WorkShop;
 
 public class CookieBakery extends WorkShop {
-    public CookieBakery() {
-        super();
+    public CookieBakery(int maxLevel) {
+        super(maxLevel);
         inputs.add("EggPowder");
         outputs.add("Cookie");
     }

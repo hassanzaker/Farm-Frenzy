@@ -5,6 +5,8 @@ import Model.Ground;
 
 import java.util.Random;
 
+import static Model.Direction.none;
+
 public abstract class Animal {
     protected int row;
     protected int column;
@@ -32,7 +34,7 @@ public abstract class Animal {
     }
 
 
-    public void move(int direction, Ground ground) throws Exception {
+    public void move(int  direction, Ground ground) throws Exception {
         switch (direction) {
             case 1:   // 1 ---->>  right
                 if (this.row > ground.getNumberOfRows() || this.column >= ground.getNumberOfColumns() || this.row < 0 || this.column < 0) {

@@ -9,15 +9,23 @@ import java.util.ArrayList;
 public abstract class WorkShop {
     protected int level;
     protected int timeToWork;
+    protected int workedTime;
     protected int rowForOutPut;
     protected int columnForOutput;
+    protected int maxLevel;
     protected ArrayList<String> inputs = new ArrayList<>();
     protected ArrayList<String> outputs = new ArrayList<>();
 
-    protected WorkShop() {
+    protected WorkShop(int maxLevel) {
+        this.maxLevel=maxLevel;
         level = 1;
     }
-
+    public void upgrade() throws Exception{
+     if(level == maxLevel){
+         throw new Exception("max level exceeded");
+     }
+     level++;
+    }
     public void workShopInput(Ground ground) throws Exception {
         int minumber = 0;
         int[] numberOfThisInput = new int[ground.getWereHouse().getItems().size()];
@@ -51,7 +59,6 @@ public abstract class WorkShop {
             }
         }
     }
-
 
     public void workShopOutput(Ground ground) {
         int minumber = 0;
@@ -137,5 +144,37 @@ public abstract class WorkShop {
 
     public void setColumnForOutput(int columnForOutput) {
         this.columnForOutput = columnForOutput;
+    }
+
+    public int getWorkedTime() {
+        return workedTime;
+    }
+
+    public void setWorkedTime(int workedTime) {
+        this.workedTime = workedTime;
+    }
+
+    public int getMaxLevel() {
+        return maxLevel;
+    }
+
+    public void setMaxLevel(int maxLevel) {
+        this.maxLevel = maxLevel;
+    }
+
+    public ArrayList<String> getInputs() {
+        return inputs;
+    }
+
+    public void setInputs(ArrayList<String> inputs) {
+        this.inputs = inputs;
+    }
+
+    public ArrayList<String> getOutputs() {
+        return outputs;
+    }
+
+    public void setOutputs(ArrayList<String> outputs) {
+        this.outputs = outputs;
     }
 }
