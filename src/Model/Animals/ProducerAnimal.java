@@ -10,6 +10,7 @@ public abstract class ProducerAnimal extends Animal {
     protected int maxEnergy;
     protected int energyLevel;
     protected int timeToProduce;
+    protected int currentTime;
 
     public ProducerAnimal(int x, int y, String ID) {
         super(x, y, ID);
@@ -19,6 +20,14 @@ public abstract class ProducerAnimal extends Animal {
     public int direction() {
         Random random = new Random();
         return random.nextInt(4) + 1;
+    }
+
+    public void checkTime(Ground ground){
+        this.currentTime++;
+        if (this.currentTime == this.timeToProduce){
+            produce(ground);
+            this.currentTime=0;
+        }
     }
 
     public int getTimeToProduce() {
@@ -60,4 +69,11 @@ public abstract class ProducerAnimal extends Animal {
 
     public abstract void produce(Ground ground);
 
+    public int getCurrentTime() {
+        return currentTime;
+    }
+
+    public void setCurrentTime(int currentTime) {
+        this.currentTime = currentTime;
+    }
 }

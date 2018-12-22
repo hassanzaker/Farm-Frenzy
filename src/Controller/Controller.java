@@ -2,8 +2,10 @@ package Controller;
 
 import Model.Ground;
 
+import java.util.ArrayList;
+
 public class Controller {
-    Ground ground;
+    ArrayList<Ground> grounds = new ArrayList<>();
 
     public void cyclePass(){
 

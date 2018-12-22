@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Box {
 
     private int capacity;
-    private int curruntCapacity;
+    private int currentCapacity;
     private int sellPrice;
     private int buyPrice;
     private ArrayList<Item> items = new ArrayList<>();
@@ -18,7 +18,7 @@ public class Box {
         buyPrice=0;
     }
     public void addItem(Item item) throws  Exception{
-        if(item.getVolume()+curruntCapacity > capacity){
+        if(item.getVolume()+ currentCapacity > capacity){
             throw new Exception("no free space exists");
         }else{
             if(items.size() != 0 && !items.get(0).getType().equals(item.getType())){
@@ -26,7 +26,7 @@ public class Box {
             }
             else {
                 items.add(item);
-                curruntCapacity += item.getVolume();
+                currentCapacity += item.getVolume();
                 sellPrice += item.getSellPrice();
                 buyPrice += item.getBuyPrice();
             }
@@ -39,7 +39,7 @@ public class Box {
     }
     public void deleteItem(Item item){
         items.remove(item);
-        curruntCapacity -= item.getVolume();
+        currentCapacity -= item.getVolume();
         sellPrice -= item.getSellPrice();
         buyPrice -= item.getBuyPrice();
     }
@@ -59,12 +59,12 @@ public class Box {
         this.items = items;
     }
 
-    public int getCurruntCapacity() {
-        return curruntCapacity;
+    public int getCurrentCapacity() {
+        return currentCapacity;
     }
 
-    public void setCurruntCapacity(int curruntCapacity) {
-        this.curruntCapacity = curruntCapacity;
+    public void setCurrentCapacity(int currentCapacity) {
+        this.currentCapacity = currentCapacity;
     }
 
     public int getSellPrice() {

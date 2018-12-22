@@ -7,7 +7,7 @@ import Model.WorkShop.WorkShop;
 
 public class CakeBakery extends WorkShop {
     public CakeBakery(int maxLevel) {
-        super(maxLevel);
+        super(maxLevel, 3);
         inputs.add("Flour");
         inputs.add("Cookie");
         outputs.add("Cake");

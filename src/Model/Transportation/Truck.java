@@ -1,6 +1,7 @@
 package Model.Transportation;
 
 import Model.Box;
+import Model.Ground;
 import Model.Items.Item;
 
 import java.util.ArrayList;
@@ -9,45 +10,69 @@ public class Truck {
     private int level;
     private int maxLevel;
     private int timeToTransit;
-    private boolean isInWork;
-    private int sellPrice;
+    private int currentTime;
+    private boolean isInWorking;
     private ArrayList<Box> boxes = new ArrayList<>();
 
     public Truck() {
         boxes.add(new Box());
         boxes.add(new Box());
-        level=1;
-        maxLevel=4;
-        isInWork=false;
+        level = 1;
+        maxLevel = 4;
+        isInWorking = false;
     }
-    public  void clearTruck()
-    {
-        for (int i = 0; i < boxes.size() ; i++) {
-            boxes.get(i).clearBox();
-        }
-    }
-    public void addItem(Item item , Box box) throws Exception {
-      box.addItem(item);
-    }
-    public void sell() {
-        isInWork=true;
+
+    public void clearTruck() {
         for (int i = 0; i < boxes.size(); i++) {
-            sellPrice += boxes.get(i).getSellPrice();
             boxes.get(i).clearBox();
         }
+    }
+
+    public void addItem(Item item, Box box) throws Exception {
+        box.addItem(item);
+    }
+
+    public void sell() {
+        isInWorking = true;
 
     }
-     public void upgrade() throws Exception{
-        if(level == maxLevel)
-        {
-            throw new Exception("max level exceeded");
+
+    public int computeSellPrice() {
+        int sum = 0;
+        for (Box boxes1 :
+                this.boxes) {
+            sum += boxes1.getSellPrice();
         }
-        else {
+        return sum;
+    }
+
+    public void checkTime(Ground ground) {
+        if (isInWorking) {
+            this.currentTime++;
+            if (this.currentTime == this.timeToTransit) {
+                ground.setMoney(ground.getMoney() + computeSellPrice());
+                this.currentTime = 0;
+                this.isInWorking = false;
+            }
+        }
+    }
+
+
+    public void upgrade() throws Exception {
+        if (level == maxLevel) {
+            throw new Exception("max level exceeded");
+        } else {
             level++;
             boxes.add(new Box());
             boxes.add(new Box());
         }
     }
+
+    public int computeUpgradeCost() {
+        return this.level * this.level * 100;
+    }
+
+
     public int getTimeToTransit() {
         return timeToTransit;
     }
@@ -72,20 +97,12 @@ public class Truck {
         this.maxLevel = maxLevel;
     }
 
-    public boolean isInWork() {
-        return isInWork;
+    public boolean isInWorking() {
+        return isInWorking;
     }
 
-    public void setInWork(boolean inWork) {
-        isInWork = inWork;
-    }
-
-    public int getSellPrice() {
-        return sellPrice;
-    }
-
-    public void setSellPrice(int sellPrice) {
-        this.sellPrice = sellPrice;
+    public void setInWorking(boolean inWorking) {
+        isInWorking = inWorking;
     }
 
     public ArrayList<Box> getBoxes() {

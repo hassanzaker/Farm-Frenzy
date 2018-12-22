@@ -1,6 +1,7 @@
 package Model.Transportation;
 
 import Model.Box;
+import Model.Ground;
 import Model.Items.Item;
 
 import java.util.ArrayList;
@@ -11,46 +12,77 @@ public class Helicopter {
     private int level;
     private int maxLevel;
     private int timeToTransit;
-    private boolean isInWork;
-    private int buyPrice;
+    private int currentTime;
+    private boolean isInWorking;
 
     private ArrayList<Box> boxes = new ArrayList<>();
 
     public Helicopter() {
         boxes.add(new Box());
         boxes.add(new Box());
-        level=1;
-        maxLevel=4;
-        isInWork=false;
+        level = 1;
+        maxLevel = 4;
+        isInWorking = false;
     }
-    public  void clearTruck()
-    {
-        for (int i = 0; i < boxes.size() ; i++) {
+
+    public void clearTruck() {
+        for (int i = 0; i < boxes.size(); i++) {
             boxes.get(i).clearBox();
         }
     }
-    public void addItem(Item item , Box box) throws Exception {
+
+    public void addItem(Item item, Box box) throws Exception {
         box.addItem(item);
     }
-    public void buy() {
-        isInWork=true;
+
+    public void buy(Ground ground) throws Exception{
+        if(ground.getMoney() < computeBuyCost()){
+            throw new Exception("not enough money!");
+        }
+        else {
+            isInWorking = true;
+            ground.setMoney(ground.getMoney() - computeBuyCost());
+        }
         for (int i = 0; i < boxes.size(); i++) {
-            buyPrice += boxes.get(i).getBuyPrice();
             boxes.get(i).clearBox();
         }
 
     }
-    public void upgrade() throws Exception{
-        if(level == maxLevel)
-        {
-            throw new Exception("max level exceeded");
+
+    public int computeBuyCost(){
+        int sum=0;
+        for (Box boxes1: this.boxes) {
+            sum += boxes1.getBuyPrice();
         }
-        else {
+        return sum;
+    }
+
+    public void checkTime(Ground ground){
+        if (isInWorking){
+            this.currentTime++;
+            if (this.currentTime == this.timeToTransit){
+                this.currentTime =0 ;
+                this.isInWorking = false;
+                clearTruck(); ////   ??????????????????????????????????????????????????
+            }
+        }
+    }
+
+
+    public void upgrade() throws Exception {
+        if (level == maxLevel) {
+            throw new Exception("max level exceeded");
+        } else {
             level++;
             boxes.add(new Box());
             boxes.add(new Box());
         }
     }
+
+    public int computeUpgradeCost() {
+        return this.level * this.level * 100;
+    }
+
     public int getTimeToTransit() {
         return timeToTransit;
     }
@@ -75,20 +107,12 @@ public class Helicopter {
         this.maxLevel = maxLevel;
     }
 
-    public boolean isInWork() {
-        return isInWork;
+    public boolean isInWorking() {
+        return isInWorking;
     }
 
-    public void setInWork(boolean inWork) {
-        isInWork = inWork;
-    }
-
-    public int getBuyPrice() {
-        return buyPrice;
-    }
-
-    public void setBuyPrice(int buyPrice) {
-        this.buyPrice = buyPrice;
+    public void setInWorking(boolean inWorking) {
+        isInWorking = inWorking;
     }
 
     public ArrayList<Box> getBoxes() {

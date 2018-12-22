@@ -3,26 +3,26 @@ package Model;
 public class Well {
     private int capacity;
     private int timeToFill;
+    private int currentTime;
     private int currentAmount;
     private int level;
 
-    public Well(){
+    public Well() {
         this.level = 1;
         this.timeToFill = 10;
         this.capacity = 5;
         this.currentAmount = this.capacity;
     }
 
-    public void plant(Ground ground, int x, int y){
-        ground.getCells()[x-1][y-1].setGrassAmount(ground.getCells()[x-1][y-1].getGrassAmount()+1);
+    public void plant(Ground ground, int x, int y) {
+        ground.getCells()[x - 1][y - 1].setGrassAmount(ground.getCells()[x - 1][y - 1].getGrassAmount() + 1);
 
     }
 
-    public void upgrade() throws Exception{
-        if (this.level == 3){
+    public void upgrade() throws Exception {
+        if (this.level == 3) {
             throw new Exception("well is max level!");
-        }
-        else {
+        } else {
             this.level++;
             this.timeToFill -= 2;
             this.capacity += 2;
@@ -30,7 +30,16 @@ public class Well {
         }
     }
 
-    public int computeUpgradeCost(){
+    public boolean cehckTime() {
+        this.currentTime++;
+        if (this.currentTime == this.timeToFill) {
+            this.currentTime = 0;
+            return true;  // to fill well
+        } else
+            return false;
+    }
+
+    public int computeUpgradeCost() {
         return this.level * this.level * 100;  // ye formol az khodam dar avordam
     }
 
@@ -42,7 +51,7 @@ public class Well {
         this.currentAmount = currentAmount;
     }
 
-    public void fill(int amount){
+    public void fill(int amount) {
 
     }
 

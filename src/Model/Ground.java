@@ -26,11 +26,7 @@ public class Ground {
     private WereHouse wereHouse;
     private int numberOfRows;
     private int numberOfColumns;
-    private int dogLevel;
-    private int dogSpeed;
-    private int catLevel;
-    private int catSpeed;
-    private int cageLevel;
+    private int money;
 
     public Ground() {
         this.cells = new Cell[600][600];
@@ -39,10 +35,6 @@ public class Ground {
         this.truck = new Truck();
         this.helicopter = new Helicopter();
         this.wereHouse = new WereHouse();
-        this.dogLevel = 1;
-        this.dogSpeed = 10;////base speed factor
-        this.catLevel = 1;
-        this.catSpeed = 10; //// base speed factor
     }
 
 
@@ -157,6 +149,14 @@ public class Ground {
 
     public ArrayList<Item> getItems() {
         return items;
+    }
+
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 
     public void setItems(ArrayList<Item> items) {
