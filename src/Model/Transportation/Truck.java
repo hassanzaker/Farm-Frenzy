@@ -39,6 +39,7 @@ public class Truck {
                         if (boxes.get(j).typeOfBox().equals(type) || boxes.get(j).typeOfBox().equals("none")){
                             checkItemCanAddToBox=true;
                             boxes.get(j).addItem(ground.getWereHouse().getItems().get(i));
+                            ground.getWereHouse().deleteItem(ground.getWereHouse().getItems().get(i));
                             break;
                         }
                     }
