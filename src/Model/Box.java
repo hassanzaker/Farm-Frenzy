@@ -32,6 +32,24 @@ public class Box {
             }
         }
     }
+    public Boolean checkFull() {
+        if (items.size() == 0) {
+            return true;
+        } else {
+            if (currentCapacity + items.get(0).getVolume() > capacity) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    public String typeOfBox(){
+        if(items.size() == 0){
+            return "none";
+        }else {
+            return items.get(0).getType();
+        }
+    }
     public void clearBox(){
         for (int i = 0; i <items.size() ; i++) {
             items.remove(i);

@@ -2,7 +2,7 @@ package Model.Transportation;
 
 import Model.Box;
 import Model.Ground;
-import Model.Items.Item;
+import Model.Items.*;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,8 @@ public class Helicopter {
     private int timeToTransit;
     private int currentTime;
     private boolean isInWorking;
-
+    private int rowForOutPut;
+    private int columnForOutput;
     private ArrayList<Box> boxes = new ArrayList<>();
 
     public Helicopter() {
@@ -31,8 +32,52 @@ public class Helicopter {
         }
     }
 
-    public void addItem(Item item, Box box) throws Exception {
-        box.addItem(item);
+    public void addItem(String type) throws Exception {
+        Boolean checkItemCanAddToBox = false;
+        Item item = null;
+        if (type.equals("Egg")) {
+            item=new Egg( this.rowForOutPut, this.columnForOutput, "0", true);
+        } else if (type.equals("EggPowder")) {
+            item =new EggPowder(this.rowForOutPut, this.columnForOutput, "0", true);
+        } else if (type.equals("Cake")) {
+            item=new Cake(this.rowForOutPut, this.columnForOutput, "0", true);
+        } else if (type.equals("Cookie")) {
+            item=new Cookie(this.rowForOutPut, this.columnForOutput, "0", true);
+        } else if (type.equals("Milk")) {
+            item=new Milk(this.rowForOutPut , this.columnForOutput, "0", true);
+        } else if (type.equals("FLour")) {
+            item=new Flour(this.rowForOutPut , this.columnForOutput, "0", true);
+        } else if (type.equals("Wool")) {
+            item = new Wool(this.rowForOutPut , this.columnForOutput, "0", true);
+        } else if (type.equals("Sewing")) {
+            item = new Sewing(this.rowForOutPut , this.columnForOutput, "0", true);
+        } else if (type.equals("Fabric")) {
+            item = new Fabric(this.rowForOutPut , this.columnForOutput, "0", true);
+        } else if (type.equals("ColoredPlume")) {
+            item = new ColoredPlume(this.rowForOutPut , this.columnForOutput, "0", true);
+        } else if (type.equals("CarnivalDress")) {
+            item = new CarnivalDress(this.rowForOutPut , this.columnForOutput, "0", true);
+        }
+        for(int j=0 ; j < boxes.size() ; j++){
+            if(boxes.get(j).checkFull() == false ){
+                if (boxes.get(j).typeOfBox().equals(type) || boxes.get(j).typeOfBox().equals("none")){
+                    checkItemCanAddToBox=true;
+                    boxes.get(j).addItem(item);
+                    break;
+                }
+            }
+        }
+        if(checkItemCanAddToBox == false){
+            throw new Exception(" item can not add to box");
+        }
+    }
+    public void putItemOnGround(Ground ground){
+        for (int i =0 ; i< boxes.size() ; i++) {
+            for (int j =0 ; j< boxes.get(i).getItems().size() ; j++) {
+                ground.addItem(boxes.get(i).getItems().get(j));
+            }
+
+        }
     }
 
     public void buy(Ground ground) throws Exception{
@@ -43,6 +88,7 @@ public class Helicopter {
             isInWorking = true;
             ground.setMoney(ground.getMoney() - computeBuyCost());
         }
+        putItemOnGround(ground);
         for (int i = 0; i < boxes.size(); i++) {
             boxes.get(i).clearBox();
         }
@@ -123,4 +169,27 @@ public class Helicopter {
         this.boxes = boxes;
     }
 
+    public int getCurrentTime() {
+        return currentTime;
+    }
+
+    public void setCurrentTime(int currentTime) {
+        this.currentTime = currentTime;
+    }
+
+    public int getRowForOutPut() {
+        return rowForOutPut;
+    }
+
+    public void setRowForOutPut(int rowForOutPut) {
+        this.rowForOutPut = rowForOutPut;
+    }
+
+    public int getColumnForOutput() {
+        return columnForOutput;
+    }
+
+    public void setColumnForOutput(int columnForOutput) {
+        this.columnForOutput = columnForOutput;
+    }
 }

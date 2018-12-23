@@ -2,7 +2,7 @@ package Model.Transportation;
 
 import Model.Box;
 import Model.Ground;
-import Model.Items.Item;
+import Model.Items.*;
 
 import java.util.ArrayList;
 
@@ -28,8 +28,30 @@ public class Truck {
         }
     }
 
-    public void addItem(Item item, Box box) throws Exception {
-        box.addItem(item);
+    public void addItem(String type , Ground ground) throws Exception {
+        Boolean checkItemInWereHouse = false;
+        Boolean checkItemCanAddToBox = false;
+        for (int i = 0; i < ground.getWereHouse().getItems().size() ; i++) {
+            if(ground.getWereHouse().getItems().get(i).getType().equals(type)){
+                checkItemInWereHouse=true;
+                for(int j=0 ; j < boxes.size() ; j++){
+                    if(boxes.get(j).checkFull() == false ){
+                        if (boxes.get(j).typeOfBox().equals(type) || boxes.get(j).typeOfBox().equals("none")){
+                            checkItemCanAddToBox=true;
+                            boxes.get(j).addItem(ground.getWereHouse().getItems().get(i));
+                            break;
+                        }
+                    }
+                }
+                break;
+            }
+        }
+        if(checkItemInWereHouse == false){
+            throw new Exception("item not found in the werehouse");
+        }
+        if(checkItemCanAddToBox == false){
+            throw new Exception(" item can not add to box");
+        }
     }
 
     public void sell() {
