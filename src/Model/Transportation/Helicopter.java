@@ -24,6 +24,8 @@ public class Helicopter {
         level = 1;
         maxLevel = 4;
         isInWorking = false;
+        rowForOutPut = 10; //shouldd be random
+        columnForOutput =10;
     }
 
     public void clearTruck() {
