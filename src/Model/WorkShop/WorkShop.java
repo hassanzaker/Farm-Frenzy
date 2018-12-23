@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public abstract class WorkShop {
     protected int level;
+    protected int baseCost;
     protected int timeToWork;
     protected int workedTime;
     protected int rowForOutPut;
@@ -26,24 +27,29 @@ public abstract class WorkShop {
         this.timeToWork = 8;
         this.maxLevel = 5;
         this.isWorking = false;
+        this.baseCost = 50 * this.constNumber;
     }
 
-    public void upgrade() throws Exception {
+    public void upgrade(int money) throws Exception {
         if (level == maxLevel) {
             throw new Exception("max level exceeded");
         }
-        level++;
-        this.timeToWork -=1;
-        this.isWorking = false;
-        this.currentTime=0;
+        if (computeUpgradeCost() > money){
+            throw new Exception("not enough money!");
+        } else {
+            level++;
+            this.timeToWork -= 1;
+            this.isWorking = false;
+            this.currentTime = 0;
+        }
 
     }
 
-    public int computeUpgradeCost(){
+    public int computeUpgradeCost() {
         return this.level * this.level * 100 * this.constNumber;
     }
 
-    public void checkTime(Ground ground){
+    public void checkTime(Ground ground) {
         if (this.isWorking) {
             this.currentTime++;
             if (this.currentTime == this.timeToWork) {
@@ -229,5 +235,13 @@ public abstract class WorkShop {
 
     public void setWorking(boolean working) {
         isWorking = working;
+    }
+
+    public int getBaseCost() {
+        return baseCost;
+    }
+
+    public void setBaseCost(int baseCost) {
+        this.baseCost = baseCost;
     }
 }

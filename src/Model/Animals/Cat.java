@@ -67,7 +67,13 @@ public class Cat extends Animal {
         }
     }
 
-    public void upgrade() {
+    public void upgrade(int money) throws Exception{
+        if (money < computeUpgradeCost()){
+            throw new Exception("not enough money!");
+        }
+        if (this.level == 2){
+            throw new Exception("cat is max level!");
+        }
         this.level++;
         this.speed += 5;
     }

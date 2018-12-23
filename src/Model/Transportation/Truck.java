@@ -132,7 +132,16 @@ public class Truck {
         return boxes;
     }
 
+    public int getCurrentTime() {
+        return currentTime;
+    }
+
+    public void setCurrentTime(int currentTime) {
+        this.currentTime = currentTime;
+    }
+
     public void setBoxes(ArrayList<Box> boxes) {
+
         this.boxes = boxes;
     }
 }

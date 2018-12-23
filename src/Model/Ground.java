@@ -27,6 +27,7 @@ public class Ground {
     private int numberOfRows;
     private int numberOfColumns;
     private int money;
+    private int numberOfWorkShops;
 
     public Ground() {
         this.cells = new Cell[600][600];
@@ -35,7 +36,56 @@ public class Ground {
         this.truck = new Truck();
         this.helicopter = new Helicopter();
         this.wereHouse = new WereHouse();
+        this.numberOfWorkShops = 0;
     }
+
+    public void buyAnimal(Animal animal) throws Exception {
+        if (this.money < animal.getCost()) {
+            throw new Exception("not enough money!");
+        }
+        if (animal instanceof ProducerAnimal) {
+            this.producerAnimals.add(animal);
+        } else if (animal instanceof Dog) {
+            this.dogs.add(animal);
+        } else if (animal instanceof Cat) {
+            this.cats.add(animal);
+        }
+    }
+
+    public void pickUp(int x, int y) throws Exception {
+        if (cells[x - 1][y - 1].getItemAmount() == 0) {
+            throw new Exception("there is no item");
+        } else {
+            for (int i = 0; i < items.size(); i++) {
+                if (items.get(i).getRow() == x && items.get(i).getColumn() == y) {
+                    wereHouse.addItem(items.get(i));
+                    items.remove(i);
+                }
+            }
+        }
+    }
+
+    public void addWorkShop(WorkShop workShop) throws Exception {
+        if (this.numberOfWorkShops == 6){
+            throw new Exception("no place for new workshop!");
+        }
+        if (this.money < workShop.getBaseCost()){
+            throw new Exception("not enough money");
+        }
+        this.workShops[numberOfWorkShops] = workShop;
+        numberOfWorkShops++;
+    }
+
+    public WorkShop searchWorkShop(WorkShop workShop) throws Exception{
+        for (int i=0 ; i<this.workShops.length ; i++){
+            if (this.workShops[i].equals(workShop)){
+                return this.workShops[i];
+            }
+        }
+        throw new Exception("no such workshop!");
+
+    }
+
 
 
     public Well getWell() {
@@ -92,7 +142,7 @@ public class Ground {
     }
 
     public void addItem(Item item) {
-       items.add(item);
+        items.add(item);
     }
 
     public void addAnimal(Animal animal) {
@@ -180,6 +230,6 @@ public class Ground {
     }
 
     public void deleteItem(Item item) {
-     items.remove(item);
+        items.remove(item);
     }
 }
