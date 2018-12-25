@@ -16,10 +16,10 @@ public class Ground {
     private Cell[][] cells;
     private WorkShop[] workShops;
     private ArrayList<Item> items = new ArrayList<>();
-    private ArrayList<Animal> producerAnimals = new ArrayList<>();
-    private ArrayList<Animal> dogs = new ArrayList<>();
-    private ArrayList<Animal> cats = new ArrayList<>();
-    private ArrayList<Animal> wildAnimals = new ArrayList<>();
+    private ArrayList<ProducerAnimal> producerAnimals = new ArrayList<>();
+    private ArrayList<Dog> dogs = new ArrayList<>();
+    private ArrayList<Cat> cats = new ArrayList<>();
+    private ArrayList<WildAnimal> wildAnimals = new ArrayList<>();
     private Well well;
     private Truck truck;
     private Helicopter helicopter;
@@ -44,11 +44,11 @@ public class Ground {
             throw new Exception("not enough money!");
         }
         if (animal instanceof ProducerAnimal) {
-            this.producerAnimals.add(animal);
+            this.producerAnimals.add((ProducerAnimal)animal);
         } else if (animal instanceof Dog) {
-            this.dogs.add(animal);
+            this.dogs.add((Dog)animal);
         } else if (animal instanceof Cat) {
-            this.cats.add(animal);
+            this.cats.add((Cat)animal);
         }
     }
 
@@ -137,7 +137,7 @@ public class Ground {
     }
 
 
-    public ArrayList<Animal> getWildAnimals() {
+    public ArrayList<WildAnimal> getWildAnimals() {
         return wildAnimals;
     }
 
@@ -147,13 +147,13 @@ public class Ground {
 
     public void addAnimal(Animal animal) {
         if (animal instanceof ProducerAnimal) {
-            producerAnimals.add(animal);
+            producerAnimals.add((ProducerAnimal)animal);
         } else if (animal instanceof WildAnimal) {
-            wildAnimals.add(animal);
+            wildAnimals.add((WildAnimal) animal);
         } else if (animal instanceof Cat) {
-            cats.add(animal);
+            cats.add((Cat) animal);
         } else if (animal instanceof Dog) {
-            dogs.add(animal);
+            dogs.add((Dog) animal);
         }
     }
 
@@ -173,27 +173,27 @@ public class Ground {
         this.workShops = workShops;
     }
 
-    public ArrayList<Animal> getProducerAnimals() {
+    public ArrayList<ProducerAnimal> getProducerAnimals() {
         return producerAnimals;
     }
 
-    public void setProducerAnimals(ArrayList<Animal> producerAnimals) {
+    public void setProducerAnimals(ArrayList<ProducerAnimal> producerAnimals) {
         this.producerAnimals = producerAnimals;
     }
 
-    public ArrayList<Animal> getDogs() {
+    public ArrayList<Dog> getDogs() {
         return dogs;
     }
 
-    public void setDogs(ArrayList<Animal> dogs) {
+    public void setDogs(ArrayList<Dog> dogs) {
         this.dogs = dogs;
     }
 
-    public ArrayList<Animal> getCats() {
+    public ArrayList<Cat> getCats() {
         return cats;
     }
 
-    public void setCats(ArrayList<Animal> cats) {
+    public void setCats(ArrayList<Cat> cats) {
         this.cats = cats;
     }
 
@@ -213,7 +213,7 @@ public class Ground {
         this.items = items;
     }
 
-    public void setWildAnimals(ArrayList<Animal> wildAnimals) {
+    public void setWildAnimals(ArrayList<WildAnimal> wildAnimals) {
         this.wildAnimals = wildAnimals;
     }
 

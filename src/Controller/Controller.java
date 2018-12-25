@@ -54,17 +54,39 @@ public class Controller {
         }
     }
 
-    public void upgrade(WorkShop workShop){
+    public void upgradeWorkShop(WorkShop workShop) {
         try {
-            grounds.get(level-1).searchWorkShop(workShop).upgrade(grounds.get(level-1).getMoney());
-        }catch (Exception exception){
+            grounds.get(level - 1).searchWorkShop(workShop).upgrade(grounds.get(level - 1).getMoney());
+            grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - grounds.get(level - 1).searchWorkShop(workShop).computeUpgradeCost());
+        } catch (Exception exception) {
             View.checkOutException(exception);
         }
     }
 
-    public void upgrade(Cat cat){
-                                                /// upgrade is not completed
+    public void upgradeCat() {
+        try {
+            if (grounds.get(level - 1).getCats().size() > 0) {
+                for (int i = 0; i < grounds.get(level - 1).getCats().size(); i++) {
+                    grounds.get(level - 1).getCats().get(i).upgrade(grounds.get(level - 1).getMoney());
+                }
+                grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - grounds.get(level - 1).getCats().get(0).computeUpgradeCost());
+            }
+
+        } catch (Exception e) {
+            View.checkOutException(e);
+        }
     }
+
+    public void upgradeWereHouse() {
+        try {
+            grounds.get(level - 1).getWereHouse().upgrade(grounds.get(level - 100).getMoney());
+            grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - grounds.get(level - 1).getWereHouse().computeUpgradeCost());
+        } catch (Exception e) {
+            View.checkOutException(e);
+        }
+    }
+
+    public void upgrade
 
 
     public void save() {

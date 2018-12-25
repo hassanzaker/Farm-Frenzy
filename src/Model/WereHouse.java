@@ -11,31 +11,38 @@ public class WereHouse {
     private ArrayList<Item> items = new ArrayList<>();
 
     public WereHouse() {
-        curruntCapacity=0;
+        curruntCapacity = 0;
     }
 
-    public void addItem(Item item) throws  Exception{
-          if(item.getVolume()+curruntCapacity > capacity){
-              throw new Exception("no free space exists");
-          }else{
-              items.add(item);
-              curruntCapacity+=item.getVolume();
-          }
+    public void addItem(Item item) throws Exception {
+        if (item.getVolume() + curruntCapacity > capacity) {
+            throw new Exception("no free space exists");
+        } else {
+            items.add(item);
+            curruntCapacity += item.getVolume();
+        }
     }
 
-    public void deleteItem(Item item){
+    public void deleteItem(Item item) {
         items.remove(item);
         curruntCapacity -= item.getVolume();
     }
 
-    public void upgrade(){
+    public void upgrade(int money) throws Exception {
+        if (computeUpgradeCost() > money){
+            throw new Exception("not enough money!");
+        }
+        if (this.level == 4){
+            throw new Exception("wereHouse is max level!");
+        }
         this.level++;
         this.capacity = this.capacity * 2;
     }
 
-    public int computeUpgradeCost(){
+    public int computeUpgradeCost() {
         return this.level * 200;
     }
+
     public int getCapacity() {
         return capacity;
     }
