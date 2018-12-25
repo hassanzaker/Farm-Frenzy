@@ -28,16 +28,16 @@ public class Truck {
         }
     }
 
-    public void addItem(String type , Ground ground) throws Exception {
+    public void addItem(String type, Ground ground) throws Exception {
         Boolean checkItemInWereHouse = false;
         Boolean checkItemCanAddToBox = false;
-        for (int i = 0; i < ground.getWereHouse().getItems().size() ; i++) {
-            if(ground.getWereHouse().getItems().get(i).getType().equals(type)){
-                checkItemInWereHouse=true;
-                for(int j=0 ; j < boxes.size() ; j++){
-                    if(boxes.get(j).checkFull() == false ){
-                        if (boxes.get(j).typeOfBox().equals(type) || boxes.get(j).typeOfBox().equals("none")){
-                            checkItemCanAddToBox=true;
+        for (int i = 0; i < ground.getWereHouse().getItems().size(); i++) {
+            if (ground.getWereHouse().getItems().get(i).getType().equals(type)) {
+                checkItemInWereHouse = true;
+                for (int j = 0; j < boxes.size(); j++) {
+                    if (boxes.get(j).checkFull() == false) {
+                        if (boxes.get(j).typeOfBox().equals(type) || boxes.get(j).typeOfBox().equals("none")) {
+                            checkItemCanAddToBox = true;
                             boxes.get(j).addItem(ground.getWereHouse().getItems().get(i));
                             ground.getWereHouse().deleteItem(ground.getWereHouse().getItems().get(i));
                             break;
@@ -47,10 +47,10 @@ public class Truck {
                 break;
             }
         }
-        if(checkItemInWereHouse == false){
+        if (checkItemInWereHouse == false) {
             throw new Exception("item not found in the werehouse");
         }
-        if(checkItemCanAddToBox == false){
+        if (checkItemCanAddToBox == false) {
             throw new Exception(" item can not add to box");
         }
     }
@@ -81,14 +81,17 @@ public class Truck {
     }
 
 
-    public void upgrade() throws Exception {
+    public void upgrade(int money) throws Exception {
         if (level == maxLevel) {
             throw new Exception("max level exceeded");
-        } else {
-            level++;
-            boxes.add(new Box());
-            boxes.add(new Box());
         }
+        if (money < computeUpgradeCost()){
+            throw new Exception("not enough money!");
+        }
+        level++;
+        boxes.add(new Box());
+        boxes.add(new Box());
+
     }
 
     public int computeUpgradeCost() {

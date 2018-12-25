@@ -26,6 +26,15 @@ public class Controller {
 
     }
 
+    public void fillWell(){
+        try {
+            grounds.get(level-1).getWell().fill(grounds.get(level-1).getMoney());
+            grounds.get(level-1).setMoney(grounds.get(level-1).getMoney() - grounds.get(level-1).getWell().getCost());
+        }catch (Exception e){
+            View.checkOutException(e);
+        }
+    }
+
     public void pickUp(int x, int y) {
         try {
             grounds.get(level - 1).pickUp(x, y);
@@ -43,7 +52,11 @@ public class Controller {
     }
 
     public void plant(int x, int y) {
-        grounds.get(level - 1).getWell().plant(grounds.get(level - 1), x, y);
+        try {
+            grounds.get(level - 1).getWell().plant(grounds.get(level - 1), x, y);   // has a problem for around
+        } catch (Exception e) {
+            View.checkOutException(e);
+        }
     }
 
     public void startWorkShop(WorkShop workShop) {
@@ -86,7 +99,32 @@ public class Controller {
         }
     }
 
-    public void upgrade
+    public void upgradeWell() {
+        try {
+            grounds.get(level - 1).getWell().upgrade(grounds.get(level - 1).getMoney());
+            grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - grounds.get(level - 1).getWell().computeUpgradeCost());
+        } catch (Exception e) {
+            View.checkOutException(e);
+        }
+    }
+
+    public void upgradeTruck() {
+        try {
+            grounds.get(level - 1).getTruck().upgrade(grounds.get(level - 1).getMoney());
+            grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - grounds.get(level - 1).getTruck().computeUpgradeCost());
+        } catch (Exception e) {
+            View.checkOutException(e);
+        }
+    }
+
+    public void upgradeHelicopter(){
+        try {
+            grounds.get(level-1).getHelicopter().upgrade(grounds.get(level-1).getMoney());
+            grounds.get(level-1).setMoney(grounds.get(level-1).getMoney()-grounds.get(level-1).getHelicopter().computeUpgradeCost());
+        }catch (Exception e){
+            View.checkOutException(e);
+        }
+    }
 
 
     public void save() {

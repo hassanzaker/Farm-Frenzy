@@ -24,13 +24,15 @@ public class Helicopter {
         level = 1;
         maxLevel = 4;
         isInWorking = false;
-        this.ground=ground;
+        this.ground = ground;
     }
-    public int getRandomRow(Ground ground){
+
+    public int getRandomRow(Ground ground) {
         Random random = new Random();
         return random.nextInt(ground.getNumberOfRows());
     }
-    public int  getRandomColumn(Ground ground){
+
+    public int getRandomColumn(Ground ground) {
         Random random = new Random();
         return random.nextInt(ground.getNumberOfColumns());
     }
@@ -45,17 +47,17 @@ public class Helicopter {
         Boolean checkItemCanAddToBox = false;
         Item item = null;
         if (type.equals("Egg")) {
-            item=new Egg( getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new Egg(getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("EggPowder")) {
-            item =new EggPowder(getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new EggPowder(getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("Cake")) {
-            item=new Cake(getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new Cake(getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("Cookie")) {
-            item=new Cookie(getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new Cookie(getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("Milk")) {
-            item=new Milk(getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new Milk(getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("FLour")) {
-            item=new Flour(getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new Flour(getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("Wool")) {
             item = new Wool(getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("Sewing")) {
@@ -67,33 +69,33 @@ public class Helicopter {
         } else if (type.equals("CarnivalDress")) {
             item = new CarnivalDress(getRandomRow(ground), getRandomColumn(ground), "0", true);
         }
-        for(int j=0 ; j < boxes.size() ; j++){
-            if(boxes.get(j).checkFull() == false ){
-                if (boxes.get(j).typeOfBox().equals(type) || boxes.get(j).typeOfBox().equals("none")){
-                    checkItemCanAddToBox=true;
+        for (int j = 0; j < boxes.size(); j++) {
+            if (boxes.get(j).checkFull() == false) {
+                if (boxes.get(j).typeOfBox().equals(type) || boxes.get(j).typeOfBox().equals("none")) {
+                    checkItemCanAddToBox = true;
                     boxes.get(j).addItem(item);
                     break;
                 }
             }
         }
-        if(checkItemCanAddToBox == false){
+        if (checkItemCanAddToBox == false) {
             throw new Exception(" item can not add to box");
         }
     }
-    public void putItemOnGround(Ground ground){
-        for (int i =0 ; i< boxes.size() ; i++) {
-            for (int j =0 ; j< boxes.get(i).getItems().size() ; j++) {
+
+    public void putItemOnGround(Ground ground) {
+        for (int i = 0; i < boxes.size(); i++) {
+            for (int j = 0; j < boxes.get(i).getItems().size(); j++) {
                 ground.addItem(boxes.get(i).getItems().get(j));
             }
 
         }
     }
 
-    public void buy(Ground ground) throws Exception{
-        if(ground.getMoney() < computeBuyCost()){
+    public void buy(Ground ground) throws Exception {
+        if (ground.getMoney() < computeBuyCost()) {
             throw new Exception("not enough money!");
-        }
-        else {
+        } else {
             isInWorking = true;
             ground.setMoney(ground.getMoney() - computeBuyCost());
         }
@@ -104,19 +106,19 @@ public class Helicopter {
 
     }
 
-    public int computeBuyCost(){
-        int sum=0;
-        for (Box boxes1: this.boxes) {
+    public int computeBuyCost() {
+        int sum = 0;
+        for (Box boxes1 : this.boxes) {
             sum += boxes1.getBuyPrice();
         }
         return sum;
     }
 
-    public void checkTime(Ground ground){
-        if (isInWorking){
+    public void checkTime(Ground ground) {
+        if (isInWorking) {
             this.currentTime++;
-            if (this.currentTime == this.timeToTransit){
-                this.currentTime =0 ;
+            if (this.currentTime == this.timeToTransit) {
+                this.currentTime = 0;
                 this.isInWorking = false;
                 clearTruck(); ////   ??????????????????????????????????????????????????
             }
@@ -124,14 +126,17 @@ public class Helicopter {
     }
 
 
-    public void upgrade() throws Exception {
+    public void upgrade(int money) throws Exception {
         if (level == maxLevel) {
             throw new Exception("max level exceeded");
-        } else {
-            level++;
-            boxes.add(new Box());
-            boxes.add(new Box());
         }
+        if (money < computeUpgradeCost()){
+            throw new Exception("not enough money!");
+        }
+        level++;
+        boxes.add(new Box());
+        boxes.add(new Box());
+
     }
 
     public int computeUpgradeCost() {
