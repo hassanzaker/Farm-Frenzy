@@ -5,6 +5,7 @@ import Model.Ground;
 import Model.Items.*;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Helicopter {
 
@@ -14,18 +15,24 @@ public class Helicopter {
     private int timeToTransit;
     private int currentTime;
     private boolean isInWorking;
-    private int rowForOutPut;
-    private int columnForOutput;
     private ArrayList<Box> boxes = new ArrayList<>();
+    Ground ground;
 
-    public Helicopter() {
+    public Helicopter(Ground ground) {
         boxes.add(new Box());
         boxes.add(new Box());
         level = 1;
         maxLevel = 4;
         isInWorking = false;
-        rowForOutPut = 10; //shouldd be random
-        columnForOutput =10;
+        this.ground=ground;
+    }
+    public int getRandomRow(Ground ground){
+        Random random = new Random();
+        return random.nextInt(ground.getNumberOfRows());
+    }
+    public int  getRandomColumn(Ground ground){
+        Random random = new Random();
+        return random.nextInt(ground.getNumberOfColumns());
     }
 
     public void clearTruck() {
@@ -38,27 +45,27 @@ public class Helicopter {
         Boolean checkItemCanAddToBox = false;
         Item item = null;
         if (type.equals("Egg")) {
-            item=new Egg( this.rowForOutPut, this.columnForOutput, "0", true);
+            item=new Egg( getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("EggPowder")) {
-            item =new EggPowder(this.rowForOutPut, this.columnForOutput, "0", true);
+            item =new EggPowder(getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("Cake")) {
-            item=new Cake(this.rowForOutPut, this.columnForOutput, "0", true);
+            item=new Cake(getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("Cookie")) {
-            item=new Cookie(this.rowForOutPut, this.columnForOutput, "0", true);
+            item=new Cookie(getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("Milk")) {
-            item=new Milk(this.rowForOutPut , this.columnForOutput, "0", true);
+            item=new Milk(getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("FLour")) {
-            item=new Flour(this.rowForOutPut , this.columnForOutput, "0", true);
+            item=new Flour(getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("Wool")) {
-            item = new Wool(this.rowForOutPut , this.columnForOutput, "0", true);
+            item = new Wool(getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("Sewing")) {
-            item = new Sewing(this.rowForOutPut , this.columnForOutput, "0", true);
+            item = new Sewing(getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("Fabric")) {
-            item = new Fabric(this.rowForOutPut , this.columnForOutput, "0", true);
+            item = new Fabric(getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("ColoredPlume")) {
-            item = new ColoredPlume(this.rowForOutPut , this.columnForOutput, "0", true);
+            item = new ColoredPlume(getRandomRow(ground), getRandomColumn(ground), "0", true);
         } else if (type.equals("CarnivalDress")) {
-            item = new CarnivalDress(this.rowForOutPut , this.columnForOutput, "0", true);
+            item = new CarnivalDress(getRandomRow(ground), getRandomColumn(ground), "0", true);
         }
         for(int j=0 ; j < boxes.size() ; j++){
             if(boxes.get(j).checkFull() == false ){
@@ -179,19 +186,4 @@ public class Helicopter {
         this.currentTime = currentTime;
     }
 
-    public int getRowForOutPut() {
-        return rowForOutPut;
-    }
-
-    public void setRowForOutPut(int rowForOutPut) {
-        this.rowForOutPut = rowForOutPut;
-    }
-
-    public int getColumnForOutput() {
-        return columnForOutput;
-    }
-
-    public void setColumnForOutput(int columnForOutput) {
-        this.columnForOutput = columnForOutput;
-    }
 }

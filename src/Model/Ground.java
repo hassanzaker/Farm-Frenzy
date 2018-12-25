@@ -34,7 +34,7 @@ public class Ground {
         this.workShops = new WorkShop[6];
         this.well = new Well();
         this.truck = new Truck();
-        this.helicopter = new Helicopter();
+        this.helicopter = new Helicopter(this);
         this.wereHouse = new WereHouse();
         this.numberOfWorkShops = 0;
     }
