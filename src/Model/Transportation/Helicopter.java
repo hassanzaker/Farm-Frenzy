@@ -156,6 +156,23 @@ public class Helicopter {
 
     }
 
+    @Override
+    public String toString() {
+        String string = "";
+        for(int i=0 ; i < boxes.size() ; i++ ){
+            string += "Item in Box1: ";
+            if(boxes.get(i).getItems().size() == 0){
+                string += "none";
+            }else{
+                string += String.valueOf(boxes.get(i).getItems().size()) + boxes.get(i).typeOfBox();
+            }
+            string += "\n";
+        }
+        string += "buy cost : " + String.valueOf(computeBuyCost()) + "\n";
+        string += "time need for buy" + String.valueOf(timeToTransit)+ "\n";
+        return string;
+    }
+
     public int computeUpgradeCost() {
         return this.level * this.level * 100;
     }

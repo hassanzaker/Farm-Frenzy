@@ -95,7 +95,21 @@ public class Truck {
         }
     }
 
-
+    public String toString() {
+        String string = "";
+        for(int i=0 ; i < boxes.size() ; i++ ){
+            string += "Item in Box1: ";
+            if(boxes.get(i).getItems().size() == 0){
+                string += "none";
+            }else{
+                string += String.valueOf(boxes.get(i).getItems().size()) + boxes.get(i).typeOfBox();
+            }
+            string += "\n";
+        }
+        string += "sell cost : " + String.valueOf(computeSellPrice()) + "\n";
+        string += "time need for sell" + String.valueOf(timeToTransit)+ "\n";
+        return string;
+    }
     public void upgrade(int money) throws Exception {
         if (level == maxLevel) {
             throw new Exception("max level exceeded");

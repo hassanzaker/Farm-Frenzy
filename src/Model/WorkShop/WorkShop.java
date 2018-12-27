@@ -149,6 +149,22 @@ public abstract class WorkShop {
         this.isWorking = false;
     }
 
+    @Override
+    public String toString() {
+        String string= "";
+        string += "level of work shop"+String.valueOf(level) + "\n";
+        string += "workshop making price" + String.valueOf(baseCost) + "\n";
+        string += "workshop upgrade price" + String.valueOf(computeUpgradeCost()) + "\n";
+        string += "work shop inputs:";
+        for(int i=0 ; i < inputs.size() ; i++ ){
+            string += inputs.get(i) + " ";
+        }
+        for(int i=0 ; i< outputs.size() ; i++){
+            string += outputs.get(i) + " ";
+        }
+        return string;
+    }
+
     public int getLevel() {
         return level;
     }
