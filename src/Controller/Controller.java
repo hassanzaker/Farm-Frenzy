@@ -17,6 +17,7 @@ public class Controller {
     private ArrayList<Level> levels = new ArrayList<>();
     private Time time = new Time();
 
+
     public void cyclePass() {
         this.time.next(grounds.get(level - 1));
         try {
@@ -190,8 +191,33 @@ public class Controller {
         s += "Level : " + level +
                 "\n mission 1 : " + levels.get(level - 1).getTypes()[0] + "--> " + String.valueOf(levels.get(level - 1).getNeed()[0]) +
                 "\n mission 2 : " + levels.get(level - 1).getTypes()[1] + "--> " + String.valueOf(levels.get(level - 1).getNeed()[1]) +
-                "\n mission 3 : " + levels.get(level-1).getTypes()[2] + "--> " + String.valueOf(levels.get(level-1).getNeed()[2]);
+                "\n mission 3 : " + levels.get(level - 1).getTypes()[2] + "--> " + String.valueOf(levels.get(level - 1).getNeed()[2]);
         return s;
+    }
+
+    public String printWereHouse() {
+        return grounds.get(level - 1).getWereHouse().toString();
+    }
+
+    public String printWell() {
+        return grounds.get(level - 1).getWell().toString();
+    }
+
+    public String printTruck() {
+        return grounds.get(level - 1).getTruck().toString();
+    }
+
+    public String printHeliCopter() {
+        return grounds.get(level - 1).getHelicopter().toString();
+    }
+
+    public String printWorkShop(WorkShop workShop) {
+        try {
+            return grounds.get(level - 1).searchWorkShop(workShop).toString();
+        } catch (Exception e) {
+            View.checkOutException(e);
+        }
+        return null;
     }
 
 
@@ -234,6 +260,39 @@ public class Controller {
             View.checkOutException(e);
         }
     }
+
+    public ArrayList<Ground> getGrounds() {
+        return grounds;
+    }
+
+    public void setGrounds(ArrayList<Ground> grounds) {
+        this.grounds = grounds;
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public ArrayList<Level> getLevels() {
+        return levels;
+    }
+
+    public void setLevels(ArrayList<Level> levels) {
+        this.levels = levels;
+    }
+
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
+    }
+
 
     public void save() {
 

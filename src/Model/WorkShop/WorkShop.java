@@ -19,9 +19,10 @@ public abstract class WorkShop {
     protected boolean isWorking;
     protected ArrayList<String> inputs = new ArrayList<>();
     protected ArrayList<String> outputs = new ArrayList<>();
+    protected String name;
 
-    protected WorkShop(int maxLevel, int constNumber) {
-        this.maxLevel = maxLevel;
+    protected WorkShop(int constNumber) {
+        this.maxLevel = 5;
         level = 1;
         this.constNumber = constNumber;
         this.timeToWork = 8;
@@ -151,7 +152,7 @@ public abstract class WorkShop {
 
     @Override
     public String toString() {
-        String string= "";
+        String string= this.name + " :\n";
         string += "level of work shop"+String.valueOf(level) + "\n";
         string += "workshop making price" + String.valueOf(baseCost) + "\n";
         string += "workshop upgrade price" + String.valueOf(computeUpgradeCost()) + "\n";
