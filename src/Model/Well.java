@@ -116,4 +116,14 @@ public class Well {
     public void setCost(int cost) {
         this.cost = cost;
     }
+
+    @Override
+    public String toString() {
+        String s = "" ;
+        s += "well level : " + String.valueOf(this.level) + "\n" +
+                "capacity : " + String.valueOf(this.capacity) + "\n" +
+                "current amount : " + String.valueOf(this.currentAmount) + "\n" +
+                "time to fill : " + String.valueOf(this.timeToFill) + "\n";
+        return s;
+    }
 }

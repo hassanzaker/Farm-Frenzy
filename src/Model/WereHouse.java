@@ -7,25 +7,25 @@ import java.util.ArrayList;
 public class WereHouse {
     private int capacity;
     private int level;
-    private int curruntCapacity;
+    private int currentCapacity;
     private ArrayList<Item> items = new ArrayList<>();
 
     public WereHouse() {
-        curruntCapacity = 0;
+        currentCapacity = 0;
     }
 
     public void addItem(Item item) throws Exception {
-        if (item.getVolume() + curruntCapacity > capacity) {
+        if (item.getVolume() + currentCapacity > capacity) {
             throw new Exception("no free space exists");
         } else {
             items.add(item);
-            curruntCapacity += item.getVolume();
+            currentCapacity += item.getVolume();
         }
     }
 
     public void deleteItem(Item item) {
         items.remove(item);
-        curruntCapacity -= item.getVolume();
+        currentCapacity -= item.getVolume();
     }
 
     public void upgrade(int money) throws Exception {
@@ -65,5 +65,14 @@ public class WereHouse {
 
     public void setItems(ArrayList<Item> items) {
         this.items = items;
+    }
+
+    @Override
+    public String toString() {
+        String s = "wereHouse level : " + String.valueOf(this.level) + "\n" +
+                "capacity : " + String.valueOf(this.capacity) + "\n" +
+                "current amount : " + String.valueOf(this.currentCapacity) + "\n" +
+                "empty : " + String.valueOf(this.capacity - this.currentCapacity) + "\n";
+        return s;
     }
 }

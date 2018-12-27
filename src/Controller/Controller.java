@@ -3,6 +3,7 @@ package Controller;
 import Model.Animals.Animal;
 import Model.Animals.Cat;
 import Model.Cage;
+import Model.Cell;
 import Model.Ground;
 import Model.Time;
 import Model.WorkShop.WorkShop;
@@ -13,6 +14,7 @@ import java.util.ArrayList;
 public class Controller {
     private ArrayList<Ground> grounds = new ArrayList<>();
     private int level;
+    private ArrayList<Level> levels = new ArrayList<>();
     private Time time = new Time();
 
     public void cyclePass() {
@@ -146,42 +148,93 @@ public class Controller {
         return s;
     }
 
-    public void addItemToHelicopter(String type , int count){
-        try{
-            grounds.get(level - 1).getHelicopter().addItemByCount(type ,count);
-        }catch (Exception e){
-            View.checkOutException(e);
+    public String printMap() {
+        String s = "" ;
+        Cell[][] cells = grounds.get(level - 1).getCells();
+        for (int i = 0; i < cells.length; i++) {
+            for (int j = 0; j < cells[i].length; j++) {
+                s += cells[i][j].toString();
+            }
+            s += "\n" ;
         }
+        for (int i = 0; i < grounds.get(level - 1).getItems().size(); i++) {
+            s += grounds.get(level - 1).getItems().get(i).getType() + " x = " +
+                    grounds.get(level - 1).getItems().get(i).getRow() + " , y = " +
+                    grounds.get(level - 1).getItems().get(i).getColumn() + "\n" ;
+        }
+        for (int i = 0; i < grounds.get(level - 1).getProducerAnimals().size(); i++) {
+            s += grounds.get(level - 1).getProducerAnimals().get(i).getName() + " x = " +
+                    grounds.get(level - 1).getProducerAnimals().get(i).getRow() + " , y = " +
+                    grounds.get(level - 1).getProducerAnimals().get(i).getColumn() + "\n" ;
+        }
+        for (int i = 0; i < grounds.get(level - 1).getCats().size(); i++) {
+            s += grounds.get(level - 1).getCats().get(i).getName() + " x = " +
+                    grounds.get(level - 1).getCats().get(i).getRow() + " , y = " +
+                    grounds.get(level - 1).getCats().get(i).getColumn() + "\n" ;
+        }
+        for (int i = 0; i < grounds.get(level - 1).getDogs().size(); i++) {
+            s += grounds.get(level - 1).getDogs().get(i).getName() + " x = " +
+                    grounds.get(level - 1).getDogs().get(i).getRow() + " , y = " +
+                    grounds.get(level - 1).getDogs().get(i).getColumn() + "\n" ;
+        }
+        for (int i = 0; i < grounds.get(level - 1).getWildAnimals().size(); i++) {
+            s += grounds.get(level - 1).getWildAnimals().get(i).getName() + " x = " +
+                    grounds.get(level - 1).getWildAnimals().get(i).getRow() + " , y = " +
+                    grounds.get(level - 1).getWildAnimals().get(i).getColumn() + "\n" ;
+        }
+        return s;
     }
-    public void addItemToTruck(String type , int count){
-        try{
-            grounds.get(level - 1).getTruck().addItemByCount(type ,count ,grounds.get(level-1));
-        }catch (Exception e){
+
+    public String printLevels() {
+        String s = "" ;
+        s += "Level : " + level +
+                "\n mission 1 : " + levels.get(level - 1).getTypes()[0] + "--> " + String.valueOf(levels.get(level - 1).getNeed()[0]) +
+                "\n mission 2 : " + levels.get(level - 1).getTypes()[1] + "--> " + String.valueOf(levels.get(level - 1).getNeed()[1]) +
+                "\n mission 3 : " + levels.get(level-1).getTypes()[2] + "--> " + String.valueOf(levels.get(level-1).getNeed()[2]);
+        return s;
+    }
+
+
+    public void addItemToHelicopter(String type, int count) {
+        try {
+            grounds.get(level - 1).getHelicopter().addItemByCount(type, count);
+        } catch (Exception e) {
             View.checkOutException(e);
         }
     }
 
-    public void clearTruck(){
-        grounds.get(level-1).getTruck().clearTruck();
+    public void addItemToTruck(String type, int count) {
+        try {
+            grounds.get(level - 1).getTruck().addItemByCount(type, count, grounds.get(level - 1));
+        } catch (Exception e) {
+            View.checkOutException(e);
+        }
     }
 
-    public void clearHelicopter(){
-        grounds.get(level-1).getHelicopter().clearHelicopter();
+    public void clearTruck() {
+        grounds.get(level - 1).getTruck().clearTruck();
     }
-    public void helicopterGo()  {
+
+    public void clearHelicopter() {
+        grounds.get(level - 1).getHelicopter().clearHelicopter();
+    }
+
+    public void helicopterGo() {
         try {
-            grounds.get(level-1).getHelicopter().buy(grounds.get(level-1));
-        }catch (Exception e){
+            grounds.get(level - 1).getHelicopter().buy(grounds.get(level - 1));
+        } catch (Exception e) {
             View.checkOutException(e);
         }
     }
-    public void truckGo()  {
+
+    public void truckGo() {
         try {
-            grounds.get(level-1).getTruck().sell();
-        }catch (Exception e){
+            grounds.get(level - 1).getTruck().sell();
+        } catch (Exception e) {
             View.checkOutException(e);
         }
     }
+
     public void save() {
 
     }
