@@ -146,6 +146,42 @@ public class Controller {
         return s;
     }
 
+    public void addItemToHelicopter(String type , int count){
+        try{
+            grounds.get(level - 1).getHelicopter().addItemByCount(type ,count);
+        }catch (Exception e){
+            View.checkOutException(e);
+        }
+    }
+    public void addItemToTruck(String type , int count){
+        try{
+            grounds.get(level - 1).getTruck().addItemByCount(type ,count ,grounds.get(level-1));
+        }catch (Exception e){
+            View.checkOutException(e);
+        }
+    }
+
+    public void clearTruck(){
+        grounds.get(level-1).getTruck().clearTruck();
+    }
+
+    public void clearHelicopter(){
+        grounds.get(level-1).getHelicopter().clearHelicopter();
+    }
+    public void helicopterGo()  {
+        try {
+            grounds.get(level-1).getHelicopter().buy(grounds.get(level-1));
+        }catch (Exception e){
+            View.checkOutException(e);
+        }
+    }
+    public void truckGo()  {
+        try {
+            grounds.get(level-1).getTruck().sell();
+        }catch (Exception e){
+            View.checkOutException(e);
+        }
+    }
     public void save() {
 
     }
