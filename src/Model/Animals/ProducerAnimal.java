@@ -1,6 +1,5 @@
 package Model.Animals;
 
-import Model.Animals.Animal;
 import Model.Cell;
 import Model.Ground;
 
@@ -17,7 +16,7 @@ public abstract class ProducerAnimal extends Animal {
     }
 
     @Override
-    public int direction() {
+    public int direction(Ground ground) {
         Random random = new Random();
         return random.nextInt(4) + 1;
     }

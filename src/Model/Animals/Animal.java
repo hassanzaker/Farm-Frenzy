@@ -11,6 +11,7 @@ public abstract class Animal {
     protected int column;
     protected int cost;
     protected String ID;
+    protected String name;
 
     public Animal(int x, int y, String ID) {
         Random r = new Random();
@@ -19,10 +20,13 @@ public abstract class Animal {
         this.ID = ID;
     }
 
-    public int direction() {
+    public int direction(Ground ground) {
         return 0;
     }
 
+    public void checkTime(Ground ground) throws Exception {
+        move(direction(ground), ground);
+    }
 
     public int getCost() {
         return cost;
@@ -95,5 +99,13 @@ public abstract class Animal {
 
     public void setColumn(int column) {
         this.column = column;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

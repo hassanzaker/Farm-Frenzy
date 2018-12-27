@@ -13,6 +13,7 @@ public class Dog extends Animal {
         super(x, y, ID);
         this.level = 1;
         this.speed = 10;
+        this.name = "dog";
     }
 
     public int direction(Ground ground) {

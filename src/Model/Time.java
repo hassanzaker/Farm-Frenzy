@@ -8,29 +8,8 @@ public class Time {
         this.currentTime = 0;
     }
 
-    public void next(Ground ground) throws Exception {
+    public void next(Ground ground) {
         this.currentTime++;
-        for (int i = 0 ; i<ground.getWildAnimals().size() ; i++){
-            ground.getWildAnimals().get(i).move(ground.getWildAnimals().get(i).direction(), ground);
-        }
-        for (int i = 0 ; i<ground.getProducerAnimals().size() ; i++){
-            ground.getProducerAnimals().get(i).move(ground.getProducerAnimals().get(i).direction(), ground);
-        }
-        for (int i = 0 ; i<ground.getDogs().size() ; i++){
-            ground.getDogs().get(i).move(ground.getDogs().get(i).direction(), ground);
-        }
-        for (int i = 0 ; i<ground.getCats().size() ; i++){
-            ground.getCats().get(i).move(ground.getCats().get(i).direction(), ground);
-        }
-        for (int i = 0 ; i<ground.getWorkShops().length ; i++){
-            if (ground.getWorkShops()[i]!=null){
-                ground.getWorkShops()[i].checkTime(ground);
-            }
-        }
-        ground.getWell().cehckTime();
-        ground.getHelicopter().checkTime(ground);
-        ground.getTruck().checkTime(ground);
-
 
     }
 
@@ -44,8 +23,8 @@ public class Time {
 
     @Override
     public String toString() {
-        String s = String.valueOf(this.currentTime /60);
-        s += " : ";
+        String s = String.valueOf(this.currentTime / 60);
+        s += " : " ;
         s += String.valueOf(this.currentTime % 60);
         return s;
     }

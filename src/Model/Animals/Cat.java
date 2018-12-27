@@ -15,6 +15,7 @@ public class Cat extends Animal {
         super(x, y, ID);
         this.level = 1;
         this.speed = 10;
+        this.name = "cat";
     }
 
     public int direction(Ground ground) {

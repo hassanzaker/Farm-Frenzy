@@ -9,6 +9,7 @@ import Model.Items.Wool;
 public class Sheep extends ProducerAnimal {
     public Sheep(int x, int y , String ID) {
         super(x, y, ID);
+        this.name = "sheep";
     }
 
 

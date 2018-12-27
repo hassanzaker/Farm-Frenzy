@@ -28,8 +28,10 @@ public class Ground {
     private int numberOfColumns;
     private int money;
     private int numberOfWorkShops;
+    private Mission[] missions = new Mission[3];
 
-    public Ground() {
+
+    public Ground(String[] types, int[] maxes) {
         this.cells = new Cell[600][600];
         this.workShops = new WorkShop[6];
         this.well = new Well();
@@ -37,6 +39,10 @@ public class Ground {
         this.helicopter = new Helicopter(this);
         this.wereHouse = new WereHouse();
         this.numberOfWorkShops = 0;
+        missions[0] = new Mission(types[0], maxes[0]);
+        missions[1] = new Mission(types[1], maxes[1]);
+        missions[2] = new Mission(types[2], maxes[2]);
+
     }
 
     public void buyAnimal(Animal animal) throws Exception {
@@ -44,17 +50,17 @@ public class Ground {
             throw new Exception("not enough money!");
         }
         if (animal instanceof ProducerAnimal) {
-            this.producerAnimals.add((ProducerAnimal)animal);
+            this.producerAnimals.add((ProducerAnimal) animal);
         } else if (animal instanceof Dog) {
-            this.dogs.add((Dog)animal);
+            this.dogs.add((Dog) animal);
         } else if (animal instanceof Cat) {
-            this.cats.add((Cat)animal);
+            this.cats.add((Cat) animal);
         }
     }
 
     public void pickUp(int x, int y) throws Exception {
         if (cells[x - 1][y - 1].getItemAmount() == 0) {
-            throw new Exception("there is no item");
+            throw new Exception("there is no item!");
         } else {
             for (int i = 0; i < items.size(); i++) {
                 if (items.get(i).getRow() == x && items.get(i).getColumn() == y) {
@@ -65,20 +71,21 @@ public class Ground {
         }
     }
 
+
     public void addWorkShop(WorkShop workShop) throws Exception {
-        if (this.numberOfWorkShops == 6){
+        if (this.numberOfWorkShops == 6) {
             throw new Exception("no place for new workshop!");
         }
-        if (this.money < workShop.getBaseCost()){
+        if (this.money < workShop.getBaseCost()) {
             throw new Exception("not enough money");
         }
         this.workShops[numberOfWorkShops] = workShop;
         numberOfWorkShops++;
     }
 
-    public WorkShop searchWorkShop(WorkShop workShop) throws Exception{
-        for (int i=0 ; i<this.workShops.length ; i++){
-            if (this.workShops[i].equals(workShop)){
+    public WorkShop searchWorkShop(WorkShop workShop) throws Exception {
+        for (int i = 0; i < this.workShops.length; i++) {
+            if (this.workShops[i].equals(workShop)) {
                 return this.workShops[i];
             }
         }
@@ -86,7 +93,51 @@ public class Ground {
 
     }
 
+    public void checkTime() throws Exception {
+        for (int i = 0; i < missions.length; i++) {
+            if (!missions[i].isDone()) {
+                if (missions[i].getType().equals("money")){
+                    missions[i].setAmount(this.money);
+                    missions[i].check();
+                }
+                for (int j = 0 ; j < producerAnimals.size() ; j++){
+                    if (missions[i].getType().equals(producerAnimals.get(j).getName())){
+                        missions[i].addItem();
+                        missions[i].check();
+                    }
+                }
+                for (int j = 0 ; j < wereHouse.getItems().size() ; j++){
+                    if (missions[i].getType().equals(wereHouse.getItems().get(j).getType())){
+                        missions[i].addItem();
+                        missions[i].check();
+                    }
+                }
 
+            }
+        }
+        this.well.cehckTime();
+        for (int i = 0; i < workShops.length; i++) {
+            if (this.workShops[i] != null)
+                workShops[i].checkTime(this);
+        }
+        this.helicopter.checkTime(this);
+        this.truck.checkTime(this);
+        for (int i = 0; i < this.cats.size(); i++) {
+            this.cats.get(i).checkTime(this);
+        }
+        for (int i = 0; i < this.cats.size(); i++) {
+            this.cats.get(i).checkTime(this);
+        }
+        for (int i = 0; i < this.dogs.size(); i++) {
+            this.dogs.get(i).checkTime(this);
+        }
+        for (int i = 0; i < this.producerAnimals.size(); i++) {
+            this.producerAnimals.get(i).checkTime(this);
+        }
+        for (int i = 0; i < this.wildAnimals.size(); i++) {
+            this.wildAnimals.get(i).checkTime(this);
+        }
+    }
 
     public Well getWell() {
         return well;
@@ -147,7 +198,7 @@ public class Ground {
 
     public void addAnimal(Animal animal) {
         if (animal instanceof ProducerAnimal) {
-            producerAnimals.add((ProducerAnimal)animal);
+            producerAnimals.add((ProducerAnimal) animal);
         } else if (animal instanceof WildAnimal) {
             wildAnimals.add((WildAnimal) animal);
         } else if (animal instanceof Cat) {
@@ -231,5 +282,21 @@ public class Ground {
 
     public void deleteItem(Item item) {
         items.remove(item);
+    }
+
+    public int getNumberOfWorkShops() {
+        return numberOfWorkShops;
+    }
+
+    public void setNumberOfWorkShops(int numberOfWorkShops) {
+        this.numberOfWorkShops = numberOfWorkShops;
+    }
+
+    public Mission[] getMissions() {
+        return missions;
+    }
+
+    public void setMissions(Mission[] missions) {
+        this.missions = missions;
     }
 }
