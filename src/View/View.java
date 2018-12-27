@@ -212,13 +212,13 @@ public class View {
                 case "truck":
                     switch (subStrings[1]){
                         case "add":
-                            // to fill
+                            controller.addItemToTruck(subStrings[2], Integer.valueOf(subStrings[3]));
                             break;
                         case "clear":
-                            /// to fill
+                            controller.clearTruck();
                             break;
                         case "go":
-                            /// to fill
+                            controller.truckGo();
                             break;
                             default:
                                 System.out.println("wrong input!");
@@ -228,13 +228,13 @@ public class View {
                     case "helicopter":
                         switch (subStrings[1]){
                             case "add":
-                                // to fill
+                                controller.addItemToHelicopter(subStrings[2], Integer.valueOf(subStrings[3]));
                                 break;
                             case "clear":
-                                /// to fill
+                                controller.clearHelicopter();
                                 break;
                             case "go":
-                                /// to fill
+                                controller.helicopterGo();
                                 break;
                             default:
                                 System.out.println("wrong input!");
