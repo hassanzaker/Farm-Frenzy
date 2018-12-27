@@ -59,4 +59,19 @@ public class Cell {
     public void setItemAmount(int itemAmount) {
         this.itemAmount = itemAmount;
     }
+
+
+    public String toString() {
+        if (numberOfCats == 0 && numberOfDogs==0  && itemAmount==0 && domesticAnimalAmount==0 && wildAnimalAmount==0 ){
+            if (grassAmount==0){
+                return "O";
+            }
+            else {
+                return "*";
+            }
+        }
+        else {
+            return "@";
+        }
+    }
 }
