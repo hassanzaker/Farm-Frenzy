@@ -27,7 +27,22 @@ public class Truck {
             boxes.get(i).clearBox();
         }
     }
-
+    public void addItemByCount(String type , int count , Ground ground) throws Exception {
+        ArrayList<Box> tempBox = boxes;
+        Boolean completed= true;
+        try{
+            for(int i=0 ; i < count ; i++) {
+                addItem(type , ground);
+            }
+        }catch (Exception e){
+            completed=false;
+            throw e;
+        }finally {
+            if(completed == false){
+                boxes=tempBox;
+            }
+        }
+    }
     public void addItem(String type, Ground ground) throws Exception {
         Boolean checkItemInWereHouse = false;
         Boolean checkItemCanAddToBox = false;
@@ -147,4 +162,5 @@ public class Truck {
 
         this.boxes = boxes;
     }
+
 }

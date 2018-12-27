@@ -37,9 +37,25 @@ public class Helicopter {
         return random.nextInt(ground.getNumberOfColumns());
     }
 
-    public void clearTruck() {
+    public void clearHelicopter() {
         for (int i = 0; i < boxes.size(); i++) {
             boxes.get(i).clearBox();
+        }
+    }
+    public void addItemByCount(String type , int count) throws Exception {
+        ArrayList<Box> tempBox = boxes;
+        Boolean completed= true;
+        try{
+            for(int i=0 ; i < count ; i++) {
+                addItem(type);
+            }
+        }catch (Exception e){
+            completed=false;
+            throw e;
+        }finally {
+            if(completed == false){
+                boxes=tempBox;
+            }
         }
     }
 
@@ -99,10 +115,10 @@ public class Helicopter {
             isInWorking = true;
             ground.setMoney(ground.getMoney() - computeBuyCost());
         }
-        putItemOnGround(ground);
+       /* putItemOnGround(ground);
         for (int i = 0; i < boxes.size(); i++) {
             boxes.get(i).clearBox();
-        }
+        }*/
 
     }
 
@@ -120,7 +136,8 @@ public class Helicopter {
             if (this.currentTime == this.timeToTransit) {
                 this.currentTime = 0;
                 this.isInWorking = false;
-                clearTruck(); ////   ??????????????????????????????????????????????????
+                putItemOnGround(ground);
+                clearHelicopter();
             }
         }
     }
