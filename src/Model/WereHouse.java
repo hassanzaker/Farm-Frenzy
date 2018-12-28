@@ -1,5 +1,6 @@
 package Model;
 
+import Model.Items.Egg;
 import Model.Items.Item;
 
 import java.util.ArrayList;
@@ -12,6 +13,10 @@ public class WereHouse {
 
     public WereHouse() {
         currentCapacity = 0;
+        this.level = 1;
+        items.add(new Egg(-11, -11, "", false));
+        items.add(new Egg(-11, -11, "", false));
+        items.add(new Egg(-11, -11, "", false));
     }
 
     public void addItem(Item item) throws Exception {
@@ -29,10 +34,10 @@ public class WereHouse {
     }
 
     public void upgrade(int money) throws Exception {
-        if (computeUpgradeCost() > money){
+        if (computeUpgradeCost() > money) {
             throw new Exception("not enough money!");
         }
-        if (this.level == 4){
+        if (this.level == 4) {
             throw new Exception("wereHouse is max level!");
         }
         this.level++;

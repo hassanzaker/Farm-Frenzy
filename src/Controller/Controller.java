@@ -1,7 +1,9 @@
 package Controller;
 
 import Model.Animals.Animal;
+import Model.Animals.Bear;
 import Model.Animals.Cat;
+import Model.Animals.Lion;
 import Model.Cage;
 import Model.Cell;
 import Model.Ground;
@@ -10,12 +12,15 @@ import Model.WorkShop.WorkShop;
 import View.View;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Controller {
     private ArrayList<Ground> grounds = new ArrayList<>();
     private int level;
     private ArrayList<Level> levels = new ArrayList<>();
     private Time time = new Time();
+    Random random = new Random();
+    private boolean flag = false;
 
     public Controller(ArrayList<Level> levels) {
         for (int i = 0; i < levels.size(); i++) {
@@ -28,6 +33,17 @@ public class Controller {
 
     public void cyclePass() {
         this.time.next();
+        if (time.getCurrentTime() % 60 == 10) {
+            if (flag) {
+                grounds.get(level - 1).addAnimal(new Bear(random.nextInt(600), random.nextInt(600), ""));
+                grounds.get(level - 1).addAnimal(new Bear(random.nextInt(600), random.nextInt(600), ""));
+                flag = false;
+            } else {
+                grounds.get(level - 1).addAnimal(new Lion(random.nextInt(600), random.nextInt(600), ""));
+                grounds.get(level - 1).addAnimal(new Lion(random.nextInt(600), random.nextInt(600), ""));
+                flag = true;
+            }
+        }
         try {
             grounds.get(level - 1).checkTime();
         } catch (Exception e) {
@@ -81,10 +97,13 @@ public class Controller {
     public void startWorkShop(WorkShop workShop) {
         try {
             grounds.get(level - 1).addWorkShop(workShop);
+            grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - workShop.getBaseCost());
         } catch (Exception exception) {
             View.checkOutException(exception);
         }
     }
+
+
 
     public void upgradeWorkShop(WorkShop workShop) {
         try {
@@ -147,19 +166,19 @@ public class Controller {
 
     public String printInfo() {
         String s = "money : " + String.valueOf(grounds.get(level - 1).getMoney()) + "\n" +
-                "Time : " + time.toString() + "\n" ;
+                "Time : " + time.toString() + "\n";
         for (int i = 0; i < 3; i++) {
             if (grounds.get(level - 1).getMissions()[i].isDone()) {
-                s += grounds.get(level - 1).getMissions()[i].getType() + " Done!\n" ;
+                s += grounds.get(level - 1).getMissions()[i].getType() + " Done!\n";
             } else {
-                s += grounds.get(level - 1).getMissions()[i].toString() + "\n" ;
+                s += grounds.get(level - 1).getMissions()[i].toString() + "\n";
             }
         }
         return s;
     }
 
     public String printMap() {
-        String s = "" ;
+        String s = "";
         Cell[][] cells = grounds.get(level - 1).getCells();
 //        for (int i = 0; i < cells.length; i++) {
 //            for (int j = 0; j < cells[i].length; j++) {
@@ -170,33 +189,33 @@ public class Controller {
         for (int i = 0; i < grounds.get(level - 1).getItems().size(); i++) {
             s += grounds.get(level - 1).getItems().get(i).getType() + " x = " +
                     grounds.get(level - 1).getItems().get(i).getRow() + " , y = " +
-                    grounds.get(level - 1).getItems().get(i).getColumn() + "\n" ;
+                    grounds.get(level - 1).getItems().get(i).getColumn() + "\n";
         }
         for (int i = 0; i < grounds.get(level - 1).getProducerAnimals().size(); i++) {
             s += grounds.get(level - 1).getProducerAnimals().get(i).getName() + " x = " +
                     grounds.get(level - 1).getProducerAnimals().get(i).getRow() + " , y = " +
-                    grounds.get(level - 1).getProducerAnimals().get(i).getColumn() + "\n" ;
+                    grounds.get(level - 1).getProducerAnimals().get(i).getColumn() + "\n";
         }
         for (int i = 0; i < grounds.get(level - 1).getCats().size(); i++) {
             s += grounds.get(level - 1).getCats().get(i).getName() + " x = " +
                     grounds.get(level - 1).getCats().get(i).getRow() + " , y = " +
-                    grounds.get(level - 1).getCats().get(i).getColumn() + "\n" ;
+                    grounds.get(level - 1).getCats().get(i).getColumn() + "\n";
         }
         for (int i = 0; i < grounds.get(level - 1).getDogs().size(); i++) {
             s += grounds.get(level - 1).getDogs().get(i).getName() + " x = " +
                     grounds.get(level - 1).getDogs().get(i).getRow() + " , y = " +
-                    grounds.get(level - 1).getDogs().get(i).getColumn() + "\n" ;
+                    grounds.get(level - 1).getDogs().get(i).getColumn() + "\n";
         }
         for (int i = 0; i < grounds.get(level - 1).getWildAnimals().size(); i++) {
             s += grounds.get(level - 1).getWildAnimals().get(i).getName() + " x = " +
                     grounds.get(level - 1).getWildAnimals().get(i).getRow() + " , y = " +
-                    grounds.get(level - 1).getWildAnimals().get(i).getColumn() + "\n" ;
+                    grounds.get(level - 1).getWildAnimals().get(i).getColumn() + "\n";
         }
         return s;
     }
 
     public String printLevels() {
-        String s = "" ;
+        String s = "";
         s += "Level : " + level +
                 "\n mission 1 : " + levels.get(level - 1).getTypes()[0] + "--> " + String.valueOf(levels.get(level - 1).getNeed()[0]) +
                 "\n mission 2 : " + levels.get(level - 1).getTypes()[1] + "--> " + String.valueOf(levels.get(level - 1).getNeed()[1]) +

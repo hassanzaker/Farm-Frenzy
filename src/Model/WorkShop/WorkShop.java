@@ -162,8 +162,9 @@ public abstract class WorkShop {
         string += "workshop upgrade price : " + String.valueOf(computeUpgradeCost()) + "\n";
         string += "work shop inputs : ";
         for(int i=0 ; i < inputs.size() ; i++ ){
-            string += inputs.get(i) + ", ";
+            string += inputs.get(i) + " ";
         }
+        string += "work shop output : ";
         for(int i=0 ; i< outputs.size() ; i++){
             string += outputs.get(i) + " ";
         }

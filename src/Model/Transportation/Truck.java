@@ -20,6 +20,7 @@ public class Truck {
         level = 1;
         maxLevel = 4;
         isInWorking = false;
+        this.timeToTransit = 10;
     }
 
     public void clearTruck() {
@@ -27,22 +28,24 @@ public class Truck {
             boxes.get(i).clearBox();
         }
     }
-    public void addItemByCount(String type , int count , Ground ground) throws Exception {
+
+    public void addItemByCount(String type, int count, Ground ground) throws Exception {
         ArrayList<Box> tempBox = boxes;
-        Boolean completed= true;
-        try{
-            for(int i=0 ; i < count ; i++) {
-                addItem(type , ground);
+        Boolean completed = true;
+        try {
+            for (int i = 0; i < count; i++) {
+                addItem(type, ground);
             }
-        }catch (Exception e){
-            completed=false;
+        } catch (Exception e) {
+            completed = false;
             throw e;
-        }finally {
-            if(completed == false){
-                boxes=tempBox;
+        } finally {
+            if (completed == false) {
+                boxes = tempBox;
             }
         }
     }
+
     public void addItem(String type, Ground ground) throws Exception {
         Boolean checkItemInWereHouse = false;
         Boolean checkItemCanAddToBox = false;
@@ -97,27 +100,29 @@ public class Truck {
 
     public String toString() {
         String string = "";
-        for(int i=0 ; i < boxes.size() ; i++ ){
-            string += "Item in Box1: ";
-            if(boxes.get(i).getItems().size() == 0){
+        for (int i = 0; i < boxes.size(); i++) {
+            string += "Item in Box " + String.valueOf(i + 1) + " ";
+            if (boxes.get(i).getItems().size() == 0) {
                 string += "none";
-            }else{
+            } else {
                 string += String.valueOf(boxes.get(i).getItems().size()) + boxes.get(i).typeOfBox();
             }
             string += "\n";
         }
         string += "sell cost : " + String.valueOf(computeSellPrice()) + "\n";
-        string += "time need for sell" + String.valueOf(timeToTransit)+ "\n";
+        string += "time need for sell " + String.valueOf(timeToTransit) + "\n";
         return string;
     }
+
     public void upgrade(int money) throws Exception {
         if (level == maxLevel) {
             throw new Exception("max level exceeded");
         }
-        if (money < computeUpgradeCost()){
+        if (money < computeUpgradeCost()) {
             throw new Exception("not enough money!");
         }
         level++;
+        this.timeToTransit--;
         boxes.add(new Box());
         boxes.add(new Box());
 

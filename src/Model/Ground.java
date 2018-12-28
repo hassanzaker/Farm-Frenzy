@@ -42,6 +42,8 @@ public class Ground {
         this.workShops = new WorkShop[6];
         this.well = new Well();
         this.truck = new Truck();
+        this.numberOfColumns = 600;
+        this.numberOfRows = 600;
         this.helicopter = new Helicopter(this);
         this.wereHouse = new WereHouse();
         this.numberOfWorkShops = 0;
@@ -93,7 +95,7 @@ public class Ground {
 
     public WorkShop searchWorkShop(WorkShop workShop) throws Exception {
         for (int i = 0; i < this.workShops.length; i++) {
-            if (this.workShops[i]!=null) {
+            if (this.workShops[i] != null) {
                 if (this.workShops[i].equals(workShop)) {
                     return this.workShops[i];
                 }
@@ -103,12 +105,12 @@ public class Ground {
 
     }
 
-    public void work(){
-        for (int i=0 ; i<6 ; i++){
-            if (workShops[i]==null)
+    public void work() {
+        for (int i = 0; i < 6; i++) {
+            if (workShops[i] == null)
                 System.out.println("null");
             else
-            System.out.println(workShops[i].getName());
+                System.out.println(workShops[i].getName());
         }
     }
 

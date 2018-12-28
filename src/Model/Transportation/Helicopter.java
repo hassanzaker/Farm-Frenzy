@@ -25,6 +25,7 @@ public class Helicopter {
         maxLevel = 4;
         isInWorking = false;
         this.ground = ground;
+        this.timeToTransit = 10;
     }
 
     public int getRandomRow(Ground ground) {
@@ -160,7 +161,7 @@ public class Helicopter {
     public String toString() {
         String string = "";
         for(int i=0 ; i < boxes.size() ; i++ ){
-            string += "Item in Box1: ";
+            string += "Item in Box " + String.valueOf(i+1) + " ";
             if(boxes.get(i).getItems().size() == 0){
                 string += "none";
             }else{
@@ -169,7 +170,7 @@ public class Helicopter {
             string += "\n";
         }
         string += "buy cost : " + String.valueOf(computeBuyCost()) + "\n";
-        string += "time need for buy" + String.valueOf(timeToTransit)+ "\n";
+        string += "time need for buy : " + String.valueOf(timeToTransit)+ "\n";
         return string;
     }
 
