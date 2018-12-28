@@ -8,9 +8,8 @@ public class Time {
         this.currentTime = 0;
     }
 
-    public void next(Ground ground) {
+    public void next() {
         this.currentTime++;
-
     }
 
     public int getCurrentTime() {

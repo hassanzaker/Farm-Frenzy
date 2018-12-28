@@ -4,13 +4,26 @@ import Controller.Controller;
 import Model.Animals.*;
 import Model.WorkShop.*;
 
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
+import Controller.Level;
 
 public class View {
 
     public static void main(String[] args) {
-        Controller controller = new Controller();
+        ArrayList<Level> levels = new ArrayList<>();
+        String[] types = new String[3];
+        int[] need = new int[3];
+        types[0] = "money" ;
+        need[0] = 1000;
+        types[1] = "egg" ;
+        need[1] = 10;
+        types[2] = "hen" ;
+        need[2] = 5;
+        levels.add(new Level(1, types, need, 2000));
+        Controller controller = new Controller(levels);
         Random random = new Random();
         Scanner read = new Scanner(System.in);
         String command = "" ;
@@ -152,7 +165,7 @@ public class View {
                     /// to fill
                     break;
                 case "print":
-                    switch (subStrings[1]){
+                    switch (subStrings[1]) {
                         case "info":
                             System.out.println(controller.printInfo());
                             break;
@@ -198,19 +211,19 @@ public class View {
                         case "helicopter":
                             System.out.println(controller.printHeliCopter());
                             break;
-                            default:
-                                System.out.println("wrong input!");
-                                break;
+                        default:
+                            System.out.println("wrong input!");
+                            break;
 
                     }
                     break;
                 case "turn":
-                    for (int i=0 ; i < Integer.valueOf(subStrings[1]) ; i++){
+                    for (int i = 0; i < Integer.valueOf(subStrings[1]); i++) {
                         controller.cyclePass();
                     }
                     break;
                 case "truck":
-                    switch (subStrings[1]){
+                    switch (subStrings[1]) {
                         case "add":
                             controller.addItemToTruck(subStrings[2], Integer.valueOf(subStrings[3]));
                             break;
@@ -220,30 +233,30 @@ public class View {
                         case "go":
                             controller.truckGo();
                             break;
-                            default:
-                                System.out.println("wrong input!");
-                                break;
-                    }
-                    break;
-                    case "helicopter":
-                        switch (subStrings[1]){
-                            case "add":
-                                controller.addItemToHelicopter(subStrings[2], Integer.valueOf(subStrings[3]));
-                                break;
-                            case "clear":
-                                controller.clearHelicopter();
-                                break;
-                            case "go":
-                                controller.helicopterGo();
-                                break;
-                            default:
-                                System.out.println("wrong input!");
-                                break;
-                        }
-                        break;
                         default:
                             System.out.println("wrong input!");
                             break;
+                    }
+                    break;
+                case "helicopter":
+                    switch (subStrings[1]) {
+                        case "add":
+                            controller.addItemToHelicopter(subStrings[2], Integer.valueOf(subStrings[3]));
+                            break;
+                        case "clear":
+                            controller.clearHelicopter();
+                            break;
+                        case "go":
+                            controller.helicopterGo();
+                            break;
+                        default:
+                            System.out.println("wrong input!");
+                            break;
+                    }
+                    break;
+                default:
+                    System.out.println("wrong input!");
+                    break;
             }
         }
     }

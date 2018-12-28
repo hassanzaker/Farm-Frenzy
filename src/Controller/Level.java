@@ -2,13 +2,15 @@ package Controller;
 
 public class Level {
     private int level;
-    private String[] types = new String[3];
-    private int[] need = new int[3];
+    private String[] types;
+    private int[] need;
+    private int firstMoney;
 
-    public Level(int level, String[] types, int[] need) {
+    public Level(int level, String[] types, int[] need, int firstMoney) {
         this.level = level;
         this.types = types;
         this.need = need;
+        this.firstMoney = firstMoney;
     }
 
     public int getLevel() {
@@ -33,5 +35,13 @@ public class Level {
 
     public void setNeed(int[] need) {
         this.need = need;
+    }
+
+    public int getFirstMoney() {
+        return firstMoney;
+    }
+
+    public void setFirstMoney(int firstMoney) {
+        this.firstMoney = firstMoney;
     }
 }

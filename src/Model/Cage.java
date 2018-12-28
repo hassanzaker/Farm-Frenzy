@@ -12,7 +12,7 @@ public class Cage {
     // this function is static and call without initialization
     public static void action(Ground ground, int x, int y) throws Exception {
         if (ground.getCells()[x][y].getWildAnimalAmount()==0){
-            throw new Exception("therein no wild animal!");
+            throw new Exception("there is no wild animal!");
         }
         else{
             for (int i=0 ; i<ground.getWildAnimals().size() ; i++){

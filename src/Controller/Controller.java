@@ -17,9 +17,17 @@ public class Controller {
     private ArrayList<Level> levels = new ArrayList<>();
     private Time time = new Time();
 
+    public Controller(ArrayList<Level> levels) {
+        for (int i = 0; i < levels.size(); i++) {
+            grounds.add(new Ground(levels.get(i)));
+        }
+        level = 1;
+
+    }
+
 
     public void cyclePass() {
-        this.time.next(grounds.get(level - 1));
+        this.time.next();
         try {
             grounds.get(level - 1).checkTime();
         } catch (Exception e) {
@@ -50,6 +58,7 @@ public class Controller {
             grounds.get(level - 1).pickUp(x, y);
         } catch (Exception exception) {
             View.checkOutException(exception);
+
         }
     }
 
@@ -139,25 +148,25 @@ public class Controller {
     public String printInfo() {
         String s = "money : " + String.valueOf(grounds.get(level - 1).getMoney()) + "\n" +
                 "Time : " + time.toString() + "\n" ;
-        for (int i = 0; i < 3; i++) {
-            if (grounds.get(level - 1).getMissions()[i].isDone()) {
-                s += grounds.get(level - 1).getMissions()[i].getType() + "Done!\n" ;
-            } else {
-                s += grounds.get(level - 1).getMissions()[i].toString() + "\n" ;
-            }
-        }
+//        for (int i = 0; i < 3; i++) {
+//            if (grounds.get(level - 1).getMissions()[i].isDone()) {
+//                s += grounds.get(level - 1).getMissions()[i].getType() + "Done!\n" ;
+//            } else {
+//                s += grounds.get(level - 1).getMissions()[i].toString() + "\n" ;
+//            }
+//        }
         return s;
     }
 
     public String printMap() {
         String s = "" ;
         Cell[][] cells = grounds.get(level - 1).getCells();
-        for (int i = 0; i < cells.length; i++) {
-            for (int j = 0; j < cells[i].length; j++) {
-                s += cells[i][j].toString();
-            }
-            s += "\n" ;
-        }
+//        for (int i = 0; i < cells.length; i++) {
+//            for (int j = 0; j < cells[i].length; j++) {
+//                s += cells[i][j].toString();
+//            }
+//            s += "\n" ;
+//        }
         for (int i = 0; i < grounds.get(level - 1).getItems().size(); i++) {
             s += grounds.get(level - 1).getItems().get(i).getType() + " x = " +
                     grounds.get(level - 1).getItems().get(i).getRow() + " , y = " +

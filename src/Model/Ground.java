@@ -1,5 +1,6 @@
 package Model;
 
+import Controller.Level;
 import Model.Animals.Cat;
 import Model.Animals.Dog;
 import Model.Animals.ProducerAnimal;
@@ -31,17 +32,23 @@ public class Ground {
     private Mission[] missions = new Mission[3];
 
 
-    public Ground(String[] types, int[] maxes) {
+    public Ground(Level level) {
         this.cells = new Cell[600][600];
+        for (int i=0 ; i< 600 ; i++){
+            for (int j=0 ; j<600 ; j++){
+                cells[i][j] = new Cell();
+            }
+        }
         this.workShops = new WorkShop[6];
         this.well = new Well();
         this.truck = new Truck();
         this.helicopter = new Helicopter(this);
         this.wereHouse = new WereHouse();
         this.numberOfWorkShops = 0;
-        missions[0] = new Mission(types[0], maxes[0]);
-        missions[1] = new Mission(types[1], maxes[1]);
-        missions[2] = new Mission(types[2], maxes[2]);
+        for (int i=0 ; i< 3 ; i++) {
+            missions[0] = new Mission(level.getTypes()[i], level.getNeed()[i]);
+        }
+        this.money = level.getFirstMoney();
 
     }
 

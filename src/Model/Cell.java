@@ -8,6 +8,7 @@ public class Cell {
     private int numberOfDogs;
     private int numberOfCats;
 
+
     public int getNumberOfDogs() {
         return numberOfDogs;
     }
