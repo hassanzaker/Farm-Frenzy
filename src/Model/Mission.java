@@ -26,7 +26,7 @@ public class Mission {
     }
 
     public void check(){
-        if (this.amount == this.needAmount){
+        if (this.amount >= this.needAmount){
             isDone = true;
         }
     }

@@ -73,6 +73,9 @@ public class Well {
         if (money < cost){
             throw new Exception("not enough money!");
         }
+        if (this.currentAmount > 0){
+            throw new Exception("well is not empty!");
+        }
         this.currentAmount = this.capacity;
     }
 

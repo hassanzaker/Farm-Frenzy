@@ -148,13 +148,13 @@ public class Controller {
     public String printInfo() {
         String s = "money : " + String.valueOf(grounds.get(level - 1).getMoney()) + "\n" +
                 "Time : " + time.toString() + "\n" ;
-//        for (int i = 0; i < 3; i++) {
-//            if (grounds.get(level - 1).getMissions()[i].isDone()) {
-//                s += grounds.get(level - 1).getMissions()[i].getType() + "Done!\n" ;
-//            } else {
-//                s += grounds.get(level - 1).getMissions()[i].toString() + "\n" ;
-//            }
-//        }
+        for (int i = 0; i < 3; i++) {
+            if (grounds.get(level - 1).getMissions()[i].isDone()) {
+                s += grounds.get(level - 1).getMissions()[i].getType() + " Done!\n" ;
+            } else {
+                s += grounds.get(level - 1).getMissions()[i].toString() + "\n" ;
+            }
+        }
         return s;
     }
 

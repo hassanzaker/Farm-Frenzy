@@ -12,6 +12,7 @@ public class Hen extends ProducerAnimal {
     public Hen(int x, int y , String ID) {
         super(x, y, ID);
         this.name = "hen";
+        this.cost = 100;
     }
 
     @Override

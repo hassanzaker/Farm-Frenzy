@@ -9,6 +9,7 @@ public class Cow extends ProducerAnimal {
     public Cow(int x, int y , String ID) {
         super(x, y, ID);
         this.name = "cow";
+        this.cost = 10000;
     }
 
 

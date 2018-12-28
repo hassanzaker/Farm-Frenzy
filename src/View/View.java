@@ -42,7 +42,7 @@ public class View {
                             animal = new Sheep(random.nextInt(600) + 1, random.nextInt(600) + 1, "");
                             break;
                         case "cow":
-                            animal = new Hen(random.nextInt(600) + 1, random.nextInt(600) + 1, "");
+                            animal = new Cow(random.nextInt(600) + 1, random.nextInt(600) + 1, "");
                             break;
                         case "cat":
                             animal = new Cat(random.nextInt(600) + 1, random.nextInt(600) + 1, "");
@@ -253,7 +253,9 @@ public class View {
                             System.out.println("wrong input!");
                             break;
                     }
-                    break;
+//                case "x":
+//                    controller.getGrounds().get(0).work();
+//                    break;
                 default:
                     System.out.println("wrong input!");
                     break;

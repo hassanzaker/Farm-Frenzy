@@ -34,8 +34,8 @@ public class Ground {
 
     public Ground(Level level) {
         this.cells = new Cell[600][600];
-        for (int i=0 ; i< 600 ; i++){
-            for (int j=0 ; j<600 ; j++){
+        for (int i = 0; i < 600; i++) {
+            for (int j = 0; j < 600; j++) {
                 cells[i][j] = new Cell();
             }
         }
@@ -45,8 +45,8 @@ public class Ground {
         this.helicopter = new Helicopter(this);
         this.wereHouse = new WereHouse();
         this.numberOfWorkShops = 0;
-        for (int i=0 ; i< 3 ; i++) {
-            missions[0] = new Mission(level.getTypes()[i], level.getNeed()[i]);
+        for (int i = 0; i < 3; i++) {
+            missions[i] = new Mission(level.getTypes()[i], level.getNeed()[i]);
         }
         this.money = level.getFirstMoney();
 
@@ -63,6 +63,7 @@ public class Ground {
         } else if (animal instanceof Cat) {
             this.cats.add((Cat) animal);
         }
+        this.money -= animal.getCost();
     }
 
     public void pickUp(int x, int y) throws Exception {
@@ -92,29 +93,40 @@ public class Ground {
 
     public WorkShop searchWorkShop(WorkShop workShop) throws Exception {
         for (int i = 0; i < this.workShops.length; i++) {
-            if (this.workShops[i].equals(workShop)) {
-                return this.workShops[i];
+            if (this.workShops[i]!=null) {
+                if (this.workShops[i].equals(workShop)) {
+                    return this.workShops[i];
+                }
             }
         }
         throw new Exception("no such workshop!");
 
     }
 
+    public void work(){
+        for (int i=0 ; i<6 ; i++){
+            if (workShops[i]==null)
+                System.out.println("null");
+            else
+            System.out.println(workShops[i].getName());
+        }
+    }
+
     public void checkTime() throws Exception {
         for (int i = 0; i < missions.length; i++) {
             if (!missions[i].isDone()) {
-                if (missions[i].getType().equals("money")){
+                if (missions[i].getType().equals("money")) {
                     missions[i].setAmount(this.money);
                     missions[i].check();
                 }
-                for (int j = 0 ; j < producerAnimals.size() ; j++){
-                    if (missions[i].getType().equals(producerAnimals.get(j).getName())){
+                for (int j = 0; j < producerAnimals.size(); j++) {
+                    if (missions[i].getType().equals(producerAnimals.get(j).getName())) {
                         missions[i].addItem();
                         missions[i].check();
                     }
                 }
-                for (int j = 0 ; j < wereHouse.getItems().size() ; j++){
-                    if (missions[i].getType().equals(wereHouse.getItems().get(j).getType())){
+                for (int j = 0; j < wereHouse.getItems().size(); j++) {
+                    if (missions[i].getType().equals(wereHouse.getItems().get(j).getType())) {
                         missions[i].addItem();
                         missions[i].check();
                     }

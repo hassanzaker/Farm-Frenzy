@@ -150,15 +150,19 @@ public abstract class WorkShop {
         this.isWorking = false;
     }
 
+    public boolean equals(WorkShop obj) {
+        return this.name.equals(obj.getName());
+    }
+
     @Override
     public String toString() {
         String string= this.name + " :\n";
-        string += "level of work shop"+String.valueOf(level) + "\n";
-        string += "workshop making price" + String.valueOf(baseCost) + "\n";
-        string += "workshop upgrade price" + String.valueOf(computeUpgradeCost()) + "\n";
-        string += "work shop inputs:";
+        string += "level : "+String.valueOf(level) + "\n";
+        string += "workshop making price : " + String.valueOf(baseCost) + "\n";
+        string += "workshop upgrade price : " + String.valueOf(computeUpgradeCost()) + "\n";
+        string += "work shop inputs : ";
         for(int i=0 ; i < inputs.size() ; i++ ){
-            string += inputs.get(i) + " ";
+            string += inputs.get(i) + ", ";
         }
         for(int i=0 ; i< outputs.size() ; i++){
             string += outputs.get(i) + " ";
@@ -260,5 +264,13 @@ public abstract class WorkShop {
 
     public void setBaseCost(int baseCost) {
         this.baseCost = baseCost;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
