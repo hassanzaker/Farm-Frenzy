@@ -67,8 +67,11 @@ public abstract class WorkShop {
         for (int i = 0; i < numberOfThisInput.length; i++) {
             numberOfThisInput[i] = 0;
         }
+        System.out.println(inputs.size());
+        System.out.println(ground.getWereHouse().getItems().size());
         for (int i = 0; i < inputs.size(); i++) {
             for (int j = 0; j < ground.getWereHouse().getItems().size(); j++) {
+//                System.out.println("come");
                 if (inputs.get(i).equals(ground.getWereHouse().getItems().get(j).getType())) {
                     numberOfThisInput[i]++;
                 }
@@ -112,15 +115,15 @@ public abstract class WorkShop {
         }
         for (int i = 0; i < inputs.size(); i++) {
             for (int j = 0; j < ground.getWereHouse().getItems().size(); j++) {
-                System.out.println("a");
+               // System.out.println("a");
                 if (inputs.get(i).equals(ground.getWereHouse().getItems().get(j).getType())) {
                     numberOfThisInput[i]++;
                 }
             }
         }
-        for (int i = 0; i < numberOfThisInput.length ; i++) {
-            System.out.println(numberOfThisInput[i]);
-        }
+    //    for (int i = 0; i < numberOfThisInput.length ; i++) {
+    //        System.out.println(numberOfThisInput[i]);
+  //      }
         minNumber=numberOfThisInput[0];
         for (int i = 0; i < numberOfThisInput.length; i++) {
             if (numberOfThisInput[i] == 0) {
@@ -135,7 +138,7 @@ public abstract class WorkShop {
         System.out.println(minNumber);
         if (minNumber != 0) {
             for (int i = 0; i < minNumber; i++) {
-                System.out.println("come");
+             //   System.out.println("come");
                 for (int j = 0; j < outputs.size(); j++) {
                     if (outputs.get(j).equals("Egg")) {
                         ground.addItem(new Egg(this.rowForOutPut + i, this.columnForOutput, "0", true));

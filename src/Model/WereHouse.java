@@ -15,9 +15,6 @@ public class WereHouse {
         currentCapacity = 0;
         this.capacity = 50;
         this.level = 1;
-        items.add(new Egg(-11, -11, "", false));
-        items.add(new Egg(-11, -11, "", false));
-        items.add(new Egg(-11, -11, "", false));
     }
 
     public void addItem(Item item) throws Exception {

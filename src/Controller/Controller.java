@@ -9,7 +9,9 @@ import Model.Ground;
 import Model.Time;
 import Model.WorkShop.WorkShop;
 import View.View;
+import com.gilecode.yagson.YaGson;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -333,61 +335,61 @@ public class Controller {
     }
 
 
-//        public void save(String path) {
-//            YaGson yaGson = new YaGson();
-//            String objToString = yaGson.toJson(grounds.get(level-1));
-//
-//            //  parseSTRING.ourFarm
-//            BufferedWriter writer = null;
-//            try {
-//                writer = new BufferedWriter(new FileWriter(path));
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            try {
-//                writer.write(objToString);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//
-//            try {
-//                writer.close();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//
-//    public Ground load(String path){
-//        File f = new File(path);
-//        InputStream stream = null;
-//        try {
-//            stream = new FileInputStream(f);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        StringBuilder json = new StringBuilder();
-//        int byteCode = 0;
-//        try {
-//            byteCode = stream.read();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        while (byteCode != -1) {
-//            json.append((char) byteCode);
-//            try {
-//                byteCode = stream.read();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        try {
-//            stream.close();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return new YaGson().fromJson(json.toString(), Ground.class);
-//    }
+        public void save(String path) {
+            YaGson yaGson = new YaGson();
+            String objToString = yaGson.toJson(grounds.get(level-1));
+
+            //  parseSTRING.ourFarm
+            BufferedWriter writer = null;
+            try {
+                writer = new BufferedWriter(new FileWriter(path));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                writer.write(objToString);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            try {
+                writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    public Ground load(String path){
+        File f = new File(path);
+       InputStream stream = null;
+        try {
+            stream = new FileInputStream(f);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        StringBuilder json = new StringBuilder();
+        int byteCode = 0;
+        try {
+            byteCode = stream.read();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        while (byteCode != -1) {
+            json.append((char) byteCode);
+            try {
+                byteCode = stream.read();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            stream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new YaGson().fromJson(json.toString(), Ground.class);
+    }
 
 
 }
