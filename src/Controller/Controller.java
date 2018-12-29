@@ -2,7 +2,6 @@ package Controller;
 
 import Model.Animals.Animal;
 import Model.Animals.Bear;
-import Model.Animals.Cat;
 import Model.Animals.Lion;
 import Model.Cage;
 import Model.Cell;
@@ -10,11 +9,12 @@ import Model.Ground;
 import Model.Time;
 import Model.WorkShop.WorkShop;
 import View.View;
-import com.gilecode.yagson.*;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.Random;
+
+//import com.gilecode.yagson.*;
+//
 
 public class Controller {
     private ArrayList<Ground> grounds = new ArrayList<>();
@@ -80,6 +80,14 @@ public class Controller {
         }
     }
 
+    public void startWorking(String type) {
+        try {
+            grounds.get(level - 1).searchWorkShop(type).workShopInput(grounds.get(level - 1));
+        } catch (Exception e) {
+            View.checkOutException(e);
+        }
+    }
+
     public void cage(int x, int y) {
         try {
             Cage.action(grounds.get(level - 1), x, y);
@@ -104,7 +112,6 @@ public class Controller {
             View.checkOutException(exception);
         }
     }
-
 
 
     public void upgradeWorkShop(WorkShop workShop) {
@@ -168,19 +175,19 @@ public class Controller {
 
     public String printInfo() {
         String s = "money : " + String.valueOf(grounds.get(level - 1).getMoney()) + "\n" +
-                "Time : " + time.toString() + "\n";
+                "Time : " + time.toString() + "\n" ;
         for (int i = 0; i < 3; i++) {
             if (grounds.get(level - 1).getMissions()[i].isDone()) {
-                s += grounds.get(level - 1).getMissions()[i].getType() + " Done!\n";
+                s += grounds.get(level - 1).getMissions()[i].getType() + " Done!\n" ;
             } else {
-                s += grounds.get(level - 1).getMissions()[i].toString() + "\n";
+                s += grounds.get(level - 1).getMissions()[i].toString() + "\n" ;
             }
         }
         return s;
     }
 
     public String printMap() {
-        String s = "";
+        String s = "" ;
         Cell[][] cells = grounds.get(level - 1).getCells();
 //        for (int i = 0; i < cells.length; i++) {
 //            for (int j = 0; j < cells[i].length; j++) {
@@ -191,33 +198,33 @@ public class Controller {
         for (int i = 0; i < grounds.get(level - 1).getItems().size(); i++) {
             s += grounds.get(level - 1).getItems().get(i).getType() + " x = " +
                     grounds.get(level - 1).getItems().get(i).getRow() + " , y = " +
-                    grounds.get(level - 1).getItems().get(i).getColumn() + "\n";
+                    grounds.get(level - 1).getItems().get(i).getColumn() + "\n" ;
         }
         for (int i = 0; i < grounds.get(level - 1).getProducerAnimals().size(); i++) {
             s += grounds.get(level - 1).getProducerAnimals().get(i).getName() + " x = " +
                     grounds.get(level - 1).getProducerAnimals().get(i).getRow() + " , y = " +
-                    grounds.get(level - 1).getProducerAnimals().get(i).getColumn() + "\n";
+                    grounds.get(level - 1).getProducerAnimals().get(i).getColumn() + "\n" ;
         }
         for (int i = 0; i < grounds.get(level - 1).getCats().size(); i++) {
             s += grounds.get(level - 1).getCats().get(i).getName() + " x = " +
                     grounds.get(level - 1).getCats().get(i).getRow() + " , y = " +
-                    grounds.get(level - 1).getCats().get(i).getColumn() + "\n";
+                    grounds.get(level - 1).getCats().get(i).getColumn() + "\n" ;
         }
         for (int i = 0; i < grounds.get(level - 1).getDogs().size(); i++) {
             s += grounds.get(level - 1).getDogs().get(i).getName() + " x = " +
                     grounds.get(level - 1).getDogs().get(i).getRow() + " , y = " +
-                    grounds.get(level - 1).getDogs().get(i).getColumn() + "\n";
+                    grounds.get(level - 1).getDogs().get(i).getColumn() + "\n" ;
         }
         for (int i = 0; i < grounds.get(level - 1).getWildAnimals().size(); i++) {
             s += grounds.get(level - 1).getWildAnimals().get(i).getName() + " x = " +
                     grounds.get(level - 1).getWildAnimals().get(i).getRow() + " , y = " +
-                    grounds.get(level - 1).getWildAnimals().get(i).getColumn() + "\n";
+                    grounds.get(level - 1).getWildAnimals().get(i).getColumn() + "\n" ;
         }
         return s;
     }
 
     public String printLevels() {
-        String s = "";
+        String s = "" ;
         s += "Level : " + level +
                 "\n mission 1 : " + levels.get(level - 1).getTypes()[0] + "--> " + String.valueOf(levels.get(level - 1).getNeed()[0]) +
                 "\n mission 2 : " + levels.get(level - 1).getTypes()[1] + "--> " + String.valueOf(levels.get(level - 1).getNeed()[1]) +
@@ -326,61 +333,61 @@ public class Controller {
     }
 
 
-        public void save(String path) {
-            YaGson yaGson = new YaGson();
-            String objToString = yaGson.toJson(grounds.get(level-1));
-
-            //  parseSTRING.ourFarm
-            BufferedWriter writer = null;
-            try {
-                writer = new BufferedWriter(new FileWriter(path));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                writer.write(objToString);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                writer.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-    public Ground load(String path){
-        File f = new File(path);
-        InputStream stream = null;
-        try {
-            stream = new FileInputStream(f);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        StringBuilder json = new StringBuilder();
-        int byteCode = 0;
-        try {
-            byteCode = stream.read();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        while (byteCode != -1) {
-            json.append((char) byteCode);
-            try {
-                byteCode = stream.read();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        try {
-            stream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return new YaGson().fromJson(json.toString(), Ground.class);
-    }
+//        public void save(String path) {
+//            YaGson yaGson = new YaGson();
+//            String objToString = yaGson.toJson(grounds.get(level-1));
+//
+//            //  parseSTRING.ourFarm
+//            BufferedWriter writer = null;
+//            try {
+//                writer = new BufferedWriter(new FileWriter(path));
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            try {
+//                writer.write(objToString);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//
+//            try {
+//                writer.close();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//
+//    public Ground load(String path){
+//        File f = new File(path);
+//        InputStream stream = null;
+//        try {
+//            stream = new FileInputStream(f);
+//        } catch (FileNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        StringBuilder json = new StringBuilder();
+//        int byteCode = 0;
+//        try {
+//            byteCode = stream.read();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        while (byteCode != -1) {
+//            json.append((char) byteCode);
+//            try {
+//                byteCode = stream.read();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//        }
+//        try {
+//            stream.close();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return new YaGson().fromJson(json.toString(), Ground.class);
+//    }
 
 
 }

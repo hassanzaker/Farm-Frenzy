@@ -1,14 +1,13 @@
 package View;
 
 import Controller.Controller;
+import Controller.Level;
 import Model.Animals.*;
 import Model.WorkShop.*;
 
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
-
-import Controller.Level;
 
 public class View {
 
@@ -22,7 +21,7 @@ public class View {
         need[1] = 10;
         types[2] = "hen" ;
         need[2] = 5;
-        levels.add(new Level(1, types, need, 2000));
+        levels.add(new Level(1, types, need, 4000));
         Controller controller = new Controller(levels);
         Random random = new Random();
         Scanner read = new Scanner(System.in);
@@ -91,6 +90,11 @@ public class View {
                             break;
                         case "WevingFactory":
                             workShop = new WevingFactory();
+                            break;
+                        case "working":
+                            controller.startWorking(subStrings[2]);
+                            flag = true;
+                            break;
                         default:
                             System.out.println("not such work shop!");
                             flag = true;

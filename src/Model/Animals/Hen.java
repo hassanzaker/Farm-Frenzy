@@ -1,10 +1,7 @@
 package Model.Animals;
 
-import Model.Cell;
 import Model.Ground;
 import Model.Items.Egg;
-
-import java.util.Random;
 
 public class Hen extends ProducerAnimal {
 

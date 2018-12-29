@@ -13,6 +13,7 @@ public class WereHouse {
 
     public WereHouse() {
         currentCapacity = 0;
+        this.capacity = 50;
         this.level = 1;
         items.add(new Egg(-11, -11, "", false));
         items.add(new Egg(-11, -11, "", false));
@@ -77,7 +78,7 @@ public class WereHouse {
         String s = "wereHouse level : " + String.valueOf(this.level) + "\n" +
                 "capacity : " + String.valueOf(this.capacity) + "\n" +
                 "current amount : " + String.valueOf(this.currentCapacity) + "\n" +
-                "empty : " + String.valueOf(this.capacity - this.currentCapacity) + "\n";
+                "empty : " + String.valueOf(this.capacity - this.currentCapacity) + "\n" ;
         return s;
     }
 }

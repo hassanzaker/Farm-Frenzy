@@ -3,8 +3,6 @@ package Model.Animals;
 import Model.Cell;
 import Model.Ground;
 
-import java.util.Random;
-
 public abstract class WildAnimal extends Animal {
     protected int volume;
 
@@ -14,6 +12,12 @@ public abstract class WildAnimal extends Animal {
 
     public int getVolume() {
         return volume;
+    }
+
+    @Override
+    public void checkTime(Ground ground) throws Exception {
+        super.checkTime(ground);
+        crash(ground);
     }
 
     public void setVolume(int volume) {
@@ -26,11 +30,11 @@ public abstract class WildAnimal extends Animal {
 
     public abstract void eat();
 
-    @Override
-    public int direction(Ground ground) {
-        Random random = new Random();
-        return random.nextInt(4) + 1;
-    }
+//    @Override
+//    public int direction(Ground ground) {
+//        Random random = new Random();
+//        return random.nextInt(4) + 1;
+//    }
 
     public void crash(Ground ground) {
         for (int i = 0; i < ground.getProducerAnimals().size(); i++) {

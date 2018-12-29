@@ -1,8 +1,7 @@
 package Model.WorkShop;
 
-import Model.Items.*;
-import Model.WereHouse;
 import Model.Ground;
+import Model.Items.*;
 
 import java.util.ArrayList;
 
@@ -29,6 +28,8 @@ public abstract class WorkShop {
         this.maxLevel = 5;
         this.isWorking = false;
         this.baseCost = 50 * this.constNumber;
+        this.columnForOutput=100;
+        this.rowForOutPut=100;
     }
 
     public void upgrade(int money) throws Exception {
@@ -62,17 +63,18 @@ public abstract class WorkShop {
 
     public void workShopInput(Ground ground) throws Exception {
         int minNumber = 0;
-        int[] numberOfThisInput = new int[ground.getWereHouse().getItems().size()];
+        int[] numberOfThisInput = new int[inputs.size()];
         for (int i = 0; i < numberOfThisInput.length; i++) {
             numberOfThisInput[i] = 0;
         }
         for (int i = 0; i < inputs.size(); i++) {
             for (int j = 0; j < ground.getWereHouse().getItems().size(); j++) {
-                if (inputs.get(i).equals(ground.getWereHouse().getItems().get(j))) {
+                if (inputs.get(i).equals(ground.getWereHouse().getItems().get(j).getType())) {
                     numberOfThisInput[i]++;
                 }
             }
         }
+        minNumber = numberOfThisInput[0];
         for (int i = 0; i < numberOfThisInput.length; i++) {
             if (numberOfThisInput[i] == 0) {
                 throw new Exception("not enough items");
@@ -82,12 +84,19 @@ public abstract class WorkShop {
             }
         }
         minNumber = Math.min(level, minNumber);
+   //     System.out.println(minNumber);
         if (minNumber != 0) {
+            a:
             for (int i = 0; i < minNumber; i++) {
+                b:
                 for (int j = 0; j < inputs.size(); j++) {
+                    c:
                     for (int k = 0; k < ground.getWereHouse().getItems().size(); k++) {
-                        if (ground.getWereHouse().getItems().get(k).equals(inputs.get(j)))
+                        if (ground.getWereHouse().getItems().get(k).getType().equals(inputs.get(j))) {
                             ground.getWereHouse().deleteItem(ground.getWereHouse().getItems().get(k));
+                            continue b;
+                         //   System.out.println("now");
+                        }
                     }
                 }
             }
@@ -97,51 +106,58 @@ public abstract class WorkShop {
 
     public void workShopOutput(Ground ground) {
         int minNumber = 0;
-        int[] numberOfThisInput = new int[ground.getWereHouse().getItems().size()];
+        int[] numberOfThisInput = new int[inputs.size()];
         for (int i = 0; i < numberOfThisInput.length; i++) {
             numberOfThisInput[i] = 0;
         }
         for (int i = 0; i < inputs.size(); i++) {
             for (int j = 0; j < ground.getWereHouse().getItems().size(); j++) {
-                if (inputs.get(i).equals(ground.getWereHouse().getItems().get(j))) {
+                System.out.println("a");
+                if (inputs.get(i).equals(ground.getWereHouse().getItems().get(j).getType())) {
                     numberOfThisInput[i]++;
                 }
             }
         }
+        for (int i = 0; i < numberOfThisInput.length ; i++) {
+            System.out.println(numberOfThisInput[i]);
+        }
+        minNumber=numberOfThisInput[0];
         for (int i = 0; i < numberOfThisInput.length; i++) {
             if (numberOfThisInput[i] == 0) {
-
                 break;
             }
             if (numberOfThisInput[i] < minNumber) {
                 minNumber = numberOfThisInput[i];
             }
         }
+        System.out.println(outputs.get(0));
         minNumber = Math.min(level, minNumber);
+        System.out.println(minNumber);
         if (minNumber != 0) {
             for (int i = 0; i < minNumber; i++) {
+                System.out.println("come");
                 for (int j = 0; j < outputs.size(); j++) {
-                    if (outputs.equals("Egg")) {
+                    if (outputs.get(j).equals("Egg")) {
                         ground.addItem(new Egg(this.rowForOutPut + i, this.columnForOutput, "0", true));
-                    } else if (outputs.equals("EggPowder")) {
+                    } else if (outputs.get(j).equals("EggPowder")) {
                         ground.addItem(new EggPowder(this.rowForOutPut + i, this.columnForOutput, "0", true));
-                    } else if (outputs.equals("Cake")) {
+                    } else if (outputs.get(j).equals("Cake")) {
                         ground.addItem(new Cake(this.rowForOutPut + i, this.columnForOutput, "0", true));
-                    } else if (outputs.equals("Cookie")) {
+                    } else if (outputs.get(j).equals("Cookie")) {
                         ground.addItem(new Cookie(this.rowForOutPut + i, this.columnForOutput, "0", true));
-                    } else if (outputs.equals("Milk")) {
+                    } else if (outputs.get(j).equals("Milk")) {
                         ground.addItem(new Milk(this.rowForOutPut + i, this.columnForOutput, "0", true));
-                    } else if (outputs.equals("FLour")) {
+                    } else if (outputs.get(j).equals("FLour")) {
                         ground.addItem(new Flour(this.rowForOutPut + i, this.columnForOutput, "0", true));
-                    } else if (outputs.equals("Wool")) {
+                    } else if (outputs.get(j).equals("Wool")) {
                         ground.addItem(new Wool(this.rowForOutPut + i, this.columnForOutput, "0", true));
-                    } else if (outputs.equals("Sewing")) {
+                    } else if (outputs.get(j).equals("Sewing")) {
                         ground.addItem(new Sewing(this.rowForOutPut + i, this.columnForOutput, "0", true));
-                    } else if (outputs.equals("Fabric")) {
+                    } else if (outputs.get(j).equals("Fabric")) {
                         ground.addItem(new Fabric(this.rowForOutPut + i, this.columnForOutput, "0", true));
-                    } else if (outputs.equals("ColoredPlume")) {
+                    } else if (outputs.get(j).equals("ColoredPlume")) {
                         ground.addItem(new ColoredPlume(this.rowForOutPut + i, this.columnForOutput, "0", true));
-                    } else if (outputs.equals("CarnivalDress")) {
+                    } else if (outputs.get(j).equals("CarnivalDress")) {
                         ground.addItem(new CarnivalDress(this.rowForOutPut + i, this.columnForOutput, "0", true));
                     }
                 }

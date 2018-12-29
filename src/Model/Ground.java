@@ -1,15 +1,12 @@
 package Model;
 
 import Controller.Level;
-import Model.Animals.Cat;
-import Model.Animals.Dog;
-import Model.Animals.ProducerAnimal;
 import Model.Animals.*;
+import Model.Items.Egg;
 import Model.Items.Item;
 import Model.Transportation.Helicopter;
 import Model.Transportation.Truck;
 import Model.WorkShop.WorkShop;
-import Model.Items.*;
 
 import java.util.ArrayList;
 
@@ -40,10 +37,10 @@ public class Ground {
             }
         }
         this.workShops = new WorkShop[6];
+        this.numberOfRows=600;
+        this.numberOfColumns=600;
         this.well = new Well();
         this.truck = new Truck();
-        this.numberOfColumns = 600;
-        this.numberOfRows = 600;
         this.helicopter = new Helicopter(this);
         this.wereHouse = new WereHouse();
         this.numberOfWorkShops = 0;
@@ -51,7 +48,7 @@ public class Ground {
             missions[i] = new Mission(level.getTypes()[i], level.getNeed()[i]);
         }
         this.money = level.getFirstMoney();
-
+        items.add(new Egg(25, 33, "", false));
     }
 
     public void buyAnimal(Animal animal) throws Exception {
@@ -92,6 +89,19 @@ public class Ground {
         this.workShops[numberOfWorkShops] = workShop;
         numberOfWorkShops++;
     }
+
+
+    public WorkShop searchWorkShop(String type) throws Exception{
+        for (int i = 0; i < this.workShops.length; i++) {
+            if (this.workShops[i] != null) {
+                if (this.workShops[i].getName().equals(type)) {
+                    return this.workShops[i];
+                }
+            }
+        }
+        throw new Exception("no such workshop!");
+    }
+
 
     public WorkShop searchWorkShop(WorkShop workShop) throws Exception {
         for (int i = 0; i < this.workShops.length; i++) {

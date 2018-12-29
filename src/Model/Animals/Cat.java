@@ -1,6 +1,5 @@
 package Model.Animals;
 
-import Model.Animals.Animal;
 import Model.Cell;
 import Model.Ground;
 import Model.Items.Item;
@@ -15,8 +14,24 @@ public class Cat extends Animal {
         super(x, y, ID);
         this.level = 1;
         this.speed = 10;
-        this.name = "cat";
+        this.name = "cat" ;
         this.cost = 2000;
+    }
+
+    @Override
+    public void checkTime(Ground ground) throws Exception {
+        super.checkTime(ground);
+        crash(ground);
+    }
+
+    public void crash(Ground ground) throws Exception {
+        for (int i = 0; i < ground.getItems().size(); i++) {
+            if (this.row == ground.getItems().get(i).getRow() && this.column == ground.getItems().get(i).getColumn()) {
+                ground.getWereHouse().addItem(ground.getItems().get(i));
+                ground.deleteItem(ground.getItems().get(i));
+            }
+        }
+
     }
 
     public int direction(Ground ground) {
@@ -27,8 +42,7 @@ public class Cat extends Animal {
             int x = 0;
             int y = 0;
             if (this.level == 1) {
-                int i = random.nextInt(ground.getItems().size());
-                Item item = ground.getItems().get(i);
+                Item item = ground.getItems().get(0);
                 x = item.getRow() - this.row;
                 y = item.getColumn() - this.column;
             } else if (this.level == 2) {
@@ -69,11 +83,11 @@ public class Cat extends Animal {
         }
     }
 
-    public void upgrade(int money) throws Exception{
-        if (money < computeUpgradeCost()){
+    public void upgrade(int money) throws Exception {
+        if (money < computeUpgradeCost()) {
             throw new Exception("not enough money!");
         }
-        if (this.level == 2){
+        if (this.level == 2) {
             throw new Exception("cat is max level!");
         }
         this.level++;

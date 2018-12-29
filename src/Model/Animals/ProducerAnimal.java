@@ -3,8 +3,6 @@ package Model.Animals;
 import Model.Cell;
 import Model.Ground;
 
-import java.util.Random;
-
 public abstract class ProducerAnimal extends Animal {
     protected int maxEnergy;
     protected int energyLevel;
@@ -13,19 +11,24 @@ public abstract class ProducerAnimal extends Animal {
 
     public ProducerAnimal(int x, int y, String ID) {
         super(x, y, ID);
+        this.timeToProduce = 15;
+        maxEnergy = 20;
+        this.energyLevel = 20;
     }
 
-    @Override
-    public int direction(Ground ground) {
-        Random random = new Random();
-        return random.nextInt(4) + 1;
-    }
 
-    public void checkTime(Ground ground){
+    public void checkTime(Ground ground) throws Exception {
+        super.checkTime(ground);
+        this.energyLevel--;
         this.currentTime++;
-        if (this.currentTime == this.timeToProduce){
+        if (this.energyLevel < 10 && this.energyLevel > 0) {
+            eat(ground.getCells()[this.row-1][this.getColumn()-1]);
+        } else if (this.energyLevel <= 0) {
+            ground.deleteAnimal(this);
+        }
+        if (this.currentTime == this.timeToProduce) {
             produce(ground);
-            this.currentTime=0;
+            this.currentTime = 0;
         }
     }
 
@@ -53,10 +56,10 @@ public abstract class ProducerAnimal extends Animal {
         this.energyLevel = energyLevel;
     }
 
-    public void eat(Cell cell) throws Exception {
-        if (cell.getGrassAmount() == 0)
-            throw new Exception("there is no food!");
-        else {
+    public void eat(Cell cell) {
+        if (cell.getGrassAmount() == 0) {
+
+        } else {
             cell.grassEaten();
             this.energyLevel++;
         }

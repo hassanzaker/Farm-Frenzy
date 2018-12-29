@@ -21,8 +21,10 @@ public abstract class Animal {
     }
 
     public int direction(Ground ground) {
-        return 0;
+        Random random = new Random();
+        return random.nextInt(4) + 1;
     }
+
 
     public void checkTime(Ground ground) throws Exception {
         move(direction(ground), ground);
@@ -41,35 +43,39 @@ public abstract class Animal {
         switch (direction) {
             case 1:   // 1 ---->>  right
                 if (this.row > ground.getNumberOfRows() || this.column >= ground.getNumberOfColumns() || this.row < 0 || this.column < 0) {
-                    throw new Exception("out of map");
+                    move((direction%4) + 1, ground);
+                }else {
+                    this.makeChangesOnCell(ground.getCells()[this.row - 1][this.column - 1], -1);
+                    this.column++;
+                    this.makeChangesOnCell(ground.getCells()[this.row - 1][this.column - 1], 1);
                 }
-                this.makeChangesOnCell(ground.getCells()[this.row - 1][this.column - 1], -1);
-                this.column++;
-                this.makeChangesOnCell(ground.getCells()[this.row - 1][this.column - 1], 1);
                 break;
             case 2:   // 2 ---->>   up
                 if (this.row > ground.getNumberOfRows() || this.column > ground.getNumberOfColumns() || this.row <= 0 || this.column < 0) {
-                    throw new Exception("out of map");
+                    move((direction%4) + 1, ground);
+                }else {
+                    this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], -1);
+                    this.row--;
+                    this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], 1);
                 }
-                this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], -1);
-                this.row--;
-                this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], 1);
                 break;
             case 3:   // 3  ---->>   left
                 if (this.row > ground.getNumberOfRows() || this.column > ground.getNumberOfColumns() || this.row < 0 || this.column <= 0) {
-                    throw new Exception("out of map");
+                    move((direction%4) + 1, ground);
+                } else {
+                    this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], -1);
+                    this.column--;
+                    this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], 1);
                 }
-                this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], -1);
-                this.column--;
-                this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], 1);
                 break;
             case 4:   //  4  ---->>   down
                 if (this.row >= ground.getNumberOfRows() || this.column > ground.getNumberOfColumns() || this.row < 0 || this.column < 0) {
-                    throw new Exception("out of map");
+                    move((direction%4) + 1, ground);
+                } else {
+                    this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], -1);
+                    this.row++;
+                    this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], 1);
                 }
-                this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], -1);
-                this.row++;
-                this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], 1);
                 break;
         }
     }

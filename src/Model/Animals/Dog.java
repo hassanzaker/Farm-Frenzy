@@ -17,12 +17,17 @@ public class Dog extends Animal {
         this.cost = 3000;
     }
 
+    @Override
+    public void checkTime(Ground ground) throws Exception {
+        super.checkTime(ground);
+    }
+
     public int direction(Ground ground) {
         if (ground.getWildAnimals().size() == 0) {
             Random random = new Random();
             return random.nextInt(4) + 1;
         } else {
-            WildAnimal wildAnimal = (WildAnimal) ground.getWildAnimals().get(0);
+            WildAnimal wildAnimal = ground.getWildAnimals().get(0);
             int wildAnimalX = wildAnimal.getRow();
             int wildAnimalY = wildAnimal.getColumn();
             int x = wildAnimalX - this.row;
