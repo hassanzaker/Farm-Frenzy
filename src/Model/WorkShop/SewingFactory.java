@@ -4,8 +4,8 @@ public class SewingFactory extends WorkShop{
     public SewingFactory() {
         super(6);
         inputs.add("Fabric");
-        inputs.add("Plume");
-        outputs.add("CarnivalFactory");
+        inputs.add("ColoredPlume");
+        outputs.add("CarnivalDress");
         this.name = "SewingFactory";
     }
 
