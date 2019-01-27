@@ -8,7 +8,6 @@ import Model.Cell;
 import Model.Ground;
 import Model.Time;
 import Model.WorkShop.WorkShop;
-import View.View;
 import com.gilecode.yagson.YaGson;
 
 import java.io.*;
@@ -51,7 +50,7 @@ public class Controller {
         try {
             grounds.get(level - 1).checkTime();
         } catch (Exception e) {
-            View.checkOutException(e);
+            //View.checkOutException(e);
         }
     }
 
@@ -59,7 +58,7 @@ public class Controller {
         try {
             grounds.get(this.level - 1).buyAnimal(animal);
         } catch (Exception exception) {
-            View.checkOutException(exception);
+          //  View.checkOutException(exception);
         }
 
     }
@@ -69,7 +68,7 @@ public class Controller {
             grounds.get(level - 1).getWell().fill(grounds.get(level - 1).getMoney());
             grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - grounds.get(level - 1).getWell().getCost());
         } catch (Exception e) {
-            View.checkOutException(e);
+            //View.checkOutException(e);
         }
     }
 
@@ -77,7 +76,7 @@ public class Controller {
         try {
             grounds.get(level - 1).pickUp(x, y);
         } catch (Exception exception) {
-            View.checkOutException(exception);
+            //View.checkOutException(exception);
 
         }
     }
@@ -86,7 +85,7 @@ public class Controller {
         try {
             grounds.get(level - 1).searchWorkShop(type).workShopInput(grounds.get(level - 1));
         } catch (Exception e) {
-            View.checkOutException(e);
+            //View.checkOutException(e);
         }
     }
 
@@ -94,7 +93,7 @@ public class Controller {
         try {
             Cage.action(grounds.get(level - 1), x, y);
         } catch (Exception exception) {
-            View.checkOutException(exception);
+        //    View.checkOutException(exception);
         }
     }
 
@@ -102,7 +101,7 @@ public class Controller {
         try {
             grounds.get(level - 1).getWell().plant(grounds.get(level - 1), x, y);   // has a problem for around
         } catch (Exception e) {
-            View.checkOutException(e);
+          //  View.checkOutException(e);
         }
     }
 
@@ -111,7 +110,7 @@ public class Controller {
             grounds.get(level - 1).addWorkShop(workShop);
             grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - workShop.getBaseCost());
         } catch (Exception exception) {
-            View.checkOutException(exception);
+            //View.checkOutException(exception);
         }
     }
 
@@ -121,7 +120,7 @@ public class Controller {
             grounds.get(level - 1).searchWorkShop(workShop).upgrade(grounds.get(level - 1).getMoney());
             grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - grounds.get(level - 1).searchWorkShop(workShop).computeUpgradeCost());
         } catch (Exception exception) {
-            View.checkOutException(exception);
+          //  View.checkOutException(exception);
         }
     }
 
@@ -135,7 +134,7 @@ public class Controller {
             }
 
         } catch (Exception e) {
-            View.checkOutException(e);
+            //View.checkOutException(e);
         }
     }
 
@@ -144,7 +143,7 @@ public class Controller {
             grounds.get(level - 1).getWereHouse().upgrade(grounds.get(level - 100).getMoney());
             grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - grounds.get(level - 1).getWereHouse().computeUpgradeCost());
         } catch (Exception e) {
-            View.checkOutException(e);
+           // View.checkOutException(e);
         }
     }
 
@@ -153,7 +152,7 @@ public class Controller {
             grounds.get(level - 1).getWell().upgrade(grounds.get(level - 1).getMoney());
             grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - grounds.get(level - 1).getWell().computeUpgradeCost());
         } catch (Exception e) {
-            View.checkOutException(e);
+           // View.checkOutException(e);
         }
     }
 
@@ -162,7 +161,7 @@ public class Controller {
             grounds.get(level - 1).getTruck().upgrade(grounds.get(level - 1).getMoney());
             grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - grounds.get(level - 1).getTruck().computeUpgradeCost());
         } catch (Exception e) {
-            View.checkOutException(e);
+            //View.checkOutException(e);
         }
     }
 
@@ -171,7 +170,7 @@ public class Controller {
             grounds.get(level - 1).getHelicopter().upgrade(grounds.get(level - 1).getMoney());
             grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - grounds.get(level - 1).getHelicopter().computeUpgradeCost());
         } catch (Exception e) {
-            View.checkOutException(e);
+          //  View.checkOutException(e);
         }
     }
 
@@ -254,7 +253,7 @@ public class Controller {
         try {
             return grounds.get(level - 1).searchWorkShop(workShop).toString();
         } catch (Exception e) {
-            View.checkOutException(e);
+            //View.checkOutException(e);
         }
         return null;
     }
@@ -264,7 +263,7 @@ public class Controller {
         try {
             grounds.get(level - 1).getHelicopter().addItemByCount(type, count);
         } catch (Exception e) {
-            View.checkOutException(e);
+           // View.checkOutException(e);
         }
     }
 
@@ -272,7 +271,7 @@ public class Controller {
         try {
             grounds.get(level - 1).getTruck().addItemByCount(type, count, grounds.get(level - 1));
         } catch (Exception e) {
-            View.checkOutException(e);
+            //View.checkOutException(e);
         }
     }
 
@@ -288,7 +287,7 @@ public class Controller {
         try {
             grounds.get(level - 1).getHelicopter().buy(grounds.get(level - 1));
         } catch (Exception e) {
-            View.checkOutException(e);
+            //View.checkOutException(e);
         }
     }
 
@@ -296,7 +295,7 @@ public class Controller {
         try {
             grounds.get(level - 1).getTruck().sell();
         } catch (Exception e) {
-            View.checkOutException(e);
+           // View.checkOutException(e);
         }
     }
 
