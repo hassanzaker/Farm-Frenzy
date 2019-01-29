@@ -1,7 +1,22 @@
 package Model.Items;
 
-public class CagedLion extends Item {
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+public class CagedLion extends Item {
+    private Image CagedLion;
+    {
+        try {
+            CagedLion= new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Products\\CagedLion.png"));
+            ImageView CagedLionView = new ImageView(CagedLion);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
     private final int buyCost = 150;
     private final int saleCost = 150;
 

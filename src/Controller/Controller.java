@@ -7,8 +7,9 @@ import Model.Cage;
 import Model.Cell;
 import Model.Ground;
 import Model.Time;
-import Model.WorkShop.WorkShop;
+import Model.WorkShop.*;
 import com.gilecode.yagson.YaGson;
+import javafx.scene.Group;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ import java.util.Random;
 //
 
 public class Controller {
+    private Group mainRoot;
     private ArrayList<Ground> grounds = new ArrayList<>();
     private int level;
     private ArrayList<Level> levels = new ArrayList<>();
@@ -25,12 +27,12 @@ public class Controller {
     Random random = new Random();
     private boolean flag = false;
 
-    public Controller(ArrayList<Level> levels) {
+    public Controller(ArrayList<Level> levels, Group mainRoot) {
         for (int i = 0; i < levels.size(); i++) {
-            grounds.add(new Ground(levels.get(i)));
+            grounds.add(new Ground(levels.get(i), mainRoot));
         }
         level = 1;
-
+       this.mainRoot=mainRoot;
     }
 
 
@@ -50,7 +52,7 @@ public class Controller {
         try {
             grounds.get(level - 1).checkTime();
         } catch (Exception e) {
-            //View.checkOutException(e);
+
         }
     }
 
@@ -58,8 +60,7 @@ public class Controller {
         try {
             grounds.get(this.level - 1).buyAnimal(animal);
         } catch (Exception exception) {
-          //  View.checkOutException(exception);
-        }
+                  }
 
     }
 
@@ -68,7 +69,6 @@ public class Controller {
             grounds.get(level - 1).getWell().fill(grounds.get(level - 1).getMoney());
             grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - grounds.get(level - 1).getWell().getCost());
         } catch (Exception e) {
-            //View.checkOutException(e);
         }
     }
 
@@ -76,14 +76,12 @@ public class Controller {
         try {
             grounds.get(level - 1).pickUp(x, y);
         } catch (Exception exception) {
-            //View.checkOutException(exception);
-
         }
     }
 
     public void startWorking(String type) {
         try {
-            grounds.get(level - 1).searchWorkShop(type).workShopInput(grounds.get(level - 1));
+//            grounds.get(level - 1).searchWorkShop(type).workShopInput(grounds.get(level - 1));
         } catch (Exception e) {
             //View.checkOutException(e);
         }
@@ -93,7 +91,7 @@ public class Controller {
         try {
             Cage.action(grounds.get(level - 1), x, y);
         } catch (Exception exception) {
-        //    View.checkOutException(exception);
+
         }
     }
 
@@ -101,26 +99,55 @@ public class Controller {
         try {
             grounds.get(level - 1).getWell().plant(grounds.get(level - 1), x, y);   // has a problem for around
         } catch (Exception e) {
-          //  View.checkOutException(e);
+
         }
     }
 
-    public void startWorkShop(WorkShop workShop) {
+    public void startWorkShop(String type) {
         try {
-            grounds.get(level - 1).addWorkShop(workShop);
-            grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - workShop.getBaseCost());
+            if(type.equals("CakeBakery")) {
+
+                WorkShop workShop = new CakeBakery(mainRoot , grounds.get(level-1));
+                grounds.get(level - 1).addWorkShop(workShop);
+                grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - workShop.getBaseCost());
+            }else if(type.equals("CookieBakery")) {
+
+                WorkShop workShop = new CookieBakery(mainRoot , grounds.get(level-1));
+                grounds.get(level - 1).addWorkShop(workShop);
+                grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - workShop.getBaseCost());
+            }else if(type.equals("EggPowderPlant")) {
+
+                WorkShop workShop = new EggPowderPlant(mainRoot , grounds.get(level-1));
+                grounds.get(level - 1).addWorkShop(workShop);
+                grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - workShop.getBaseCost());
+            }else if(type.equals("SewingFactory")) {
+
+                WorkShop workShop = new SewingFactory(mainRoot , grounds.get(level-1));
+                grounds.get(level - 1).addWorkShop(workShop);
+                grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - workShop.getBaseCost());
+            }else if(type.equals("WevingFactory")) {
+
+                WorkShop workShop = new WevingFactory(mainRoot , grounds.get(level-1));
+                grounds.get(level - 1).addWorkShop(workShop);
+                grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - workShop.getBaseCost());
+            }else if(type.equals("Spinnery")) {
+
+                WorkShop workShop = new Spinnery(mainRoot , grounds.get(level-1));
+                grounds.get(level - 1).addWorkShop(workShop);
+                grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - workShop.getBaseCost());
+            }
         } catch (Exception exception) {
-            //View.checkOutException(exception);
+
         }
     }
 
 
-    public void upgradeWorkShop(WorkShop workShop) {
+    public void upgradeWorkShop(String type) {
         try {
-            grounds.get(level - 1).searchWorkShop(workShop).upgrade(grounds.get(level - 1).getMoney());
-            grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - grounds.get(level - 1).searchWorkShop(workShop).computeUpgradeCost());
+            grounds.get(level - 1).searchWorkShop(type).upgrade(grounds.get(level - 1).getMoney());
+            grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - grounds.get(level - 1).searchWorkShop(type).computeUpgradeCost());
         } catch (Exception exception) {
-          //  View.checkOutException(exception);
+
         }
     }
 

@@ -7,6 +7,7 @@ import Model.Items.Item;
 import Model.Transportation.Helicopter;
 import Model.Transportation.Truck;
 import Model.WorkShop.WorkShop;
+import javafx.scene.Group;
 
 import java.util.ArrayList;
 
@@ -29,7 +30,7 @@ public class Ground {
     private Mission[] missions = new Mission[3];
 
 
-    public Ground(Level level) {
+    public Ground(Level level, Group mainRoot) {
         this.cells = new Cell[600][600];
         for (int i = 0; i < 600; i++) {
             for (int j = 0; j < 600; j++) {
@@ -39,10 +40,10 @@ public class Ground {
         this.workShops = new WorkShop[6];
         this.numberOfRows=600;
         this.numberOfColumns=600;
-        this.well = new Well();
+        this.well = new Well(mainRoot);
         this.truck = new Truck();
         this.helicopter = new Helicopter(this);
-        this.wereHouse = new WereHouse();
+        this.wereHouse = new WereHouse(mainRoot);
         this.numberOfWorkShops = 0;
         for (int i = 0; i < 3; i++) {
             missions[i] = new Mission(level.getTypes()[i], level.getNeed()[i]);

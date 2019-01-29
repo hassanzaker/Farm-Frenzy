@@ -4,11 +4,58 @@ import Model.Animals.Animal;
 import Model.Animals.Bear;
 import Model.Animals.WildAnimal;
 import Model.Items.CagedBear;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Cage {
+    private Image Cage1;
 
+    {
+        try {
+            Cage1 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Cages\\break01.png"));
+            ImageView wellView = new ImageView(Cage1);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    private Image Cage2;
+
+    {
+        try {
+            Cage2 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Cages\\break02.png"));
+            ImageView wellView = new ImageView(Cage2);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    private Image Cage3;
+
+    {
+        try {
+            Cage3 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Cages\\break03.png"));
+            ImageView wellView = new ImageView(Cage3);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    private Image Cage4;
+
+    {
+        try {
+            Cage4 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Cages\\break04.png"));
+            ImageView wellView = new ImageView(Cage4);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
     // this function is static and call without initialization
     public static void action(Ground ground, int x, int y) throws Exception {
 

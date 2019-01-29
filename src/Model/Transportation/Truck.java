@@ -3,7 +3,11 @@ package Model.Transportation;
 import Model.Box;
 import Model.Ground;
 import Model.Items.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Truck {
@@ -13,7 +17,50 @@ public class Truck {
     private int currentTime;
     private boolean isInWorking;
     private ArrayList<Box> boxes = new ArrayList<>();
+    private Image Truck1;
 
+    {
+        try {
+            Truck1 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Truck\\01.png"));
+            ImageView truckView1 = new ImageView(Truck1);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    private Image Truck2;
+
+    {
+        try {
+            Truck2 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Truck\\02.png"));
+            ImageView truckView2 = new ImageView(Truck2);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    private Image Truck3;
+
+    {
+        try {
+            Truck3 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Truck\\03.png"));
+            ImageView truckView3 = new ImageView(Truck3);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    private Image Truck4;
+
+    {
+        try {
+            Truck4 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Truck\\04.png"));
+            ImageView truckView4 = new ImageView(Truck4);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
     public Truck() {
         boxes.add(new Box());
         boxes.add(new Box());

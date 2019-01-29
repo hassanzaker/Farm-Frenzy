@@ -1,13 +1,11 @@
 package View.Animations;
 
 import Controller.*;
+import Model.Ground;
 import Model.Time;
 import Model.Well;
 //import View.Buttons.WellButton;
-import Model.WorkShop.CakeBakery;
-import Model.WorkShop.CookieBakery;
-import Model.WorkShop.EggPowderPlant;
-import Model.WorkShop.WorkShop;
+import Model.WorkShop.*;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -49,10 +47,18 @@ public class FXView extends Application {
         imageView.setFitWidth(1000);
         mainRoot.getChildren().add(imageView);
         Controller controller = new Controller(levels, mainRoot);
-        WorkShop cook = new CakeBakery(mainRoot);
-        WorkShop cook1 = new EggPowderPlant(mainRoot);
-        controller.startWorkShop(cook1);
-        ((EggPowderPlant) cook1).show();
+       // WorkShop cook = new CakeBakery(mainRoot);
+        controller.startWorkShop("CakeBakery");
+        controller.startWorkShop("CookieBakery");
+        controller.startWorkShop("EggPowderPlant");
+        controller.startWorkShop("Spinnery");
+        controller.startWorkShop("WevingFactory");
+        controller.startWorkShop("SewingFactory");
+
+
+
+
+
 
         Scene scene =  new Scene(mainRoot, 1000, 750, Color.rgb(180, 180, 180));
         primaryStage.setScene(scene);

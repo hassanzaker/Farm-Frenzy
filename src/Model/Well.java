@@ -1,20 +1,105 @@
 package Model;
 
+import View.Animations.SpriteAnimation.SpriteAnimation;
+import javafx.animation.Animation;
+import javafx.animation.PauseTransition;
+import javafx.event.EventHandler;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class Well {
+    private Group mainRoot;
     private int capacity;
     private int timeToFill;
     private int currentTime;
     private int currentAmount;
     private int level;
     private int cost;
+    private Image WellImage1;
+    ImageView wellView1;
+    {
+        try {
+            WellImage1 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Well\\01.png"));
+            wellView1 = new ImageView(WellImage1);
 
-    public Well() {
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Image WellImage2;
+    ImageView wellView2;
+    {
+        try {
+            WellImage2 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Well\\02.png"));
+            wellView2 = new ImageView(WellImage2);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Image WellImage3;
+    ImageView wellView3;
+    {
+        try {
+            WellImage3 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Well\\03.png"));
+             wellView3 = new ImageView(WellImage3);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Image WellImage4;
+    ImageView wellView4;
+    {
+        try {
+            WellImage4 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Well\\04.png"));
+            wellView4 = new ImageView(WellImage4);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public Well(Group mainRoot) {
+        this.mainRoot = mainRoot;
         this.level = 1;
         this.timeToFill = 10;
         this.capacity = 5;
         this.currentAmount = this.capacity;
         cost=19;
+        this.show();
+
     }
+
+    public void show(){
+        wellView1.setViewport(new Rectangle2D(0, 0, 600/4, 544/4));
+        wellView1.setX(450);
+        wellView1.setY(80);
+        this.mainRoot.getChildren().add(wellView1);
+        wellView1.setOnMouseClicked(event -> {
+            final Animation animation =
+                    new SpriteAnimation(wellView1, Duration.millis(1000), 16, 4, 0, 0, 600/4, 544/4);
+            animation.setCycleCount(timeToFill);
+            animation.play();
+        });
+    }
+    public void remove(){
+        this.mainRoot.getChildren().remove(wellView1);
+        this.mainRoot.getChildren().remove(wellView2);
+        this.mainRoot.getChildren().remove(wellView3);
+        this.mainRoot.getChildren().remove(wellView4);
+    }
+
 
     public void plant(Ground ground, int x, int y) throws Exception{
         if (this.currentAmount==0){

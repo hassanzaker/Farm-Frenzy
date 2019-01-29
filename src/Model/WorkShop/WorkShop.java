@@ -2,10 +2,17 @@ package Model.WorkShop;
 
 import Model.Ground;
 import Model.Items.*;
+import View.Animations.SpriteAnimation.SpriteAnimation;
+import javafx.animation.Animation;
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Group;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 
 import java.util.ArrayList;
 
 public abstract class WorkShop {
+    protected Group mainRoot;
     protected int level;
     protected int baseCost;
     protected int timeToWork;
@@ -19,8 +26,9 @@ public abstract class WorkShop {
     protected ArrayList<String> inputs = new ArrayList<>();
     protected ArrayList<String> outputs = new ArrayList<>();
     protected String name;
-
-    protected WorkShop(int constNumber) {
+    protected  Ground ground;
+    protected WorkShop(int constNumber , Group mainRoot , Ground ground) {
+        this.mainRoot=mainRoot;
         this.maxLevel = 5;
         level = 1;
         this.constNumber = constNumber;
@@ -30,21 +38,33 @@ public abstract class WorkShop {
         this.baseCost = 50 * this.constNumber;
         this.columnForOutput=100;
         this.rowForOutPut=100;
+        this.ground=ground;
+      //  this.show();
     }
 
+    public abstract void show();
+
+    public abstract void remove();
+
+    public abstract void setWorkShop(ImageView imageView , int width , int height , double x , double y);
+
     public void upgrade(int money) throws Exception {
+        if(isWorking == true){
+            throw new Exception("on working cant upgrade");
+        }
         if (level == maxLevel) {
             throw new Exception("max level exceeded");
         }
         if (computeUpgradeCost() > money){
             throw new Exception("not enough money!");
         } else {
-            level++;
+            this.level++;
             this.timeToWork -= 1;
             this.isWorking = false;
             this.currentTime = 0;
         }
-
+        this.remove();
+        this.show();
     }
 
     public int computeUpgradeCost() {
@@ -55,24 +75,24 @@ public abstract class WorkShop {
         if (this.isWorking) {
             this.currentTime++;
             if (this.currentTime == this.timeToWork) {
-                workShopOutput(ground);
+                workShopOutput();
                 this.currentTime = 0;
             }
         }
     }
 
-    public void workShopInput(Ground ground) throws Exception {
+    public void workShopInput() throws Exception {
         int minNumber = 0;
         int[] numberOfThisInput = new int[inputs.size()];
         for (int i = 0; i < numberOfThisInput.length; i++) {
             numberOfThisInput[i] = 0;
         }
-        System.out.println(inputs.size());
-        System.out.println(ground.getWereHouse().getItems().size());
+//        System.out.println(inputs.size());
+  //      System.out.println(ground.getWereHouse().getItems().size());
         for (int i = 0; i < inputs.size(); i++) {
-            for (int j = 0; j < ground.getWereHouse().getItems().size(); j++) {
+            for (int j = 0; j < this.ground.getWereHouse().getItems().size(); j++) {
 //                System.out.println("come");
-                if (inputs.get(i).equals(ground.getWereHouse().getItems().get(j).getType())) {
+                if (inputs.get(i).equals(this.ground.getWereHouse().getItems().get(j).getType())) {
                     numberOfThisInput[i]++;
                 }
             }
@@ -94,9 +114,9 @@ public abstract class WorkShop {
                 b:
                 for (int j = 0; j < inputs.size(); j++) {
                     c:
-                    for (int k = 0; k < ground.getWereHouse().getItems().size(); k++) {
-                        if (ground.getWereHouse().getItems().get(k).getType().equals(inputs.get(j))) {
-                            ground.getWereHouse().deleteItem(ground.getWereHouse().getItems().get(k));
+                    for (int k = 0; k < this.ground.getWereHouse().getItems().size(); k++) {
+                        if (this.ground.getWereHouse().getItems().get(k).getType().equals(inputs.get(j))) {
+                            this.ground.getWereHouse().deleteItem(this.ground.getWereHouse().getItems().get(k));
                             continue b;
                          //   System.out.println("now");
                         }
@@ -107,16 +127,16 @@ public abstract class WorkShop {
         this.isWorking = true;
     }
 
-    public void workShopOutput(Ground ground) {
+    public void workShopOutput() {
         int minNumber = 0;
         int[] numberOfThisInput = new int[inputs.size()];
         for (int i = 0; i < numberOfThisInput.length; i++) {
             numberOfThisInput[i] = 0;
         }
         for (int i = 0; i < inputs.size(); i++) {
-            for (int j = 0; j < ground.getWereHouse().getItems().size(); j++) {
+            for (int j = 0; j < this.ground.getWereHouse().getItems().size(); j++) {
                // System.out.println("a");
-                if (inputs.get(i).equals(ground.getWereHouse().getItems().get(j).getType())) {
+                if (inputs.get(i).equals(this.ground.getWereHouse().getItems().get(j).getType())) {
                     numberOfThisInput[i]++;
                 }
             }
@@ -133,7 +153,7 @@ public abstract class WorkShop {
                 minNumber = numberOfThisInput[i];
             }
         }
-        System.out.println(outputs.get(0));
+        //System.out.println(outputs.get(0));
         minNumber = Math.min(level, minNumber);
         System.out.println(minNumber);
         if (minNumber != 0) {
@@ -141,27 +161,27 @@ public abstract class WorkShop {
              //   System.out.println("come");
                 for (int j = 0; j < outputs.size(); j++) {
                     if (outputs.get(j).equals("Egg")) {
-                        ground.addItem(new Egg(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new Egg(this.rowForOutPut + i, this.columnForOutput, "0", true));
                     } else if (outputs.get(j).equals("EggPowder")) {
-                        ground.addItem(new EggPowder(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new EggPowder(this.rowForOutPut + i, this.columnForOutput, "0", true));
                     } else if (outputs.get(j).equals("Cake")) {
-                        ground.addItem(new Cake(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new Cake(this.rowForOutPut + i, this.columnForOutput, "0", true));
                     } else if (outputs.get(j).equals("Cookie")) {
-                        ground.addItem(new Cookie(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new Cookie(this.rowForOutPut + i, this.columnForOutput, "0", true));
                     } else if (outputs.get(j).equals("Milk")) {
-                        ground.addItem(new Milk(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new Milk(this.rowForOutPut + i, this.columnForOutput, "0", true));
                     } else if (outputs.get(j).equals("FLour")) {
-                        ground.addItem(new Flour(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new Flour(this.rowForOutPut + i, this.columnForOutput, "0", true));
                     } else if (outputs.get(j).equals("Wool")) {
-                        ground.addItem(new Wool(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new Wool(this.rowForOutPut + i, this.columnForOutput, "0", true));
                     } else if (outputs.get(j).equals("Sewing")) {
-                        ground.addItem(new Sewing(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new Sewing(this.rowForOutPut + i, this.columnForOutput, "0", true));
                     } else if (outputs.get(j).equals("Fabric")) {
-                        ground.addItem(new Fabric(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new Fabric(this.rowForOutPut + i, this.columnForOutput, "0", true));
                     } else if (outputs.get(j).equals("ColoredPlume")) {
-                        ground.addItem(new ColoredPlume(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new ColoredPlume(this.rowForOutPut + i, this.columnForOutput, "0", true));
                     } else if (outputs.get(j).equals("CarnivalDress")) {
-                        ground.addItem(new CarnivalDress(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new CarnivalDress(this.rowForOutPut + i, this.columnForOutput, "0", true));
                     }
                 }
             }
@@ -292,5 +312,21 @@ public abstract class WorkShop {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Group getMainRoot() {
+        return mainRoot;
+    }
+
+    public void setMainRoot(Group mainRoot) {
+        this.mainRoot = mainRoot;
+    }
+
+    public Ground getGround() {
+        return ground;
+    }
+
+    public void setGround(Ground ground) {
+        this.ground = ground;
     }
 }

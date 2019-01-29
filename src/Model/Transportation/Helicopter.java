@@ -3,12 +3,59 @@ package Model.Transportation;
 import Model.Box;
 import Model.Ground;
 import Model.Items.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Helicopter {
+    private Image Helicopter1;
 
+    {
+        try {
+            Helicopter1 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Helicopter\\01.png"));
+            ImageView helicopterView1 = new ImageView(Helicopter1);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    private Image Helicopter2;
+
+    {
+        try {
+            Helicopter2 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Helicopter\\02.png"));
+            ImageView helicopterView2 = new ImageView(Helicopter2);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    private Image Helicopter3;
+
+    {
+        try {
+            Helicopter3 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Helicopter\\03.png"));
+            ImageView helicopterView3 = new ImageView(Helicopter3);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    private Image Helicopter4;
+
+    {
+        try {
+            Helicopter4 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Helicopter\\04.png"));
+            ImageView helicopterView4 = new ImageView(Helicopter4);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     private int level;
     private int maxLevel;
