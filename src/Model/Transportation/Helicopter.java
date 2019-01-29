@@ -3,6 +3,7 @@ package Model.Transportation;
 import Model.Box;
 import Model.Ground;
 import Model.Items.*;
+import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -12,45 +13,49 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Helicopter {
+    Group mainRoot;
     private Image Helicopter1;
-
+    ImageView helicopterView1;
     {
         try {
             Helicopter1 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Helicopter\\01.png"));
-            ImageView helicopterView1 = new ImageView(Helicopter1);
+             helicopterView1 = new ImageView(Helicopter1);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
-    private Image Helicopter2;
 
+    private Image Helicopter2;
+    ImageView helicopterView2;
     {
         try {
             Helicopter2 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Helicopter\\02.png"));
-            ImageView helicopterView2 = new ImageView(Helicopter2);
+             helicopterView2 = new ImageView(Helicopter2);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
-    private Image Helicopter3;
 
+    private Image Helicopter3;
+    ImageView helicopterView3;
     {
         try {
             Helicopter3 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Helicopter\\03.png"));
-            ImageView helicopterView3 = new ImageView(Helicopter3);
+             helicopterView3 = new ImageView(Helicopter3);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
-    private Image Helicopter4;
 
+    private Image Helicopter4;
+    ImageView helicopterView4;
     {
         try {
             Helicopter4 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Helicopter\\04.png"));
-            ImageView helicopterView4 = new ImageView(Helicopter4);
+             helicopterView4 = new ImageView(Helicopter4);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -65,7 +70,7 @@ public class Helicopter {
     private ArrayList<Box> boxes = new ArrayList<>();
     Ground ground;
 
-    public Helicopter(Ground ground) {
+    public Helicopter(Ground ground , Group mainRoot) {
         boxes.add(new Box());
         boxes.add(new Box());
         level = 1;
@@ -73,8 +78,47 @@ public class Helicopter {
         isInWorking = false;
         this.ground = ground;
         this.timeToTransit = 10;
+        this.mainRoot=mainRoot;
+        this.show();
     }
+    public void show(){
+        if(this.level ==1) {
+            helicopterView1.setX(600);
+            helicopterView1.setY(470);
+            this.mainRoot.getChildren().add(helicopterView1);
+            helicopterView1.setOnMouseClicked(event -> {
+                //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
+            });
+        }else if(this.level == 2){
+            helicopterView2.setX(600);
+            helicopterView2.setY(470);
+            this.mainRoot.getChildren().add(helicopterView2);
+            helicopterView2.setOnMouseClicked(event -> {
+                //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
+            });
+        }else if(this.level == 3){
+            helicopterView3.setX(600);
+            helicopterView3.setY(470);
+            this.mainRoot.getChildren().add(helicopterView3);
+            helicopterView3.setOnMouseClicked(event -> {
+                //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
+            });
+        }else if(this.level == 4){
+            helicopterView4.setX(600);
+            helicopterView4.setY(470);
+            this.mainRoot.getChildren().add(helicopterView4);
+            helicopterView4.setOnMouseClicked(event -> {
+                //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
+            });
+        }
 
+    }
+    public void remove(){
+        this.mainRoot.getChildren().remove(helicopterView1);
+        this.mainRoot.getChildren().remove(helicopterView2);
+        this.mainRoot.getChildren().remove(helicopterView3);
+        this.mainRoot.getChildren().remove(helicopterView4);
+    }
     public int getRandomRow(Ground ground) {
         Random random = new Random();
         return random.nextInt(ground.getNumberOfRows());
@@ -201,7 +245,8 @@ public class Helicopter {
         level++;
         boxes.add(new Box());
         boxes.add(new Box());
-
+        this.remove();
+        this.show();
     }
 
     @Override
