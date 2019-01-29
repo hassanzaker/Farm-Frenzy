@@ -1,7 +1,7 @@
 package Model.WorkShop;
 
 import Model.Ground;
-import View.Animations.SpriteAnimation.SpriteAnimation;
+import View.SpriteAnimation.SpriteAnimation;
 import javafx.animation.Animation;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
@@ -79,7 +79,12 @@ public class SewingFactory extends WorkShop{
             animation.setCycleCount(timeToWork);
             animation.play();
             //    this.upgrade();
-            this.workShopInput();
+            try {
+                this.workShopInput();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         });
     }
 
@@ -112,4 +117,83 @@ public class SewingFactory extends WorkShop{
         this.show();
     }
 
+    public Image getSewingFactory1() {
+        return SewingFactory1;
+    }
+
+    public void setSewingFactory1(Image sewingFactory1) {
+        SewingFactory1 = sewingFactory1;
+    }
+
+    public ImageView getSewingFactoryView1() {
+        return sewingFactoryView1;
+    }
+
+    public void setSewingFactoryView1(ImageView sewingFactoryView1) {
+        this.sewingFactoryView1 = sewingFactoryView1;
+    }
+
+    public Image getSewingFactory2() {
+        return SewingFactory2;
+    }
+
+    public void setSewingFactory2(Image sewingFactory2) {
+        SewingFactory2 = sewingFactory2;
+    }
+
+    public ImageView getSewingFactoryView2() {
+        return sewingFactoryView2;
+    }
+
+    public void setSewingFactoryView2(ImageView sewingFactoryView2) {
+        this.sewingFactoryView2 = sewingFactoryView2;
+    }
+
+    public Image getSewingFactory3() {
+        return SewingFactory3;
+    }
+
+    public void setSewingFactory3(Image sewingFactory3) {
+        SewingFactory3 = sewingFactory3;
+    }
+
+    public ImageView getSewingFactoryView3() {
+        return sewingFactoryView3;
+    }
+
+    public void setSewingFactoryView3(ImageView sewingFactoryView3) {
+        this.sewingFactoryView3 = sewingFactoryView3;
+    }
+
+    public Image getSewingFactory4() {
+        return SewingFactory4;
+    }
+
+    public void setSewingFactory4(Image sewingFactory4) {
+        SewingFactory4 = sewingFactory4;
+    }
+
+    public ImageView getSewingFactoryView4() {
+        return sewingFactoryView4;
+    }
+
+    public void setSewingFactoryView4(ImageView sewingFactoryView4) {
+        this.sewingFactoryView4 = sewingFactoryView4;
+    }
+
+    public Image getSewingFactory5() {
+        return SewingFactory5;
+    }
+
+    public void setSewingFactory5(Image sewingFactory5) {
+        SewingFactory5 = sewingFactory5;
+    }
+
+    public ImageView getSewingFactoryView5() {
+        return sewingFactoryView5;
+    }
+
+    public void setSewingFactoryView5(ImageView sewingFactoryView5) {
+        this.sewingFactoryView5 = sewingFactoryView5;
+    }
 }

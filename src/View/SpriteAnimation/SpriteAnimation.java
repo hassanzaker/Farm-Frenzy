@@ -1,4 +1,4 @@
-package View.Animations.SpriteAnimation;
+package View.SpriteAnimation;
 
 import javafx.animation.Interpolator;
 import javafx.animation.Transition;

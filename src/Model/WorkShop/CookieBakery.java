@@ -1,10 +1,7 @@
 package Model.WorkShop;
 
 import Model.Ground;
-import Model.Items.Cookie;
-import Model.Items.EggPowder;
-import Model.WorkShop.WorkShop;
-import View.Animations.SpriteAnimation.SpriteAnimation;
+import View.SpriteAnimation.SpriteAnimation;
 import javafx.animation.Animation;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
@@ -86,7 +83,11 @@ public class CookieBakery extends WorkShop {
             animation.setCycleCount(timeToWork);
             animation.play();
             //    this.upgrade();
-            this.workShopInput();
+            try {
+                this.workShopInput();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
     }
     public void show(){

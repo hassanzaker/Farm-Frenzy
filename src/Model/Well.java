@@ -1,14 +1,11 @@
 package Model;
 
-import View.Animations.SpriteAnimation.SpriteAnimation;
+import View.SpriteAnimation.SpriteAnimation;
 import javafx.animation.Animation;
-import javafx.animation.PauseTransition;
-import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 
 import java.io.FileInputStream;
@@ -22,6 +19,7 @@ public class Well {
     private int currentAmount;
     private int level;
     private int cost;
+    private  Ground ground;
     private Image WellImage1;
     ImageView wellView1;
     {
@@ -70,35 +68,56 @@ public class Well {
         }
     }
 
-    public Well(Group mainRoot) {
+    public Well(Group mainRoot , Ground ground) {
         this.mainRoot = mainRoot;
-        this.level = 1;
+        this.level = 4;
         this.timeToFill = 10;
         this.capacity = 5;
         this.currentAmount = this.capacity;
+        this.ground = ground;
         cost=19;
         this.show();
 
     }
-
-    public void show(){
-        wellView1.setViewport(new Rectangle2D(0, 0, 600/4, 544/4));
-        wellView1.setX(450);
-        wellView1.setY(80);
-        this.mainRoot.getChildren().add(wellView1);
-        wellView1.setOnMouseClicked(event -> {
+    public void setWorkShop(ImageView imageView , int width , int height , double x , double y){
+        imageView.setViewport(new Rectangle2D(0 , 0 , width , height));
+        imageView.setX(x);
+        imageView.setY(y);
+        this.mainRoot.getChildren().add(imageView);
+        imageView.setOnMouseClicked(event -> {
             final Animation animation =
-                    new SpriteAnimation(wellView1, Duration.millis(1000), 16, 4, 0, 0, 600/4, 544/4);
+                    new SpriteAnimation(imageView, Duration.millis(1000), 16, 4, 0, 0, width, height);
             animation.setCycleCount(timeToFill);
             animation.play();
+            //    this.upgrade();
+            try {
+                this.fill();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
         });
+    }
+    public void show(){
+        if(this.level == 1) {
+            this.setWorkShop(wellView1,600/4,544/4, 450,80 );
+        }else if(this.level == 2){
+            this.setWorkShop(wellView2,592/4,600/4, 450 ,80 );
+        }else if(this.level == 3){
+            this.setWorkShop(wellView3,576/4,632/4, 450 ,80 );
+        }else if(this.level == 4){
+            this.setWorkShop(wellView4,592/4,536/4, 450 ,80 );
+        }
     }
     public void remove(){
         this.mainRoot.getChildren().remove(wellView1);
         this.mainRoot.getChildren().remove(wellView2);
         this.mainRoot.getChildren().remove(wellView3);
         this.mainRoot.getChildren().remove(wellView4);
+
     }
+
+
 
 
     public void plant(Ground ground, int x, int y) throws Exception{
@@ -119,7 +138,7 @@ public class Well {
     }
 
     public void upgrade(int money) throws Exception {
-        if (this.level == 3) {
+        if (this.level == 4) {
             throw new Exception("well is max level!");
         }
         if (money < computeUpgradeCost()) {
@@ -130,7 +149,8 @@ public class Well {
         this.capacity += 2;
         this.currentAmount = this.capacity;
         this.cost -= 2;
-
+        this.remove();
+        this.show();
     }
 
     public boolean cehckTime() {
@@ -154,14 +174,15 @@ public class Well {
         this.currentAmount = currentAmount;
     }
 
-    public void fill(int money) throws Exception{
-        if (money < cost){
+    public void fill() throws Exception{
+        if (ground.getMoney() < cost){
             throw new Exception("not enough money!");
         }
         if (this.currentAmount > 0){
             throw new Exception("well is not empty!");
         }
         this.currentAmount = this.capacity;
+
     }
 
 
@@ -213,5 +234,85 @@ public class Well {
                 "current amount : " + String.valueOf(this.currentAmount) + "\n" +
                 "time to fill : " + String.valueOf(this.timeToFill) + "\n";
         return s;
+    }
+
+    public Group getMainRoot() {
+        return mainRoot;
+    }
+
+    public void setMainRoot(Group mainRoot) {
+        this.mainRoot = mainRoot;
+    }
+
+    public Ground getGround() {
+        return ground;
+    }
+
+    public void setGround(Ground ground) {
+        this.ground = ground;
+    }
+
+    public Image getWellImage1() {
+        return WellImage1;
+    }
+
+    public void setWellImage1(Image wellImage1) {
+        WellImage1 = wellImage1;
+    }
+
+    public ImageView getWellView1() {
+        return wellView1;
+    }
+
+    public void setWellView1(ImageView wellView1) {
+        this.wellView1 = wellView1;
+    }
+
+    public Image getWellImage2() {
+        return WellImage2;
+    }
+
+    public void setWellImage2(Image wellImage2) {
+        WellImage2 = wellImage2;
+    }
+
+    public ImageView getWellView2() {
+        return wellView2;
+    }
+
+    public void setWellView2(ImageView wellView2) {
+        this.wellView2 = wellView2;
+    }
+
+    public Image getWellImage3() {
+        return WellImage3;
+    }
+
+    public void setWellImage3(Image wellImage3) {
+        WellImage3 = wellImage3;
+    }
+
+    public ImageView getWellView3() {
+        return wellView3;
+    }
+
+    public void setWellView3(ImageView wellView3) {
+        this.wellView3 = wellView3;
+    }
+
+    public Image getWellImage4() {
+        return WellImage4;
+    }
+
+    public void setWellImage4(Image wellImage4) {
+        WellImage4 = wellImage4;
+    }
+
+    public ImageView getWellView4() {
+        return wellView4;
+    }
+
+    public void setWellView4(ImageView wellView4) {
+        this.wellView4 = wellView4;
     }
 }

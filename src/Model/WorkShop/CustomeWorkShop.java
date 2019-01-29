@@ -1,7 +1,7 @@
 package Model.WorkShop;
 
 import Model.Ground;
-import View.Animations.SpriteAnimation.SpriteAnimation;
+import View.SpriteAnimation.SpriteAnimation;
 import javafx.animation.Animation;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
@@ -28,7 +28,11 @@ public class CustomeWorkShop extends WorkShop {
             animation.setCycleCount(timeToWork);
             animation.play();
             //    this.upgrade();
-            this.workShopInput();
+            try {
+                this.workShopInput();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
     }
     public CustomeWorkShop(String name, ArrayList<String> inputs , ArrayList<String> outputs , Group mainRoot , Ground ground) {

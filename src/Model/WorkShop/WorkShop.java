@@ -2,12 +2,8 @@ package Model.WorkShop;
 
 import Model.Ground;
 import Model.Items.*;
-import View.Animations.SpriteAnimation.SpriteAnimation;
-import javafx.animation.Animation;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
-import javafx.util.Duration;
 
 import java.util.ArrayList;
 

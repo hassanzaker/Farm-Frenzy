@@ -1,8 +1,7 @@
 package Model.WorkShop;
 
-import Model.Items.EggPowder;
 import Model.Ground;
-import View.Animations.SpriteAnimation.SpriteAnimation;
+import View.SpriteAnimation.SpriteAnimation;
 import javafx.animation.Animation;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
@@ -80,7 +79,11 @@ public class EggPowderPlant extends WorkShop {
             animation.setCycleCount(timeToWork);
             animation.play();
             //    this.upgrade();
-            this.workShopInput();
+            try {
+                this.workShopInput();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         });
     }
     public void show(){
@@ -111,6 +114,83 @@ public class EggPowderPlant extends WorkShop {
         this.show();
     }
 
+    public Image getEggPowderPlant1() {
+        return EggPowderPlant1;
+    }
 
+    public void setEggPowderPlant1(Image eggPowderPlant1) {
+        EggPowderPlant1 = eggPowderPlant1;
+    }
 
+    public ImageView getEggPowderPlantView1() {
+        return eggPowderPlantView1;
+    }
+
+    public void setEggPowderPlantView1(ImageView eggPowderPlantView1) {
+        this.eggPowderPlantView1 = eggPowderPlantView1;
+    }
+
+    public Image getEggPowderPlant2() {
+        return EggPowderPlant2;
+    }
+
+    public void setEggPowderPlant2(Image eggPowderPlant2) {
+        EggPowderPlant2 = eggPowderPlant2;
+    }
+
+    public ImageView getEggPowderPlantView2() {
+        return eggPowderPlantView2;
+    }
+
+    public void setEggPowderPlantView2(ImageView eggPowderPlantView2) {
+        this.eggPowderPlantView2 = eggPowderPlantView2;
+    }
+
+    public Image getEggPowderPlant3() {
+        return EggPowderPlant3;
+    }
+
+    public void setEggPowderPlant3(Image eggPowderPlant3) {
+        EggPowderPlant3 = eggPowderPlant3;
+    }
+
+    public ImageView getEggPowderPlantView3() {
+        return eggPowderPlantView3;
+    }
+
+    public void setEggPowderPlantView3(ImageView eggPowderPlantView3) {
+        this.eggPowderPlantView3 = eggPowderPlantView3;
+    }
+
+    public Image getEggPowderPlant4() {
+        return EggPowderPlant4;
+    }
+
+    public void setEggPowderPlant4(Image eggPowderPlant4) {
+        EggPowderPlant4 = eggPowderPlant4;
+    }
+
+    public ImageView getEggPowderPlantView4() {
+        return eggPowderPlantView4;
+    }
+
+    public void setEggPowderPlantView4(ImageView eggPowderPlantView4) {
+        this.eggPowderPlantView4 = eggPowderPlantView4;
+    }
+
+    public Image getEggPowderPlant5() {
+        return EggPowderPlant5;
+    }
+
+    public void setEggPowderPlant5(Image eggPowderPlant5) {
+        EggPowderPlant5 = eggPowderPlant5;
+    }
+
+    public ImageView getEggPowderPlantView5() {
+        return eggPowderPlantView5;
+    }
+
+    public void setEggPowderPlantView5(ImageView eggPowderPlantView5) {
+        this.eggPowderPlantView5 = eggPowderPlantView5;
+    }
 }

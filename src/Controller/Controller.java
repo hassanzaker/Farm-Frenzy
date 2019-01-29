@@ -66,7 +66,7 @@ public class Controller {
 
     public void fillWell() {
         try {
-            grounds.get(level - 1).getWell().fill(grounds.get(level - 1).getMoney());
+            grounds.get(level - 1).getWell().fill();
             grounds.get(level - 1).setMoney(grounds.get(level - 1).getMoney() - grounds.get(level - 1).getWell().getCost());
         } catch (Exception e) {
         }

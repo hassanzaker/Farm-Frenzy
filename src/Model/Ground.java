@@ -40,9 +40,9 @@ public class Ground {
         this.workShops = new WorkShop[6];
         this.numberOfRows=600;
         this.numberOfColumns=600;
-        this.well = new Well(mainRoot);
-        this.truck = new Truck();
-        this.helicopter = new Helicopter(this);
+        this.well = new Well(mainRoot , this);
+        this.truck = new Truck(mainRoot);
+        this.helicopter = new Helicopter(this , mainRoot);
         this.wereHouse = new WereHouse(mainRoot);
         this.numberOfWorkShops = 0;
         for (int i = 0; i < 3; i++) {

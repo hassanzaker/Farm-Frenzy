@@ -1,4 +1,4 @@
-package View.Animations;
+package View;
 
 import Controller.*;
 import Model.Ground;

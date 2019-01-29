@@ -1,10 +1,7 @@
 package Model.WorkShop;
 
 import Model.Ground;
-import Model.Items.Cake;
-import Model.Items.Cookie;
-import Model.WorkShop.WorkShop;
-import View.Animations.SpriteAnimation.SpriteAnimation;
+import View.SpriteAnimation.SpriteAnimation;
 import javafx.animation.Animation;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
@@ -76,7 +73,24 @@ public class CakeBakery extends WorkShop {
             e.printStackTrace();
         }
     }
-
+    public void setWorkShop(ImageView imageView , int width , int height , double x , double y) {
+        imageView.setViewport(new Rectangle2D(0, 0, width, height));
+        imageView.setX(x);
+        imageView.setY(y);
+        this.mainRoot.getChildren().add(imageView);
+        imageView.setOnMouseClicked(event -> {
+            final Animation animation =
+                    new SpriteAnimation(imageView, Duration.millis(1000), 16, 4, 0, 0, width, height);
+            animation.setCycleCount(timeToWork);
+            animation.play();
+            //    this.upgrade();
+            try {
+                this.workShopInput();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+    }
     public void show(){
         if(this.level == 1) {
             this.setWorkShop(cakeBakeryView1,736/4,688/4, 100 ,250 );

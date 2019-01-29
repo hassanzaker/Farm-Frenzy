@@ -3,6 +3,7 @@ package Model.Transportation;
 import Model.Box;
 import Model.Ground;
 import Model.Items.*;
+import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -11,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class Truck {
+    private Group mainRoot;
     private int level;
     private int maxLevel;
     private int timeToTransit;
@@ -18,56 +20,58 @@ public class Truck {
     private boolean isInWorking;
     private ArrayList<Box> boxes = new ArrayList<>();
     private Image Truck1;
-
+    ImageView truckView1;
     {
         try {
             Truck1 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Truck\\01.png"));
-            ImageView truckView1 = new ImageView(Truck1);
+            truckView1 = new ImageView(Truck1);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
     private Image Truck2;
-
+    ImageView truckView2;
     {
         try {
             Truck2 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Truck\\02.png"));
-            ImageView truckView2 = new ImageView(Truck2);
+            truckView2 = new ImageView(Truck2);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
     private Image Truck3;
-
+    ImageView truckView3;
     {
         try {
             Truck3 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Truck\\03.png"));
-            ImageView truckView3 = new ImageView(Truck3);
+             truckView3 = new ImageView(Truck3);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
     private Image Truck4;
-
+    ImageView truckView4;
     {
         try {
             Truck4 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Truck\\04.png"));
-            ImageView truckView4 = new ImageView(Truck4);
+             truckView4 = new ImageView(Truck4);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
-    public Truck() {
+    public Truck(Group mainRoot) {
         boxes.add(new Box());
         boxes.add(new Box());
         level = 1;
         maxLevel = 4;
         isInWorking = false;
         this.timeToTransit = 10;
+        this.mainRoot = mainRoot;
+        this.show();
     }
 
     public void clearTruck() {
@@ -133,7 +137,44 @@ public class Truck {
         }
         return sum;
     }
+    public void show(){
+        if(this.level ==1) {
+            truckView1.setX(280);
+            truckView1.setY(470);
+            this.mainRoot.getChildren().add(truckView1);
+            truckView1.setOnMouseClicked(event -> {
+                //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
+            });
+        }else if(this.level == 2){
+            truckView2.setX(280);
+            truckView2.setY(470);
+            this.mainRoot.getChildren().add(truckView2);
+            truckView2.setOnMouseClicked(event -> {
+                //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
+            });
+        }else if(this.level == 3){
+            truckView3.setX(280);
+            truckView3.setY(470);
+            this.mainRoot.getChildren().add(truckView3);
+            truckView3.setOnMouseClicked(event -> {
+                //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
+            });
+        }else if(this.level == 4){
+            truckView4.setX(280);
+            truckView4.setY(470);
+            this.mainRoot.getChildren().add(truckView4);
+            truckView4.setOnMouseClicked(event -> {
+                //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
+            });
+        }
 
+    }
+    public void remove(){
+        this.mainRoot.getChildren().remove(truckView1);
+        this.mainRoot.getChildren().remove(truckView2);
+        this.mainRoot.getChildren().remove(truckView3);
+        this.mainRoot.getChildren().remove(truckView4);
+    }
     public void checkTime(Ground ground) {
         if (isInWorking) {
             this.currentTime++;
@@ -172,6 +213,8 @@ public class Truck {
         this.timeToTransit--;
         boxes.add(new Box());
         boxes.add(new Box());
+        this.remove();
+        this.show();
 
     }
 
