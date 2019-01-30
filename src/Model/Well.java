@@ -79,7 +79,7 @@ public class Well {
         this.show();
 
     }
-    public void setWorkShop(ImageView imageView , int width , int height , double x , double y){
+    public void setWell(ImageView imageView , int width , int height , double x , double y){
         imageView.setViewport(new Rectangle2D(0 , 0 , width , height));
         imageView.setX(x);
         imageView.setY(y);
@@ -100,13 +100,13 @@ public class Well {
     }
     public void show(){
         if(this.level == 1) {
-            this.setWorkShop(wellView1,600/4,544/4, 450,80 );
+            this.setWell(wellView1,600/4,544/4, 450,80 );
         }else if(this.level == 2){
-            this.setWorkShop(wellView2,592/4,600/4, 450 ,80 );
+            this.setWell(wellView2,592/4,600/4, 450 ,80 );
         }else if(this.level == 3){
-            this.setWorkShop(wellView3,576/4,632/4, 450 ,80 );
+            this.setWell(wellView3,576/4,632/4, 450 ,80 );
         }else if(this.level == 4){
-            this.setWorkShop(wellView4,592/4,536/4, 450 ,80 );
+            this.setWell(wellView4,592/4,536/4, 450 ,80 );
         }
     }
     public void remove(){

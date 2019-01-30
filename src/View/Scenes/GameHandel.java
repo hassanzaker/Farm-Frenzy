@@ -2,11 +2,14 @@ package View.Scenes;
 
 import Controller.Controller;
 import Controller.Level;
+import Model.Animals.*;
+import View.SpriteAnimation.SpriteAnimation;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import Controller.*;
 import Model.Ground;
@@ -32,13 +35,14 @@ import javafx.util.Duration;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class GameHandel {
     private Stage stage;
     private Group mainRoot;
     Scene gameScene ;
-    Image image;
 
+    Image image;
     {
         try {
             image = new Image(new FileInputStream("C:\\Users\\Zabba\\Desktop\\Textures\\back.png"));
@@ -46,8 +50,74 @@ public class GameHandel {
             e.printStackTrace();
         }
     }
-
     ImageView imageView = new ImageView(image);
+
+    Image BuyDog;
+    ImageView BuyDogView;{
+        try {
+            BuyDog = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Game\\UI\\Buttons\\buy_dog.png"));
+            BuyDogView = new ImageView(BuyDog);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Image BuyHen;
+    ImageView BuyHenView;{
+        try {
+            BuyHen = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Game\\UI\\Buttons\\buy_ostrich.png"));
+            BuyHenView = new ImageView(BuyHen);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Image BuySheep;
+    ImageView BuySheepView;{
+        try {
+            BuySheep = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Game\\UI\\Buttons\\buy_sheep.png"));
+            BuySheepView = new ImageView(BuySheep);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Image BuyCat1;
+    ImageView BuyCat1View;{
+        try {
+            BuyCat1 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Game\\UI\\Buttons\\buy_cat_1.png"));
+            BuyCat1View = new ImageView(BuyCat1);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+    private Image BuyCat2;
+    ImageView BuyCat2View;{
+        try {
+            BuyCat2 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Game\\UI\\Buttons\\buy_cat_2.png"));
+            BuyCat2View = new ImageView(BuyCat2);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Image BuyCow;
+    ImageView BuyCowView;{
+        try {
+            BuyCow = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Game\\UI\\Buttons\\buy_cow.png"));
+            BuyCowView = new ImageView(BuyCow);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public GameHandel(Group mainRoot ,Scene gameScene ,Stage stage){
         this.mainRoot=mainRoot;
         this.stage=stage;
@@ -93,11 +163,66 @@ public class GameHandel {
 
                     }
                 });
-
-       // tl.getKeyFrames().add(moveBall);
-
         tl.play();
-       // primaryStage.show();
-        //  WellButton wellButton = new WellButton(scene , controller ,mainRoot);
+    }
+    public void buyButtons(Controller controller){
+
+
+    }
+    public void setButtons(ImageView imageView , int width , int height , double x , double y , String type , Controller controller){
+        imageView.setViewport(new Rectangle2D(0 , 0 , width , height));
+        imageView.setX(x);
+        imageView.setY(y);
+        this.mainRoot.getChildren().add(imageView);
+        imageView.setOnMouseClicked(event -> {
+            final Animation animation =
+                    new SpriteAnimation(imageView,Duration.millis(0), 4, 1, 0, 0, width, height);
+            animation.setCycleCount(1);
+            animation.play();
+            //    this.upgrade();
+            Random random = new Random();
+           if(type.equals("Dog")){
+
+               Animal animal = new Dog(random.nextInt(40), random.nextInt(40)  , "1");
+               try {
+                   controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
+               } catch (Exception e) {
+                   e.printStackTrace();
+               }
+           }else if(type.equals("Cat1")){
+
+               Animal animal = new Cat(random.nextInt(40), random.nextInt(40)  , "1");
+               try {
+                   controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
+               } catch (Exception e) {
+                   e.printStackTrace();
+               }
+           }else if(type.equals("Hen")){
+
+               Animal animal = new Hen(random.nextInt(40), random.nextInt(40)  , "1");
+               try {
+                   controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
+               } catch (Exception e) {
+                   e.printStackTrace();
+               }
+           }else if(type.equals("Cow")){
+
+               Animal animal = new Cow(random.nextInt(40), random.nextInt(40)  , "1");
+               try {
+                   controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
+               } catch (Exception e) {
+                   e.printStackTrace();
+               }
+           }else if(type.equals("Sheep")){
+
+               Animal animal = new Sheep(random.nextInt(40), random.nextInt(40)  , "1");
+               try {
+                   controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
+               } catch (Exception e) {
+                   e.printStackTrace();
+               }
+           }
+
+        });
     }
 }
