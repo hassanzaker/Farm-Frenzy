@@ -34,13 +34,25 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class GameHandel {
+    private Stage stage;
     private Group mainRoot;
-    Scene scene = new Scene(mainRoot, 1000, 750, Color.rgb(180, 180, 180));
-    Image image = new Image(new FileInputStream("C:\\Users\\Zabba\\Desktop\\Textures\\back.png"));
+    Scene gameScene ;
+    Image image;
+
+    {
+        try {
+            image = new Image(new FileInputStream("C:\\Users\\Zabba\\Desktop\\Textures\\back.png"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     ImageView imageView = new ImageView(image);
-    public GameHandel(Group mainRoot){
+    public GameHandel(Group mainRoot ,Scene gameScene ,Stage stage){
         this.mainRoot=mainRoot;
+        this.stage=stage;
+        this.gameScene=gameScene;
+        this.stage.setScene(gameScene);
         build();
     }
     public void build() {
@@ -69,7 +81,7 @@ public class GameHandel {
 
 
 
-        //primaryStage.setScene(scene);
+        stage.setScene(gameScene);
         Timeline tl = new Timeline();
         tl.setCycleCount(Animation.INDEFINITE);
         KeyFrame moveBall = new KeyFrame(Duration.millis(500),
@@ -82,7 +94,7 @@ public class GameHandel {
                     }
                 });
 
-        tl.getKeyFrames().add(moveBall);
+       // tl.getKeyFrames().add(moveBall);
 
         tl.play();
        // primaryStage.show();
