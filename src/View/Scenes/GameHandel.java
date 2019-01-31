@@ -55,7 +55,7 @@ public class GameHandel {
     Image BuyDog;
     ImageView BuyDogView;{
         try {
-            BuyDog = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Game\\UI\\Buttons\\buy_dog.png"));
+            BuyDog = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Game\\UI\\Buttons\\buy_dog_1.png"));
             BuyDogView = new ImageView(BuyDog);
 
         } catch (FileNotFoundException e) {
@@ -95,6 +95,7 @@ public class GameHandel {
             e.printStackTrace();
         }
     }
+
     private Image BuyCat2;
     ImageView BuyCat2View;{
         try {
@@ -125,6 +126,7 @@ public class GameHandel {
         this.stage.setScene(gameScene);
         build();
     }
+
     public void build() {
         ArrayList<Level> levels = new ArrayList<>();
         String[] types = new String[3];
@@ -149,12 +151,12 @@ public class GameHandel {
         controller.startWorkShop("WevingFactory");
         controller.startWorkShop("SewingFactory");
 
-
+         buyButtons(controller);
 
         stage.setScene(gameScene);
         Timeline tl = new Timeline();
         tl.setCycleCount(Animation.INDEFINITE);
-        KeyFrame moveBall = new KeyFrame(Duration.millis(500),
+        KeyFrame gamehandling = new KeyFrame(Duration.millis(500),
                 new EventHandler<ActionEvent>() {
 
                     public void handle(ActionEvent event) {
@@ -165,10 +167,16 @@ public class GameHandel {
                 });
         tl.play();
     }
+
     public void buyButtons(Controller controller){
-
-
+         setButtons(BuyHenView , 60 , 248/4 , 30 , 30 , "Hen" , controller);
+         setButtons(BuySheepView , 60 , 248/4 , 90 , 30 , "Sheep" , controller);
+        setButtons(BuyCowView , 60 , 248/4 , 150 , 30 , "Cow" , controller);
+         setButtons(BuyDogView , 60 , 248/4 , 210 , 30 , "Dog" , controller);
+        setButtons(BuyCat1View , 60 , 248/4 , 270 , 30 , "Cat1" , controller);
+        setButtons(BuyCat2View , 60 , 248/4 , 330 , 30 , "Cat2" , controller);
     }
+
     public void setButtons(ImageView imageView , int width , int height , double x , double y , String type , Controller controller){
         imageView.setViewport(new Rectangle2D(0 , 0 , width , height));
         imageView.setX(x);
@@ -221,8 +229,153 @@ public class GameHandel {
                } catch (Exception e) {
                    e.printStackTrace();
                }
+           }else if(type.equals("Cat2")){
+
+               Animal animal = new Cat(random.nextInt(40), random.nextInt(40)  , "1");
+               ((Cat) animal).setLevel(2);
+               try {
+                   controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
+               } catch (Exception e) {
+                   e.printStackTrace();
+               }
            }
 
         });
+    }
+
+    public Stage getStage() {
+        return stage;
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public Group getMainRoot() {
+        return mainRoot;
+    }
+
+    public void setMainRoot(Group mainRoot) {
+        this.mainRoot = mainRoot;
+    }
+
+    public Scene getGameScene() {
+        return gameScene;
+    }
+
+    public void setGameScene(Scene gameScene) {
+        this.gameScene = gameScene;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public ImageView getImageView() {
+        return imageView;
+    }
+
+    public void setImageView(ImageView imageView) {
+        this.imageView = imageView;
+    }
+
+    public Image getBuyDog() {
+        return BuyDog;
+    }
+
+    public void setBuyDog(Image buyDog) {
+        BuyDog = buyDog;
+    }
+
+    public ImageView getBuyDogView() {
+        return BuyDogView;
+    }
+
+    public void setBuyDogView(ImageView buyDogView) {
+        BuyDogView = buyDogView;
+    }
+
+    public Image getBuyHen() {
+        return BuyHen;
+    }
+
+    public void setBuyHen(Image buyHen) {
+        BuyHen = buyHen;
+    }
+
+    public ImageView getBuyHenView() {
+        return BuyHenView;
+    }
+
+    public void setBuyHenView(ImageView buyHenView) {
+        BuyHenView = buyHenView;
+    }
+
+    public Image getBuySheep() {
+        return BuySheep;
+    }
+
+    public void setBuySheep(Image buySheep) {
+        BuySheep = buySheep;
+    }
+
+    public ImageView getBuySheepView() {
+        return BuySheepView;
+    }
+
+    public void setBuySheepView(ImageView buySheepView) {
+        BuySheepView = buySheepView;
+    }
+
+    public Image getBuyCat1() {
+        return BuyCat1;
+    }
+
+    public void setBuyCat1(Image buyCat1) {
+        BuyCat1 = buyCat1;
+    }
+
+    public ImageView getBuyCat1View() {
+        return BuyCat1View;
+    }
+
+    public void setBuyCat1View(ImageView buyCat1View) {
+        BuyCat1View = buyCat1View;
+    }
+
+    public Image getBuyCat2() {
+        return BuyCat2;
+    }
+
+    public void setBuyCat2(Image buyCat2) {
+        BuyCat2 = buyCat2;
+    }
+
+    public ImageView getBuyCat2View() {
+        return BuyCat2View;
+    }
+
+    public void setBuyCat2View(ImageView buyCat2View) {
+        BuyCat2View = buyCat2View;
+    }
+
+    public Image getBuyCow() {
+        return BuyCow;
+    }
+
+    public void setBuyCow(Image buyCow) {
+        BuyCow = buyCow;
+    }
+
+    public ImageView getBuyCowView() {
+        return BuyCowView;
+    }
+
+    public void setBuyCowView(ImageView buyCowView) {
+        BuyCowView = buyCowView;
     }
 }
