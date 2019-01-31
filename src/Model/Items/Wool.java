@@ -1,7 +1,24 @@
 package Model.Items;
 
-public class Wool extends Item {
+import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+public class Wool extends Item {
+    private Image image;
+    ImageView imageView;
+    {
+        try {
+            image= new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Products\\Wool.png"));
+            imageView= new ImageView(image);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
     private final int buyCost = 200;
     private final int saleCost = 100;
 
@@ -13,8 +30,8 @@ public class Wool extends Item {
         return saleCost;
     }
 
-    public Wool(int x, int y , String ID , Boolean inGrounad) {
-        super(x, y , ID, inGrounad);
+    public Wool(int x, int y , String ID , Boolean inGrounad , Group maiRoot) {
+        super(x, y , ID, inGrounad , maiRoot);
         this.setVolume(5);
         this.type="Wool";
     }

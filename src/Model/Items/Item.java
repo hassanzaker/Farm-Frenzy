@@ -1,7 +1,10 @@
 package Model.Items;
 
+import javafx.scene.Group;
+
 public abstract class Item {
-    private int volume;
+    protected int volume;
+    protected Group mainRoot;
     protected int row;
     protected int column;
     protected String ID;
@@ -9,11 +12,19 @@ public abstract class Item {
     protected String type;
     protected int sellPrice;
     protected int  buyPrice;
-    public Item( int x, int y , String ID , Boolean inGrounad) {
+    public  void show(){
+
+    }
+    public void remove(){
+
+    }
+    public Item(int x, int y , String ID , Boolean inGrounad , Group mainRoot ) {
         this.row = x;
         this.column = y;
         this.ID = ID;
         this.inGrounad = inGrounad;
+        this.mainRoot= mainRoot;
+        this.show();
     }
 
 
