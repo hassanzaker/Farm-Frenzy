@@ -4,12 +4,75 @@ import Model.Cell;
 import Model.Ground;
 import Model.Items.Item;
 import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Random;
 
 public class Cat extends Animal {
     private int level;
     private int speed;
+    private Image catUp;
+    ImageView catUpView;
+    {
+        try {
+            catUp = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Cat\\up.png"));
+            catUpView = new ImageView(catUp);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Image catLeft;
+    ImageView catLeftView;
+    {
+        try {
+            catLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Cat\\left.png"));
+            catLeftView = new ImageView(catLeft);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Image catDown;
+    ImageView catDownView;
+    {
+        try {
+            catDown = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Cat\\down.png"));
+            catDownView = new ImageView(catDown);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Image catUpLeft;
+    ImageView catUpLeftView;
+    {
+        try {
+            catUpLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Cat\\up_left.png"));
+            catUpLeftView = new ImageView(catUpLeft);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Image catDownLeft;
+    ImageView catDownLefView;
+    {
+        try {
+            catDownLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Cat\\down_left.png"));
+            catDownLefView = new ImageView(catDownLeft);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     public Cat(int x, int y, String ID , Group mainRoot) {
         super(x, y, ID ,mainRoot);

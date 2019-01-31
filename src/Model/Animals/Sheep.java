@@ -14,10 +14,11 @@ import java.io.FileNotFoundException;
 
 public class Sheep extends ProducerAnimal {
     private Image SheepUp;
+    ImageView sheepUpView;
     {
         try {
             SheepUp = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\up.png"));
-            ImageView wellView = new ImageView(SheepUp);
+             sheepUpView = new ImageView(SheepUp);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -25,10 +26,11 @@ public class Sheep extends ProducerAnimal {
     }
 
     private Image SheepLeft;
+    ImageView sheepLeftView;
     {
         try {
             SheepLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\left.png"));
-            ImageView wellView = new ImageView(SheepLeft);
+             sheepLeftView = new ImageView(SheepLeft);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -36,10 +38,11 @@ public class Sheep extends ProducerAnimal {
     }
 
     private Image SheepDown;
+    ImageView sheepDownView;
     {
         try {
             SheepDown = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\down.png"));
-            ImageView wellView = new ImageView(SheepDown);
+            sheepDownView = new ImageView(SheepDown);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -47,10 +50,11 @@ public class Sheep extends ProducerAnimal {
     }
 
     private Image SheepDeath;
+    ImageView sheepDeathView;
     {
         try {
             SheepDeath = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\death.png"));
-            ImageView wellView = new ImageView(SheepDeath);
+            sheepDeathView = new ImageView(SheepDeath);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -58,10 +62,11 @@ public class Sheep extends ProducerAnimal {
     }
 
     private Image SheepUpLeft;
+    ImageView sheepUpLeftView;
     {
         try {
             SheepUpLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\up_left.png"));
-            ImageView wellView = new ImageView(SheepUpLeft);
+            sheepUpLeftView = new ImageView(SheepUpLeft);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -69,10 +74,11 @@ public class Sheep extends ProducerAnimal {
     }
 
     private Image SheepDownLeft;
+    ImageView sheepDownLefView;
     {
         try {
             SheepDownLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\down_left.png"));
-            ImageView wellView = new ImageView(SheepDownLeft);
+            sheepDownLefView = new ImageView(SheepDownLeft);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -80,10 +86,11 @@ public class Sheep extends ProducerAnimal {
     }
 
     private Image SheepEat;
+    ImageView sheepEatView;
     {
         try {
             SheepEat = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\eat.png"));
-            ImageView wellView = new ImageView(SheepEat);
+            sheepEatView = new ImageView(SheepEat);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -10,10 +10,11 @@ import java.util.Random;
 
 public class Bear extends WildAnimal {
     private Image BearUp;
+    ImageView BearUpView;
     {
         try {
             BearUp = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Grizzly\\up.png"));
-            ImageView wellView = new ImageView(BearUp);
+            BearUpView = new ImageView(BearUp);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -21,10 +22,11 @@ public class Bear extends WildAnimal {
     }
 
     private Image BearLeft;
+    ImageView BearLeftView;
     {
         try {
             BearLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Grizzly\\left.png"));
-            ImageView wellView = new ImageView(BearLeft);
+             BearLeftView = new ImageView(BearLeft);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -32,10 +34,11 @@ public class Bear extends WildAnimal {
     }
 
     private Image BearDown;
+    ImageView BearDownView;
     {
         try {
             BearDown = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Grizzly\\down.png"));
-            ImageView wellView = new ImageView(BearDown);
+            BearDownView = new ImageView(BearDown);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -43,10 +46,11 @@ public class Bear extends WildAnimal {
     }
 
     private Image BearCaged;
+    ImageView BearCagedView;
     {
         try {
             BearCaged = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Grizzly\\caged.png"));
-            ImageView wellView = new ImageView(BearCaged);
+            BearCagedView = new ImageView(BearCaged);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -54,10 +58,11 @@ public class Bear extends WildAnimal {
     }
 
     private Image BearUpLeft;
+    ImageView BearUpLeftView;
     {
         try {
             BearUpLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Grizzly\\up_left.png"));
-            ImageView wellView = new ImageView(BearUpLeft);
+             BearUpLeftView = new ImageView(BearUpLeft);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -65,10 +70,11 @@ public class Bear extends WildAnimal {
     }
 
     private Image BearDownLeft;
+    ImageView BearDownLeftView;
     {
         try {
             BearDownLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Grizzly\\down_left.png"));
-            ImageView wellView = new ImageView(BearDownLeft);
+            BearDownLeftView = new ImageView(BearDownLeft);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();

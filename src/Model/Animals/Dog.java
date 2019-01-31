@@ -3,12 +3,75 @@ package Model.Animals;
 import Model.Cell;
 import Model.Ground;
 import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Random;
 
 public class Dog extends Animal {
     private int level;
     private int speed;
+    private Image dogUp;
+    ImageView dogUpView;
+    {
+        try {
+            dogUp = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Dog\\up.png"));
+            dogUpView = new ImageView(dogUp);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Image dogLeft;
+    ImageView dogLeftView;
+    {
+        try {
+            dogLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Dog\\left.png"));
+            dogLeftView = new ImageView(dogLeft);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Image dogDown;
+    ImageView dogDownView;
+    {
+        try {
+            dogDown = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Dog\\down.png"));
+            dogDownView = new ImageView(dogDown);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Image dogUpLeft;
+    ImageView dogUpLeftView;
+    {
+        try {
+            dogUpLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Dog\\up_left.png"));
+            dogUpLeftView = new ImageView(dogUpLeft);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Image dogDownLeft;
+    ImageView dogDownLefView;
+    {
+        try {
+            dogDownLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Dog\\down_left.png"));
+            dogDownLefView = new ImageView(dogDownLeft);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 
     public Dog(int x, int y, String ID , Group mainRoot) {
         super(x, y, ID , mainRoot);
