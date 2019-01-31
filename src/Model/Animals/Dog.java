@@ -2,6 +2,7 @@ package Model.Animals;
 
 import Model.Cell;
 import Model.Ground;
+import javafx.scene.Group;
 
 import java.util.Random;
 
@@ -9,8 +10,8 @@ public class Dog extends Animal {
     private int level;
     private int speed;
 
-    public Dog(int x, int y, String ID) {
-        super(x, y, ID);
+    public Dog(int x, int y, String ID , Group mainRoot) {
+        super(x, y, ID , mainRoot);
         this.level = 1;
         this.speed = 10;
         this.name = "dog";

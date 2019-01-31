@@ -191,7 +191,7 @@ public class GameHandel {
             Random random = new Random();
            if(type.equals("Dog")){
 
-               Animal animal = new Dog(random.nextInt(40), random.nextInt(40)  , "1");
+               Animal animal = new Dog(random.nextInt(40), random.nextInt(40)  , "1" , mainRoot);
                try {
                    controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
                } catch (Exception e) {
@@ -199,7 +199,7 @@ public class GameHandel {
                }
            }else if(type.equals("Cat1")){
 
-               Animal animal = new Cat(random.nextInt(40), random.nextInt(40)  , "1");
+               Animal animal = new Cat(random.nextInt(40), random.nextInt(40)  , "1" , mainRoot);
                try {
                    controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
                } catch (Exception e) {
@@ -207,7 +207,7 @@ public class GameHandel {
                }
            }else if(type.equals("Hen")){
 
-               Animal animal = new Hen(random.nextInt(40), random.nextInt(40)  , "1");
+               Animal animal = new Hen(random.nextInt(40), random.nextInt(40)  , "1" , mainRoot);
                try {
                    controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
                } catch (Exception e) {
@@ -215,7 +215,7 @@ public class GameHandel {
                }
            }else if(type.equals("Cow")){
 
-               Animal animal = new Cow(random.nextInt(40), random.nextInt(40)  , "1");
+               Animal animal = new Cow(random.nextInt(40), random.nextInt(40)  , "1" , mainRoot);
                try {
                    controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
                } catch (Exception e) {
@@ -223,7 +223,7 @@ public class GameHandel {
                }
            }else if(type.equals("Sheep")){
 
-               Animal animal = new Sheep(random.nextInt(40), random.nextInt(40)  , "1");
+               Animal animal = new Sheep(random.nextInt(40), random.nextInt(40)  , "1" , mainRoot);
                try {
                    controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
                } catch (Exception e) {
@@ -231,7 +231,7 @@ public class GameHandel {
                }
            }else if(type.equals("Cat2")){
 
-               Animal animal = new Cat(random.nextInt(40), random.nextInt(40)  , "1");
+               Animal animal = new Cat(random.nextInt(40), random.nextInt(40)  , "1" , mainRoot);
                ((Cat) animal).setLevel(2);
                try {
                    controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);

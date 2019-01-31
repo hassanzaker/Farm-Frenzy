@@ -2,22 +2,25 @@ package Model.Animals;
 
 import Model.Cell;
 import Model.Ground;
+import javafx.scene.Group;
 
 import java.util.Random;
 
 
 public abstract class Animal {
+    protected Group mainRoot;
     protected int row;
     protected int column;
     protected int cost;
     protected String ID;
     protected String name;
 
-    public Animal(int x, int y, String ID) {
+    public Animal(int x, int y, String ID , Group mainRoot) {
         Random r = new Random();
         this.row = r.nextInt(y);
         this.column = r.nextInt(x);
         this.ID = ID;
+        this.mainRoot = mainRoot;
     }
 
     public int direction(Ground ground) {

@@ -2,6 +2,7 @@ package Model.Animals;
 
 import Model.Cell;
 import Model.Ground;
+import javafx.scene.Group;
 
 public abstract class ProducerAnimal extends Animal {
     protected int maxEnergy;
@@ -9,8 +10,8 @@ public abstract class ProducerAnimal extends Animal {
     protected int timeToProduce;
     protected int currentTime;
 
-    public ProducerAnimal(int x, int y, String ID) {
-        super(x, y, ID);
+    public ProducerAnimal(int x, int y, String ID , Group mainRoot) {
+        super(x, y, ID , mainRoot);
         this.timeToProduce = 15;
         maxEnergy = 20;
         this.energyLevel = 20;

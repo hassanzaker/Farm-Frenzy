@@ -1,5 +1,6 @@
 package Model.Animals;
 
+import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
@@ -73,8 +74,8 @@ public class Lion extends WildAnimal {
             e.printStackTrace();
         }
     }
-    public Lion(int x, int y, String ID) {
-        super(x, y, ID);
+    public Lion(int x, int y, String ID , Group mainRoot) {
+        super(x, y, ID , mainRoot);
         this.name = "lion";
     }
 

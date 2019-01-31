@@ -157,27 +157,27 @@ public abstract class WorkShop {
              //   System.out.println("come");
                 for (int j = 0; j < outputs.size(); j++) {
                     if (outputs.get(j).equals("Egg")) {
-                        this.ground.addItem(new Egg(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new Egg(this.rowForOutPut + i, this.columnForOutput, "0", true , mainRoot));
                     } else if (outputs.get(j).equals("EggPowder")) {
-                        this.ground.addItem(new EggPowder(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new EggPowder(this.rowForOutPut + i, this.columnForOutput, "0", true , mainRoot));
                     } else if (outputs.get(j).equals("Cake")) {
-                        this.ground.addItem(new Cake(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new Cake(this.rowForOutPut + i, this.columnForOutput, "0", true , mainRoot));
                     } else if (outputs.get(j).equals("Cookie")) {
-                        this.ground.addItem(new Cookie(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new Cookie(this.rowForOutPut + i, this.columnForOutput, "0", true , mainRoot));
                     } else if (outputs.get(j).equals("Milk")) {
-                        this.ground.addItem(new Milk(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new Milk(this.rowForOutPut + i, this.columnForOutput, "0", true , mainRoot));
                     } else if (outputs.get(j).equals("FLour")) {
-                        this.ground.addItem(new Flour(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new Flour(this.rowForOutPut + i, this.columnForOutput, "0", true , mainRoot));
                     } else if (outputs.get(j).equals("Wool")) {
-                        this.ground.addItem(new Wool(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new Wool(this.rowForOutPut + i, this.columnForOutput, "0", true , mainRoot));
                     } else if (outputs.get(j).equals("Sewing")) {
-                        this.ground.addItem(new Sewing(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new Sewing(this.rowForOutPut + i, this.columnForOutput, "0", true, mainRoot));
                     } else if (outputs.get(j).equals("Fabric")) {
-                        this.ground.addItem(new Fabric(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new Fabric(this.rowForOutPut + i, this.columnForOutput, "0", true , mainRoot));
                     } else if (outputs.get(j).equals("ColoredPlume")) {
-                        this.ground.addItem(new ColoredPlume(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new ColoredPlume(this.rowForOutPut + i, this.columnForOutput, "0", true , mainRoot));
                     } else if (outputs.get(j).equals("CarnivalDress")) {
-                        this.ground.addItem(new CarnivalDress(this.rowForOutPut + i, this.columnForOutput, "0", true));
+                        this.ground.addItem(new CarnivalDress(this.rowForOutPut + i, this.columnForOutput, "0", true , mainRoot));
                     }
                 }
             }

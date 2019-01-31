@@ -12,6 +12,7 @@ import javafx.scene.Group;
 import java.util.ArrayList;
 
 public class Ground {
+    private Group mainRoot;
     private Cell[][] cells;
     private WorkShop[] workShops;
     private ArrayList<Item> items = new ArrayList<>();
@@ -37,6 +38,7 @@ public class Ground {
                 cells[i][j] = new Cell();
             }
         }
+        this.mainRoot=mainRoot;
         this.workShops = new WorkShop[6];
         this.numberOfRows=600;
         this.numberOfColumns=600;
@@ -49,7 +51,7 @@ public class Ground {
             missions[i] = new Mission(level.getTypes()[i], level.getNeed()[i]);
         }
         this.money = level.getFirstMoney();
-        items.add(new Egg(25, 33, "", false));
+        items.add(new Egg(25, 33, "", false , mainRoot));
     }
 
     public void buyAnimal(Animal animal) throws Exception {
@@ -330,5 +332,13 @@ public class Ground {
 
     public void setMissions(Mission[] missions) {
         this.missions = missions;
+    }
+
+    public Group getMainRoot() {
+        return mainRoot;
+    }
+
+    public void setMainRoot(Group mainRoot) {
+        this.mainRoot = mainRoot;
     }
 }

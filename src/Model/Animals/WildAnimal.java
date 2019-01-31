@@ -2,12 +2,13 @@ package Model.Animals;
 
 import Model.Cell;
 import Model.Ground;
+import javafx.scene.Group;
 
 public abstract class WildAnimal extends Animal {
     protected int volume;
 
-    public WildAnimal(int x, int y, String ID) {
-        super(x, y, ID);
+    public WildAnimal(int x, int y, String ID , Group mainRoot) {
+        super(x, y, ID , mainRoot);
     }
 
     public int getVolume() {

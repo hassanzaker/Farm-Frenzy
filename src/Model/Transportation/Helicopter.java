@@ -155,27 +155,27 @@ public class Helicopter {
         Boolean checkItemCanAddToBox = false;
         Item item = null;
         if (type.equals("Egg")) {
-            item = new Egg(getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new Egg(getRandomRow(ground), getRandomColumn(ground), "0", true , mainRoot);
         } else if (type.equals("EggPowder")) {
-            item = new EggPowder(getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new EggPowder(getRandomRow(ground), getRandomColumn(ground), "0", true , mainRoot);
         } else if (type.equals("Cake")) {
-            item = new Cake(getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new Cake(getRandomRow(ground), getRandomColumn(ground), "0", true , mainRoot);
         } else if (type.equals("Cookie")) {
-            item = new Cookie(getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new Cookie(getRandomRow(ground), getRandomColumn(ground), "0", true , mainRoot);
         } else if (type.equals("Milk")) {
-            item = new Milk(getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new Milk(getRandomRow(ground), getRandomColumn(ground), "0", true ,mainRoot);
         } else if (type.equals("FLour")) {
-            item = new Flour(getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new Flour(getRandomRow(ground), getRandomColumn(ground), "0", true, mainRoot);
         } else if (type.equals("Wool")) {
-            item = new Wool(getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new Wool(getRandomRow(ground), getRandomColumn(ground), "0", true , mainRoot);
         } else if (type.equals("Sewing")) {
-            item = new Sewing(getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new Sewing(getRandomRow(ground), getRandomColumn(ground), "0", true , mainRoot);
         } else if (type.equals("Fabric")) {
-            item = new Fabric(getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new Fabric(getRandomRow(ground), getRandomColumn(ground), "0", true , mainRoot);
         } else if (type.equals("ColoredPlume")) {
-            item = new ColoredPlume(getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new ColoredPlume(getRandomRow(ground), getRandomColumn(ground), "0", true , mainRoot);
         } else if (type.equals("CarnivalDress")) {
-            item = new CarnivalDress(getRandomRow(ground), getRandomColumn(ground), "0", true);
+            item = new CarnivalDress(getRandomRow(ground), getRandomColumn(ground), "0", true , mainRoot);
         }
         for (int j = 0; j < boxes.size(); j++) {
             if (boxes.get(j).checkFull() == false) {
