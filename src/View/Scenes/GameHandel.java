@@ -25,6 +25,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
@@ -40,9 +41,10 @@ import java.util.Random;
 public class GameHandel {
     private Stage stage;
     private Group mainRoot;
-    Scene gameScene ;
+    Scene gameScene;
 
     Image image;
+
     {
         try {
             image = new Image(new FileInputStream("C:\\Users\\Zabba\\Desktop\\Textures\\back.png"));
@@ -50,10 +52,13 @@ public class GameHandel {
             e.printStackTrace();
         }
     }
+
     ImageView imageView = new ImageView(image);
 
     Image BuyDog;
-    ImageView BuyDogView;{
+    ImageView BuyDogView;
+
+    {
         try {
             BuyDog = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Game\\UI\\Buttons\\buy_dog_1.png"));
             BuyDogView = new ImageView(BuyDog);
@@ -64,7 +69,9 @@ public class GameHandel {
     }
 
     private Image BuyHen;
-    ImageView BuyHenView;{
+    ImageView BuyHenView;
+
+    {
         try {
             BuyHen = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Game\\UI\\Buttons\\buy_ostrich.png"));
             BuyHenView = new ImageView(BuyHen);
@@ -75,7 +82,9 @@ public class GameHandel {
     }
 
     private Image BuySheep;
-    ImageView BuySheepView;{
+    ImageView BuySheepView;
+
+    {
         try {
             BuySheep = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Game\\UI\\Buttons\\buy_sheep.png"));
             BuySheepView = new ImageView(BuySheep);
@@ -86,7 +95,9 @@ public class GameHandel {
     }
 
     private Image BuyCat1;
-    ImageView BuyCat1View;{
+    ImageView BuyCat1View;
+
+    {
         try {
             BuyCat1 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Game\\UI\\Buttons\\buy_cat_1.png"));
             BuyCat1View = new ImageView(BuyCat1);
@@ -97,7 +108,9 @@ public class GameHandel {
     }
 
     private Image BuyCat2;
-    ImageView BuyCat2View;{
+    ImageView BuyCat2View;
+
+    {
         try {
             BuyCat2 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Game\\UI\\Buttons\\buy_cat_2.png"));
             BuyCat2View = new ImageView(BuyCat2);
@@ -108,7 +121,9 @@ public class GameHandel {
     }
 
     private Image BuyCow;
-    ImageView BuyCowView;{
+    ImageView BuyCowView;
+
+    {
         try {
             BuyCow = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Game\\UI\\Buttons\\buy_cow.png"));
             BuyCowView = new ImageView(BuyCow);
@@ -119,10 +134,10 @@ public class GameHandel {
     }
 
 
-    public GameHandel(Group mainRoot ,Scene gameScene ,Stage stage){
-        this.mainRoot=mainRoot;
-        this.stage=stage;
-        this.gameScene=gameScene;
+    public GameHandel(Group mainRoot, Scene gameScene, Stage stage) {
+        this.mainRoot = mainRoot;
+        this.stage = stage;
+        this.gameScene = gameScene;
         this.stage.setScene(gameScene);
         build();
     }
@@ -151,7 +166,23 @@ public class GameHandel {
         controller.startWorkShop("WevingFactory");
         controller.startWorkShop("SewingFactory");
 
-         buyButtons(controller);
+//
+//        for (int i=0 ; i<39 ; i++) {
+//            for (int j=0 ; j<39 ; j++) {
+//                Button button = new Button();
+//                button.setVisible(true);
+//                button.setLayoutX(250 + 13 * i);
+//                button.setLayoutY(210 + 10 * j);
+//                button.setScaleX(0.86);
+//                button.setScaleY(0.4);
+//                mainRoot.getChildren().add(button);
+//            }
+//        }
+
+
+
+
+        buyButtons(controller);
 
         stage.setScene(gameScene);
         Timeline tl = new Timeline();
@@ -168,77 +199,77 @@ public class GameHandel {
         tl.play();
     }
 
-    public void buyButtons(Controller controller){
-         setButtons(BuyHenView , 60 , 248/4 , 30 , 30 , "Hen" , controller);
-         setButtons(BuySheepView , 60 , 248/4 , 90 , 30 , "Sheep" , controller);
-        setButtons(BuyCowView , 60 , 248/4 , 150 , 30 , "Cow" , controller);
-         setButtons(BuyDogView , 60 , 248/4 , 210 , 30 , "Dog" , controller);
-        setButtons(BuyCat1View , 60 , 248/4 , 270 , 30 , "Cat1" , controller);
-        setButtons(BuyCat2View , 60 , 248/4 , 330 , 30 , "Cat2" , controller);
+    public void buyButtons(Controller controller) {
+        setButtons(BuyHenView, 60, 248 / 4, 30, 30, "Hen", controller);
+        setButtons(BuySheepView, 60, 248 / 4, 90, 30, "Sheep", controller);
+        setButtons(BuyCowView, 60, 248 / 4, 150, 30, "Cow", controller);
+        setButtons(BuyDogView, 60, 248 / 4, 210, 30, "Dog", controller);
+        setButtons(BuyCat1View, 60, 248 / 4, 270, 30, "Cat1", controller);
+        setButtons(BuyCat2View, 60, 248 / 4, 330, 30, "Cat2", controller);
     }
 
-    public void setButtons(ImageView imageView , int width , int height , double x , double y , String type , Controller controller){
-        imageView.setViewport(new Rectangle2D(0 , 0 , width , height));
+    public void setButtons(ImageView imageView, int width, int height, double x, double y, String type, Controller controller) {
+        imageView.setViewport(new Rectangle2D(0, 0, width, height));
         imageView.setX(x);
         imageView.setY(y);
         this.mainRoot.getChildren().add(imageView);
         imageView.setOnMouseClicked(event -> {
             final Animation animation =
-                    new SpriteAnimation(imageView,Duration.millis(0), 4, 1, 0, 0, width, height);
+                    new SpriteAnimation(imageView, Duration.millis(0), 4, 1, 0, 0, width, height);
             animation.setCycleCount(1);
             animation.play();
             //    this.upgrade();
             Random random = new Random();
-           if(type.equals("Dog")){
+            if (type.equals("Dog")) {
 
-               Animal animal = new Dog(random.nextInt(40), random.nextInt(40)  , "1" , mainRoot);
-               try {
-                   controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
-               } catch (Exception e) {
-                   e.printStackTrace();
-               }
-           }else if(type.equals("Cat1")){
+                Animal animal = new Dog(random.nextInt(40), random.nextInt(40), "1", mainRoot);
+                try {
+                    controller.getGrounds().get(controller.getLevel() - 1).buyAnimal(animal);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (type.equals("Cat1")) {
 
-               Animal animal = new Cat(random.nextInt(40), random.nextInt(40)  , "1" , mainRoot);
-               try {
-                   controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
-               } catch (Exception e) {
-                   e.printStackTrace();
-               }
-           }else if(type.equals("Hen")){
+                Animal animal = new Cat(random.nextInt(40), random.nextInt(40), "1", mainRoot);
+                try {
+                    controller.getGrounds().get(controller.getLevel() - 1).buyAnimal(animal);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (type.equals("Hen")) {
 
-               Animal animal = new Hen(random.nextInt(40), random.nextInt(40)  , "1" , mainRoot);
-               try {
-                   controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
-               } catch (Exception e) {
-                   e.printStackTrace();
-               }
-           }else if(type.equals("Cow")){
+                Animal animal = new Hen(random.nextInt(40), random.nextInt(40), "1", mainRoot);
+                try {
+                    controller.getGrounds().get(controller.getLevel() - 1).buyAnimal(animal);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (type.equals("Cow")) {
 
-               Animal animal = new Cow(random.nextInt(40), random.nextInt(40)  , "1" , mainRoot);
-               try {
-                   controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
-               } catch (Exception e) {
-                   e.printStackTrace();
-               }
-           }else if(type.equals("Sheep")){
+                Animal animal = new Cow(random.nextInt(40), random.nextInt(40), "1", mainRoot);
+                try {
+                    controller.getGrounds().get(controller.getLevel() - 1).buyAnimal(animal);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (type.equals("Sheep")) {
 
-               Animal animal = new Sheep(random.nextInt(40), random.nextInt(40)  , "1" , mainRoot);
-               try {
-                   controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
-               } catch (Exception e) {
-                   e.printStackTrace();
-               }
-           }else if(type.equals("Cat2")){
+                Animal animal = new Sheep(random.nextInt(40), random.nextInt(40), "1", mainRoot);
+                try {
+                    controller.getGrounds().get(controller.getLevel() - 1).buyAnimal(animal);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (type.equals("Cat2")) {
 
-               Animal animal = new Cat(random.nextInt(40), random.nextInt(40)  , "1" , mainRoot);
-               ((Cat) animal).setLevel(2);
-               try {
-                   controller.getGrounds().get(controller.getLevel()-1).buyAnimal(animal);
-               } catch (Exception e) {
-                   e.printStackTrace();
-               }
-           }
+                Animal animal = new Cat(random.nextInt(40), random.nextInt(40), "1", mainRoot);
+                ((Cat) animal).setLevel(2);
+                try {
+                    controller.getGrounds().get(controller.getLevel() - 1).buyAnimal(animal);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
 
         });
     }

@@ -32,8 +32,8 @@ public abstract class WorkShop {
         this.maxLevel = 5;
         this.isWorking = false;
         this.baseCost = 50 * this.constNumber;
-        this.columnForOutput=100;
-        this.rowForOutPut=100;
+        this.columnForOutput=10;
+        this.rowForOutPut=10;
         this.ground=ground;
       //  this.show();
     }

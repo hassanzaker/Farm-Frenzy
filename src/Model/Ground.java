@@ -32,16 +32,16 @@ public class Ground {
 
 
     public Ground(Level level, Group mainRoot) {
-        this.cells = new Cell[600][600];
-        for (int i = 0; i < 600; i++) {
-            for (int j = 0; j < 600; j++) {
-                cells[i][j] = new Cell();
+        this.cells = new Cell[40][40];
+        for (int i = 0; i < 40; i++) {
+            for (int j = 0; j < 40; j++) {
+                cells[i][j] = new Cell(i, j, mainRoot);
             }
         }
         this.mainRoot=mainRoot;
         this.workShops = new WorkShop[6];
-        this.numberOfRows=600;
-        this.numberOfColumns=600;
+        this.numberOfRows=40;
+        this.numberOfColumns=40;
         this.well = new Well(mainRoot , this);
         this.truck = new Truck(mainRoot);
         this.helicopter = new Helicopter(this , mainRoot);
@@ -51,7 +51,6 @@ public class Ground {
             missions[i] = new Mission(level.getTypes()[i], level.getNeed()[i]);
         }
         this.money = level.getFirstMoney();
-        items.add(new Egg(25, 33, "", false , mainRoot));
     }
 
     public void buyAnimal(Animal animal) throws Exception {
@@ -156,9 +155,6 @@ public class Ground {
         }
         this.helicopter.checkTime(this);
         this.truck.checkTime(this);
-        for (int i = 0; i < this.cats.size(); i++) {
-            this.cats.get(i).checkTime(this);
-        }
         for (int i = 0; i < this.cats.size(); i++) {
             this.cats.get(i).checkTime(this);
         }

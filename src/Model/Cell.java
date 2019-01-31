@@ -1,13 +1,54 @@
 package Model;
 
+import javafx.scene.Group;
+import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
+import javafx.scene.shape.Rectangle;
+
 public class Cell {
+    private Group mainRoot;
+    Rectangle rectangle = new Rectangle();
     private int grassAmount;
     private int wildAnimalAmount;
     private int domesticAnimalAmount;
     private int itemAmount;
     private int numberOfDogs;
     private int numberOfCats;
+    private int x;
+    private int y;
 
+
+    public Cell(int x, int y , Group mainRoot) {
+        this.mainRoot = mainRoot;
+        this.x = x;
+        this.y = y;
+        rectangle.setWidth(13);
+        rectangle.setHeight(10);
+        rectangle.setX(250 + 13 * x);
+        rectangle.setY(210 + 10 * y);
+        rectangle.setVisible(true);
+        rectangle.setFill(Color.TRANSPARENT);
+        rectangle.setStroke(Color.BLACK);
+
+        mainRoot.getChildren().add(rectangle);
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
 
     public int getNumberOfDogs() {
         return numberOfDogs;
