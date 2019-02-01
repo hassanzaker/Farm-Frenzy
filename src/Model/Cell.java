@@ -54,10 +54,10 @@ public class Cell {
     public void setGrass(Ground ground) {
      //   grassView.setFitHeight(40);
      //   grassView.setFitWidth(52);
-        rectangle.setWidth(13);
-        rectangle.setHeight(10);
-        rectangle.setX(250 + 13 * x);
-        rectangle.setY(210 + 10 * y);
+        rectangle.setWidth(26);
+        rectangle.setHeight(20);
+        rectangle.setX(250 + 26 * x);
+        rectangle.setY(210 + 20 * y);
         rectangle.setVisible(true);
         rectangle.setFill(Color.TRANSPARENT);
         rectangle.setStroke(Color.BLACK);
@@ -70,8 +70,8 @@ public class Cell {
                     ground.getWell().plant(ground, x, y);
 
                     grassView.setViewport(new Rectangle2D(0, 0, 192/4, 192/4));
-                    grassView.setX(250 + 13 * x -13);
-                    grassView.setY(210 + 10 * y -10);
+                    grassView.setX(250 + 26 * x -13);
+                    grassView.setY(210 + 20 * y -10);
                     final Animation animation =
                             new SpriteAnimation(grassView, Duration.millis(50), 16, 4, 0, 0, 192/4, 192/4);
                     animation.setCycleCount(1);

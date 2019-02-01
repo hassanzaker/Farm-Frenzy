@@ -33,15 +33,15 @@ public class Ground {
 
     public Ground(Level level, Group mainRoot) {
         this.cells = new Cell[40][40];
-        for (int i = 0; i < 40; i++) {
-            for (int j = 0; j < 40; j++) {
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 20; j++) {
                 cells[i][j] = new Cell(i, j, mainRoot, this);
             }
         }
         this.mainRoot=mainRoot;
         this.workShops = new WorkShop[6];
-        this.numberOfRows=40;
-        this.numberOfColumns=40;
+        this.numberOfRows=20;
+        this.numberOfColumns=20;
         this.well = new Well(mainRoot , this);
         this.truck = new Truck(mainRoot);
         this.helicopter = new Helicopter(this , mainRoot);
