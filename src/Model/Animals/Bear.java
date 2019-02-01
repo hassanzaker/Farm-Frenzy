@@ -119,18 +119,23 @@ public class Bear extends WildAnimal {
 
     @Override
     public void moveRight(Ground ground) {
-     this.show(rightView , );
+     this.show(rightView , 440/4 , 696/6 ,ground , 1 , 6 , 4);
     }
 
 
     @Override
     public void moveLeft(Ground ground) {
+        this.show(rightView , 440/4 , 696/6 ,ground , 1 , 6 , 4);
+    }
 
+    @Override
+    public void moveDown(Ground ground) {
+        this.show(rightView , 440/4 , 696/6 ,ground , 1 , 6 , 4);
     }
 
     @Override
     public void moveUp(Ground ground) {
-
+        this.show(rightView , 440/4 , 696/6 ,ground , 1 , 6 , 4);
     }
 
 

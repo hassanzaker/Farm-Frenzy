@@ -28,7 +28,8 @@ public class Cell {
     private int numberOfCats;
     private int x;
     private int y;
-
+    private int width;
+    private int height;
     private Image grass;
     ImageView grassView;
 
@@ -46,6 +47,8 @@ public class Cell {
         this.mainRoot = mainRoot;
         this.x = x;
         this.y = y;
+        this.width=250 + 26 * x;
+        this.height = 210 + 20 * y;
         setGrass(ground);
 
 
@@ -161,6 +164,53 @@ public class Cell {
         this.itemAmount = itemAmount;
     }
 
+    public Group getMainRoot() {
+        return mainRoot;
+    }
+
+    public void setMainRoot(Group mainRoot) {
+        this.mainRoot = mainRoot;
+    }
+
+    public Rectangle getRectangle() {
+        return rectangle;
+    }
+
+    public void setRectangle(Rectangle rectangle) {
+        this.rectangle = rectangle;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public Image getGrass() {
+        return grass;
+    }
+
+    public void setGrass(Image grass) {
+        this.grass = grass;
+    }
+
+    public ImageView getGrassView() {
+        return grassView;
+    }
+
+    public void setGrassView(ImageView grassView) {
+        this.grassView = grassView;
+    }
 
     public String toString() {
         if (numberOfCats == 0 && numberOfDogs == 0 && itemAmount == 0 && domesticAnimalAmount == 0 && wildAnimalAmount == 0) {

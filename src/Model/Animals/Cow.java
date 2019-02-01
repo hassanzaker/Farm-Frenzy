@@ -88,30 +88,39 @@ public class Cow extends ProducerAnimal {
             e.printStackTrace();
         }
     }
+    {
+        try {
+            right = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Cow\\right.png"));
+            rightView = new ImageView(right);
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
     public Cow(int x, int y , String ID , Group mainRoot) {
         super(x, y, ID , mainRoot);
         this.name = "cow";
-        this.cost = 10000;
+        this.cost = 1000;
     }
 
     @Override
     public void moveRight(Ground ground) {
-
+        this.show(rightView , 480/3 , 880/8 ,ground , 1 , 8 , 3);
     }
 
     @Override
     public void moveLeft(Ground ground) {
-
+        this.show(rightView , 480/3 , 880/8 ,ground , 1 , 8 , 3);
     }
 
     @Override
     public void moveDown(Ground ground) {
-
+        this.show(rightView , 480/3 , 880/8 ,ground , 1 , 8 , 3);
     }
 
     @Override
     public void moveUp(Ground ground) {
-
+        this.show(rightView , 480/3 , 880/8 ,ground , 1 , 8 , 3);
     }
 
 
