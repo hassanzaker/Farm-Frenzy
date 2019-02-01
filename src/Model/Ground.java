@@ -8,6 +8,9 @@ import Model.Transportation.Helicopter;
 import Model.Transportation.Truck;
 import Model.WorkShop.WorkShop;
 import javafx.scene.Group;
+import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 
@@ -29,6 +32,7 @@ public class Ground {
     private int money;
     private int numberOfWorkShops;
     private Mission[] missions = new Mission[3];
+    private Label label;
 
 
     public Ground(Level level, Group mainRoot) {
@@ -38,19 +42,20 @@ public class Ground {
                 cells[i][j] = new Cell(i, j, mainRoot, this);
             }
         }
-        this.mainRoot=mainRoot;
+        this.mainRoot = mainRoot;
         this.workShops = new WorkShop[6];
-        this.numberOfRows=20;
-        this.numberOfColumns=20;
-        this.well = new Well(mainRoot , this);
+        this.numberOfRows = 20;
+        this.numberOfColumns = 20;
+        this.well = new Well(mainRoot, this);
         this.truck = new Truck(mainRoot);
-        this.helicopter = new Helicopter(this , mainRoot);
+        this.helicopter = new Helicopter(this, mainRoot);
         this.wereHouse = new WereHouse(mainRoot);
         this.numberOfWorkShops = 0;
         for (int i = 0; i < 3; i++) {
             missions[i] = new Mission(level.getTypes()[i], level.getNeed()[i]);
         }
         this.money = level.getFirstMoney();
+        showMoney();
     }
 
     public void buyAnimal(Animal animal) throws Exception {
@@ -65,6 +70,16 @@ public class Ground {
             this.cats.add((Cat) animal);
         }
         this.money -= animal.getCost();
+    }
+
+    public void showMoney() {
+        label = new Label();
+        label.setText(String.valueOf(this.money)+ "  $");
+        label.setLayoutY(50);
+        label.setLayoutX(650);
+        label.setFont(Font.font(26));
+        label.setTextFill(Color.GOLD);
+        mainRoot.getChildren().add(label);
     }
 
     public void pickUp(int x, int y) throws Exception {
@@ -93,7 +108,7 @@ public class Ground {
     }
 
 
-    public WorkShop searchWorkShop(String type) throws Exception{
+    public WorkShop searchWorkShop(String type) throws Exception {
         for (int i = 0; i < this.workShops.length; i++) {
             if (this.workShops[i] != null) {
                 if (this.workShops[i].getName().equals(type)) {

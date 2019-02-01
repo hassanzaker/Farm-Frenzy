@@ -33,6 +33,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -180,7 +181,9 @@ public class GameHandel {
 //        }
 
 
-
+//        javafx.scene.shape.Rectangle rectangle = new javafx.scene.shape.Rectangle(700, 20, 400, 60);
+//        rectangle.setFill(Color.WHITE);
+//        boolean add = mainRoot.getChildren().add(rectangle);
 
         buyButtons(controller);
 
