@@ -1,12 +1,21 @@
 package Model;
 
+import View.SpriteAnimation.SpriteAnimation;
+import javafx.animation.Animation;
 import javafx.event.EventHandler;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class Cell {
     private Group mainRoot;
@@ -20,8 +29,20 @@ public class Cell {
     private int x;
     private int y;
 
+    private Image grass;
+    ImageView grassView;
 
-    public Cell(int x, int y , Group mainRoot, Ground ground) {
+    {
+        try {
+            grass = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Grass\\grass3.png"));
+            grassView = new ImageView(grass);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public Cell(int x, int y, Group mainRoot, Ground ground) {
         this.mainRoot = mainRoot;
         this.x = x;
         this.y = y;
@@ -32,18 +53,39 @@ public class Cell {
         rectangle.setVisible(true);
         rectangle.setFill(Color.TRANSPARENT);
         rectangle.setStroke(Color.BLACK);
+        mainRoot.getChildren().add(rectangle);
         rectangle.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 try {
                     ground.getWell().plant(ground, x, y);
+                    setGrass();
+                    System.out.println(64);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
 
-        mainRoot.getChildren().add(rectangle);
+
+    }
+
+    public void setGrass() {
+     //   grassView.setFitHeight(40);
+     //   grassView.setFitWidth(52);
+        grassView.setViewport(new Rectangle2D(0, 0, 192/4, 192/4));
+        grassView.setX(250 + 13 * x);
+        grassView.setY(210 + 10 * y);
+        this.mainRoot.getChildren().add(grassView);
+
+            final Animation animation =
+                    new SpriteAnimation(grassView, Duration.millis(50), 16, 4, 0, 0, 192/4, 192/4);
+            animation.setCycleCount(1);
+            animation.play();
+
+
+
+
     }
 
     public int getX() {
@@ -78,7 +120,7 @@ public class Cell {
         this.numberOfCats = numberOfCats;
     }
 
-    public void grassEaten(){
+    public void grassEaten() {
         this.grassAmount--;
     }
 
@@ -116,15 +158,13 @@ public class Cell {
 
 
     public String toString() {
-        if (numberOfCats == 0 && numberOfDogs==0  && itemAmount==0 && domesticAnimalAmount==0 && wildAnimalAmount==0 ){
-            if (grassAmount==0){
+        if (numberOfCats == 0 && numberOfDogs == 0 && itemAmount == 0 && domesticAnimalAmount == 0 && wildAnimalAmount == 0) {
+            if (grassAmount == 0) {
                 return "O";
-            }
-            else {
+            } else {
                 return "*";
             }
-        }
-        else {
+        } else {
             return "@";
         }
     }

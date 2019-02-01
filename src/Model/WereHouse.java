@@ -68,28 +68,28 @@ public class WereHouse {
 
     public void show(){
         if(this.level ==1) {
-            wereHouseView1.setX(400);
+            wereHouseView1.setX(350);
             wereHouseView1.setY(600);
             this.mainRoot.getChildren().add(wereHouseView1);
             wereHouseView1.setOnMouseClicked(event -> {
      //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
             });
         }else if(this.level == 2){
-            wereHouseView2.setX(400);
+            wereHouseView2.setX(350);
             wereHouseView2.setY(600);
             this.mainRoot.getChildren().add(wereHouseView2);
             wereHouseView2.setOnMouseClicked(event -> {
                 //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
             });
         }else if(this.level == 3){
-            wereHouseView3.setX(400);
+            wereHouseView3.setX(350);
             wereHouseView3.setY(600);
             this.mainRoot.getChildren().add(wereHouseView3);
             wereHouseView3.setOnMouseClicked(event -> {
                 //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
             });
         }else if(this.level == 4){
-            wereHouseView4.setX(400);
+            wereHouseView4.setX(350);
             wereHouseView4.setY(600);
             this.mainRoot.getChildren().add(wereHouseView4);
             wereHouseView4.setOnMouseClicked(event -> {
