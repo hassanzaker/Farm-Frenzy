@@ -46,6 +46,14 @@ public class Cell {
         this.mainRoot = mainRoot;
         this.x = x;
         this.y = y;
+        setGrass(ground);
+
+
+    }
+
+    public void setGrass(Ground ground) {
+     //   grassView.setFitHeight(40);
+     //   grassView.setFitWidth(52);
         rectangle.setWidth(13);
         rectangle.setHeight(10);
         rectangle.setX(250 + 13 * x);
@@ -54,13 +62,22 @@ public class Cell {
         rectangle.setFill(Color.TRANSPARENT);
         rectangle.setStroke(Color.BLACK);
         mainRoot.getChildren().add(rectangle);
+        final Group gp = mainRoot;
         rectangle.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
                 try {
                     ground.getWell().plant(ground, x, y);
-                    setGrass();
-                    System.out.println(64);
+
+                    grassView.setViewport(new Rectangle2D(0, 0, 192/4, 192/4));
+                    grassView.setX(250 + 13 * x -13);
+                    grassView.setY(210 + 10 * y -10);
+                    final Animation animation =
+                            new SpriteAnimation(grassView, Duration.millis(50), 16, 4, 0, 0, 192/4, 192/4);
+                    animation.setCycleCount(1);
+                    animation.play();
+                    gp.getChildren().add(grassView);
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -68,20 +85,8 @@ public class Cell {
         });
 
 
-    }
 
-    public void setGrass() {
-     //   grassView.setFitHeight(40);
-     //   grassView.setFitWidth(52);
-        grassView.setViewport(new Rectangle2D(0, 0, 192/4, 192/4));
-        grassView.setX(250 + 13 * x);
-        grassView.setY(210 + 10 * y);
-        this.mainRoot.getChildren().add(grassView);
 
-            final Animation animation =
-                    new SpriteAnimation(grassView, Duration.millis(50), 16, 4, 0, 0, 192/4, 192/4);
-            animation.setCycleCount(1);
-            animation.play();
 
 
 

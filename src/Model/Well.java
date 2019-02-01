@@ -74,7 +74,7 @@ public class Well {
 
     public Well(Group mainRoot, Ground ground) {
         this.mainRoot = mainRoot;
-        this.level = 4;
+        this.level = 1;
         this.timeToFill = 10;
         this.capacity = 5;
         this.currentAmount = this.capacity;
@@ -106,13 +106,13 @@ public class Well {
 
     public void show() {
         if (this.level == 1) {
-            this.setWell(wellView1, 600 / 4, 544 / 4, 450, 80);
+            this.setWell(wellView1, 600 / 4, 544 / 4, 440, 70);
         } else if (this.level == 2) {
-            this.setWell(wellView2, 592 / 4, 600 / 4, 450, 80);
+            this.setWell(wellView2, 592 / 4, 600 / 4, 440, 70);
         } else if (this.level == 3) {
-            this.setWell(wellView3, 576 / 4, 632 / 4, 450, 80);
+            this.setWell(wellView3, 576 / 4, 632 / 4, 440, 70);
         } else if (this.level == 4) {
-            this.setWell(wellView4, 592 / 4, 536 / 4, 450, 80);
+            this.setWell(wellView4, 592 / 4, 536 / 4, 440, 70);
         }
     }
 

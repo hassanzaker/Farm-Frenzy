@@ -3,6 +3,7 @@ package Model.WorkShop;
 import Model.Ground;
 import Model.Items.*;
 import javafx.scene.Group;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public abstract class WorkShop {
     protected boolean isWorking;
     protected ArrayList<String> inputs = new ArrayList<>();
     protected ArrayList<String> outputs = new ArrayList<>();
+    protected Button button;
     protected String name;
     protected  Ground ground;
     protected WorkShop(int constNumber , Group mainRoot , Ground ground) {

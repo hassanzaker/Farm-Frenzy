@@ -90,15 +90,15 @@ public class SewingFactory extends WorkShop{
 
     public void show(){
         if(this.level == 1) {
-            this.setWorkShop(sewingFactoryView1,680/4,520/4, 800 ,250 );
+            this.setWorkShop(sewingFactoryView1,680/4,520/4, 770 ,450 );
         }else if(this.level == 2){
-            this.setWorkShop(sewingFactoryView2,792/4,568/4, 800 ,250 );
+            this.setWorkShop(sewingFactoryView2,792/4,568/4, 770 ,450 );
         }else if(this.level == 3){
-            this.setWorkShop(sewingFactoryView3,784/4,608/4, 800 ,250 );
+            this.setWorkShop(sewingFactoryView3,784/4,608/4, 770 ,450 );
         }else if(this.level == 4){
-            this.setWorkShop(sewingFactoryView4,784/4,616/4, 800 ,250 );
+            this.setWorkShop(sewingFactoryView4,784/4,616/4, 770 ,450 );
         }else {
-            this.setWorkShop(sewingFactoryView5,792/4,728/4, 800 ,250 );
+            this.setWorkShop(sewingFactoryView5,792/4,728/4, 770 ,450 );
         }
     }
     public void remove(){

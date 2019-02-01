@@ -88,15 +88,15 @@ public class Spinnery extends WorkShop {
     }
     public void show(){
         if(this.level == 1) {
-            this.setWorkShop(spinneryView1,520/4,424/4, 800 ,350 );
+            this.setWorkShop(spinneryView1,520/4,424/4, 770 ,170 );
         }else if(this.level == 2){
-            this.setWorkShop(spinneryView2,552/4,600/4, 800 ,350 );
+            this.setWorkShop(spinneryView2,552/4,600/4, 770 ,170 );
         }else if(this.level == 3){
-            this.setWorkShop(spinneryView3,712/4,584/4, 800 ,350 );
+            this.setWorkShop(spinneryView3,712/4,584/4, 770 ,170 );
         }else if(this.level == 4){
-            this.setWorkShop(spinneryView4,704/4,728/4, 800 ,350 );
+            this.setWorkShop(spinneryView4,704/4,728/4, 770 ,170 );
         }else {
-            this.setWorkShop(spinneryView5,640/4,656/4, 800 ,350 );
+            this.setWorkShop(spinneryView5,640/4,656/4, 770 ,170 );
         }
     }
     public void remove(){

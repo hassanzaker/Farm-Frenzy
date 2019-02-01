@@ -89,15 +89,15 @@ public class WevingFactory extends WorkShop {
     }
     public void show(){
         if(this.level == 1) {
-            this.setWorkShop(wevingFactoryView1,664/4,464/4, 800 ,150 );
+            this.setWorkShop(wevingFactoryView1,664/4,464/4, 780 ,330 );
         }else if(this.level == 2){
-            this.setWorkShop(wevingFactoryView2,592/4,528/4, 800 ,150 );
+            this.setWorkShop(wevingFactoryView2,592/4,528/4, 780 ,330 );
         }else if(this.level == 3){
-            this.setWorkShop(wevingFactoryView3,656/4,504/4, 800 ,150 );
+            this.setWorkShop(wevingFactoryView3,656/4,504/4, 780 ,330 );
         }else if(this.level == 4){
-            this.setWorkShop(wevingFactoryView4,592/4,624/4, 800 ,150 );
+            this.setWorkShop(wevingFactoryView4,592/4,624/4, 780 ,330 );
         }else {
-            this.setWorkShop(wevingFactoryView5,704/4,616/4, 800 ,150 );
+            this.setWorkShop(wevingFactoryView5,704/4,616/4, 780 ,330 );
         }
     }
     public void remove(){
