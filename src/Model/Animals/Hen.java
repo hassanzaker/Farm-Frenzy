@@ -10,84 +10,76 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class Hen extends ProducerAnimal {
-    private Image HenUp;
-    ImageView HenUpView;
+
     {
         try {
-            HenUp = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Ostrich\\up.png"));
-            HenUpView = new ImageView(HenUp);
+            up = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Ostrich\\up.png"));
+            upView = new ImageView(up);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image HenLeft;
-    ImageView HenLeftView;
+
     {
         try {
-            HenLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Ostrich\\left.png"));
-            HenLeftView = new ImageView(HenLeft);
+            left = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Ostrich\\left.png"));
+            leftView = new ImageView(left);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image HenDown;
-    ImageView HenDownView;
     {
         try {
-            HenDown = new Image(new FileInputStream("CC:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Ostrich\\down.png"));
-            HenDownView = new ImageView(HenDown);
+            down = new Image(new FileInputStream("CC:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Ostrich\\down.png"));
+            downView = new ImageView(down);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image HenDeath;
-    ImageView HenDeathView;
+
     {
         try {
-            HenDeath = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Ostrich\\death.png"));
-            HenDeathView = new ImageView(HenDeath);
+            death = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Ostrich\\death.png"));
+            deathView = new ImageView(death);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image HenUpLeft;
-    ImageView HenUpLeftView;
+
     {
         try {
-            HenUpLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Ostrich\\up_left.png"));
-            HenUpLeftView = new ImageView(HenUpLeft);
+            upLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Ostrich\\up_left.png"));
+            upLeftView = new ImageView(upLeft);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image HenDownLeft;
-    ImageView HenDownLefView;
+
     {
         try {
-            HenDownLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Ostrich\\down_left.png"));
-            HenDownLefView = new ImageView(HenDownLeft);
+            downLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Ostrich\\down_left.png"));
+            downLeftView = new ImageView(downLeft);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image HenEat;
-    ImageView HenEatView;
+
     {
         try {
-            HenEat = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Ostrich\\eat.png"));
-            HenEatView = new ImageView(HenEat);
+            eat = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Ostrich\\eat.png"));
+            eatView = new ImageView(eat);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -98,6 +90,26 @@ public class Hen extends ProducerAnimal {
         super(x, y, ID , mainRoot);
         this.name = "hen";
         this.cost = 100;
+    }
+
+    @Override
+    public void moveRight(Ground ground) {
+
+    }
+
+    @Override
+    public void moveLeft(Ground ground) {
+
+    }
+
+    @Override
+    public void moveDown(Ground ground) {
+
+    }
+
+    @Override
+    public void moveUp(Ground ground) {
+
     }
 
     @Override

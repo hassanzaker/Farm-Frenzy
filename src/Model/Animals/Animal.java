@@ -2,7 +2,14 @@ package Model.Animals;
 
 import Model.Cell;
 import Model.Ground;
+import View.SpriteAnimation.SpriteAnimation;
+import javafx.animation.Animation;
+import javafx.animation.AnimationTimer;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 
 import java.util.Random;
 
@@ -14,6 +21,29 @@ public abstract class Animal {
     protected int cost;
     protected String ID;
     protected String name;
+    protected Image up;
+    protected ImageView upView;
+    protected Image down;
+    protected ImageView downView;
+    protected Image left;
+    protected ImageView leftView;
+    protected Image right;
+    protected ImageView rightView;
+    protected Image downRight;
+    protected ImageView downRightView;
+    protected Image upRight;
+    protected  ImageView upRightView;
+    protected  Image upLeft;
+    protected ImageView upLeftView;
+    protected Image downLeft;
+    protected ImageView downLeftView;
+    protected Image caged;
+    protected ImageView cagedView;
+    protected Image eat;
+    protected ImageView eatView;
+    protected Image death;
+    protected ImageView deathView;
+
 
     public Animal(int x, int y, String ID , Group mainRoot) {
         Random r = new Random();
@@ -40,7 +70,85 @@ public abstract class Animal {
     public void setCost(int cost) {
         this.cost = cost;
     }
+    public abstract void moveRight(Ground ground);
+    public abstract void moveLeft(Ground ground);
+    public abstract void moveDown(Ground ground);
+    public abstract  void moveUp(Ground ground);
+    public void show(ImageView imageView, int width, int height , Ground ground , int direction , int row , int colmun) {
+        int x = ground.getCells()[this.row][this.column].getX();
+        int y =ground.getCells()[this.row][this.column].getY();
 
+        mainRoot.getChildren().add(imageView);
+        imageView.relocate(x, y);
+        final SpriteAnimation[] spriteAnimation = {new SpriteAnimation(imageView, Duration.millis(1000), row*colmun,
+                column, 0, 0, width, height)};
+        spriteAnimation[0].setCycleCount(1);
+        spriteAnimation[0].play();
+        AnimationTimer animationTimer = new AnimationTimer() {
+            int i = 0;
+            @Override
+            public void handle(long now) {
+                if(direction ==1) {//right
+                    if (i < 26) {
+                        spriteAnimation[0].setCycleCount(Animation.INDEFINITE);
+                        spriteAnimation[0].play();
+                        imageView.relocate((x + i), (y));
+                    } else {
+                        spriteAnimation[0].stop();
+                        this.stop();
+                    }
+
+                    i++;
+                }else if (direction == 3){ //left
+                    if (i < 26) {
+                        spriteAnimation[0].setCycleCount(Animation.INDEFINITE);
+                        spriteAnimation[0].play();
+                        imageView.relocate((x - i), (y));
+                    } else {
+                        spriteAnimation[0].stop();
+                        this.stop();
+                    }
+
+                    i++;
+                }else if(direction == 2){//up
+                    if (i < 20) {
+                        spriteAnimation[0].setCycleCount(Animation.INDEFINITE);
+                        spriteAnimation[0].play();
+                        imageView.relocate((x - i), (y));
+                    } else {
+                        spriteAnimation[0].stop();
+                        this.stop();
+                    }
+
+                    i++;
+                }else if(direction == 4){//down
+                    if (i < 20) {
+                        spriteAnimation[0].setCycleCount(Animation.INDEFINITE);
+                        spriteAnimation[0].play();
+                        imageView.relocate((x + i), (y));
+                    } else {
+                        spriteAnimation[0].stop();
+                        this.stop();
+                    }
+
+                    i++;
+                }
+                else if(direction ==5 || direction == 6){//death or eat
+                    if (i < 20) {
+                        spriteAnimation[0].setCycleCount(Animation.INDEFINITE);
+                        spriteAnimation[0].play();
+                        imageView.relocate((x ), (y));
+                    } else {
+                        spriteAnimation[0].stop();
+                        this.stop();
+                    }
+
+                    i++;
+                }
+            }
+        };
+        animationTimer.start();
+    }
 
     public void move(int  direction, Ground ground) throws Exception {
         switch (direction) {
@@ -51,6 +159,7 @@ public abstract class Animal {
                     this.makeChangesOnCell(ground.getCells()[this.row - 1][this.column - 1], -1);
                     this.column++;
                     this.makeChangesOnCell(ground.getCells()[this.row - 1][this.column - 1], 1);
+                    this.moveRight(ground);
                 }
                 break;
             case 2:   // 2 ---->>   up

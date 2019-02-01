@@ -1,5 +1,6 @@
 package Model.Animals;
 
+import Model.Ground;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -9,72 +10,65 @@ import java.io.FileNotFoundException;
 
 public class Lion extends WildAnimal {
 
-    private Image LionUp;
-    ImageView lionUpView;
+
     {
         try {
-            LionUp = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Lion\\up.png"));
-            lionUpView = new ImageView(LionUp);
+            up = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Lion\\up.png"));
+            upView = new ImageView(up);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image LionLeft;
-    ImageView lionLeftView;
     {
         try {
-            LionLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Lion\\left.png"));
-             lionLeftView = new ImageView(LionLeft);
+            left = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Lion\\left.png"));
+             leftView = new ImageView(left);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image LionDown;
-    ImageView lionDownView;
+
     {
         try {
-            LionDown = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Lion\\down.png"));
-             lionDownView = new ImageView(LionDown);
+            down = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Lion\\down.png"));
+             downView = new ImageView(down);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image LionCaged;
-    ImageView lionCagedView;
+
     {
         try {
-            LionCaged = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Lion\\caged.png"));
-             lionCagedView = new ImageView(LionCaged);
+            caged = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Lion\\caged.png"));
+             cagedView = new ImageView(caged);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image LionUpLeft;
-    ImageView lionUpLeftView;
+
     {
         try {
-            LionUpLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Lion\\up_left.png"));
-            lionUpLeftView = new ImageView(LionUpLeft);
+            upLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Lion\\up_left.png"));
+            upLeftView = new ImageView(upLeft);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image LionDownLeft;
-    ImageView lionDownLeftView;
+
     {
         try {
-            LionDownLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Lion\\down_left.png"));
-             lionDownLeftView = new ImageView(LionDownLeft);
+            downLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Lion\\down_left.png"));
+             downLeftView = new ImageView(downLeft);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -83,6 +77,26 @@ public class Lion extends WildAnimal {
     public Lion(int x, int y, String ID , Group mainRoot) {
         super(x, y, ID , mainRoot);
         this.name = "lion";
+    }
+
+    @Override
+    public void moveRight(Ground ground) {
+
+    }
+
+    @Override
+    public void moveLeft(Ground ground) {
+
+    }
+
+    @Override
+    public void moveDown(Ground ground) {
+
+    }
+
+    @Override
+    public void moveUp(Ground ground) {
+
     }
 
     @Override

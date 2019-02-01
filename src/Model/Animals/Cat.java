@@ -14,60 +14,55 @@ import java.util.Random;
 public class Cat extends Animal {
     private int level;
     private int speed;
-    private Image catUp;
-    ImageView catUpView;
+
     {
         try {
-            catUp = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Cat\\up.png"));
-            catUpView = new ImageView(catUp);
+            up = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Cat\\up.png"));
+            upView = new ImageView(up);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image catLeft;
-    ImageView catLeftView;
+
     {
         try {
-            catLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Cat\\left.png"));
-            catLeftView = new ImageView(catLeft);
+            left = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Cat\\left.png"));
+            leftView = new ImageView(left);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image catDown;
-    ImageView catDownView;
+
     {
         try {
-            catDown = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Cat\\down.png"));
-            catDownView = new ImageView(catDown);
+            down = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Cat\\down.png"));
+            downView = new ImageView(down);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image catUpLeft;
-    ImageView catUpLeftView;
+
     {
         try {
-            catUpLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Cat\\up_left.png"));
-            catUpLeftView = new ImageView(catUpLeft);
+            upLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Cat\\up_left.png"));
+            upLeftView = new ImageView(upLeft);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image catDownLeft;
-    ImageView catDownLefView;
+
     {
         try {
-            catDownLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Cat\\down_left.png"));
-            catDownLefView = new ImageView(catDownLeft);
+            downLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Cat\\down_left.png"));
+            downLeftView = new ImageView(downLeft);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -86,6 +81,26 @@ public class Cat extends Animal {
     public void checkTime(Ground ground) throws Exception {
         super.checkTime(ground);
         crash(ground);
+    }
+
+    @Override
+    public void moveRight(Ground ground) {
+
+    }
+
+    @Override
+    public void moveLeft(Ground ground) {
+
+    }
+
+    @Override
+    public void moveDown(Ground ground) {
+
+    }
+
+    @Override
+    public void moveUp(Ground ground) {
+
     }
 
     public void crash(Ground ground) throws Exception {

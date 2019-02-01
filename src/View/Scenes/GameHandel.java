@@ -4,9 +4,7 @@ import Controller.Controller;
 import Controller.Level;
 import Model.Animals.*;
 import View.SpriteAnimation.SpriteAnimation;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
+import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
@@ -189,18 +187,14 @@ public class GameHandel {
         buyButtons(controller);
 
         stage.setScene(gameScene);
-        Timeline tl = new Timeline();
-        tl.setCycleCount(Animation.INDEFINITE);
-        KeyFrame gamehandling = new KeyFrame(Duration.millis(500),
-                new EventHandler<ActionEvent>() {
+        AnimationTimer animationTimer = new AnimationTimer() {
 
-                    public void handle(ActionEvent event) {
-
-                        controller.cyclePass();
-
-                    }
-                });
-        tl.play();
+            @Override
+            public void handle(long now) {
+               controller.cyclePass();
+            }
+        };
+        animationTimer.start();
     }
 
     public void buyButtons(Controller controller) {

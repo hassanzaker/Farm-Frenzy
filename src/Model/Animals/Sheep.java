@@ -13,84 +13,76 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class Sheep extends ProducerAnimal {
-    private Image SheepUp;
-    ImageView sheepUpView;
+
     {
         try {
-            SheepUp = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\up.png"));
-             sheepUpView = new ImageView(SheepUp);
+            up = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\up.png"));
+             upView = new ImageView(up);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image SheepLeft;
-    ImageView sheepLeftView;
+
     {
         try {
-            SheepLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\left.png"));
-             sheepLeftView = new ImageView(SheepLeft);
+            left = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\left.png"));
+             leftView = new ImageView(left);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image SheepDown;
-    ImageView sheepDownView;
     {
         try {
-            SheepDown = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\down.png"));
-            sheepDownView = new ImageView(SheepDown);
+            down = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\down.png"));
+            downView = new ImageView(down);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image SheepDeath;
-    ImageView sheepDeathView;
+   ;
     {
         try {
-            SheepDeath = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\death.png"));
-            sheepDeathView = new ImageView(SheepDeath);
+            death = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\death.png"));
+            deathView = new ImageView(death);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image SheepUpLeft;
-    ImageView sheepUpLeftView;
+
     {
         try {
-            SheepUpLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\up_left.png"));
-            sheepUpLeftView = new ImageView(SheepUpLeft);
+            upLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\up_left.png"));
+            upLeftView = new ImageView(upLeft);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image SheepDownLeft;
-    ImageView sheepDownLefView;
+
     {
         try {
-            SheepDownLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\down_left.png"));
-            sheepDownLefView = new ImageView(SheepDownLeft);
+            downLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\down_left.png"));
+            downLeftView = new ImageView(downLeft);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image SheepEat;
-    ImageView sheepEatView;
+
     {
         try {
-            SheepEat = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\eat.png"));
-            sheepEatView = new ImageView(SheepEat);
+            eat = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Sheep\\eat.png"));
+            eatView = new ImageView(eat);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -100,6 +92,26 @@ public class Sheep extends ProducerAnimal {
         super(x, y, ID , mainRoot);
         this.name = "sheep" ;
         this.cost = 1000;
+    }
+
+    @Override
+    public void moveRight(Ground ground) {
+
+    }
+
+    @Override
+    public void moveLeft(Ground ground) {
+
+    }
+
+    @Override
+    public void moveDown(Ground ground) {
+
+    }
+
+    @Override
+    public void moveUp(Ground ground) {
+
     }
 
 

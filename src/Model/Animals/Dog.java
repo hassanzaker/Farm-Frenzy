@@ -13,60 +13,55 @@ import java.util.Random;
 public class Dog extends Animal {
     private int level;
     private int speed;
-    private Image dogUp;
-    ImageView dogUpView;
+
     {
         try {
-            dogUp = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Dog\\up.png"));
-            dogUpView = new ImageView(dogUp);
+            up = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Dog\\up.png"));
+            upView = new ImageView(up);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image dogLeft;
-    ImageView dogLeftView;
+
     {
         try {
-            dogLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Dog\\left.png"));
-            dogLeftView = new ImageView(dogLeft);
+            left = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Dog\\left.png"));
+            leftView = new ImageView(left);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image dogDown;
-    ImageView dogDownView;
+
     {
         try {
-            dogDown = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Dog\\down.png"));
-            dogDownView = new ImageView(dogDown);
+            down = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Dog\\down.png"));
+            downView = new ImageView(down);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image dogUpLeft;
-    ImageView dogUpLeftView;
+
     {
         try {
-            dogUpLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Dog\\up_left.png"));
-            dogUpLeftView = new ImageView(dogUpLeft);
+            upLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Dog\\up_left.png"));
+            upLeftView = new ImageView(upLeft);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
 
-    private Image dogDownLeft;
-    ImageView dogDownLefView;
+
     {
         try {
-            dogDownLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Dog\\down_left.png"));
-            dogDownLefView = new ImageView(dogDownLeft);
+            downLeft = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Dog\\down_left.png"));
+            downLeftView = new ImageView(downLeft);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -84,6 +79,26 @@ public class Dog extends Animal {
     @Override
     public void checkTime(Ground ground) throws Exception {
         super.checkTime(ground);
+    }
+
+    @Override
+    public void moveRight(Ground ground) {
+
+    }
+
+    @Override
+    public void moveLeft(Ground ground) {
+
+    }
+
+    @Override
+    public void moveDown(Ground ground) {
+
+    }
+
+    @Override
+    public void moveUp(Ground ground) {
+
     }
 
     public int direction(Ground ground) {
