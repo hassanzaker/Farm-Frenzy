@@ -88,15 +88,15 @@ public class EggPowderPlant extends WorkShop {
     }
     public void show(){
         if(this.level == 1) {
-            this.setWorkShop(eggPowderPlantView1,512/4,456/4, 100 ,150 );
+            this.setWorkShop(eggPowderPlantView1,512/4,456/4, 110 ,220 );
         }else if(this.level == 2){
-            this.setWorkShop(eggPowderPlantView2,576/4,528/4, 100 ,150 );
+            this.setWorkShop(eggPowderPlantView2,576/4,528/4, 110 ,220 );
         }else if(this.level == 3){
-            this.setWorkShop(eggPowderPlantView3,656/4,600/4, 100 ,150 );
+            this.setWorkShop(eggPowderPlantView3,656/4,600/4, 110 ,220 );
         }else if(this.level == 4){
-            this.setWorkShop(eggPowderPlantView4,744/4,632/4, 100 ,150 );
+            this.setWorkShop(eggPowderPlantView4,744/4,632/4, 110 ,220 );
         }else {
-            this.setWorkShop(eggPowderPlantView5,736/4,632/4, 100 ,150 );
+            this.setWorkShop(eggPowderPlantView5,736/4,632/4, 110 ,220 );
         }
     }
     public void remove(){

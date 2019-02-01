@@ -93,15 +93,15 @@ public class CakeBakery extends WorkShop {
     }
     public void show(){
         if(this.level == 1) {
-            this.setWorkShop(cakeBakeryView1,736/4,688/4, 100 ,250 );
+            this.setWorkShop(cakeBakeryView1,736/4,688/4, 70 ,450 );
         }else if(this.level == 2){
-            this.setWorkShop(cakeBakeryView2,632/4,592/4, 100 ,250 );
+            this.setWorkShop(cakeBakeryView2,632/4,592/4, 70 ,450 );
         }else if(this.level == 3){
-            this.setWorkShop(cakeBakeryView3,680/4,672/4, 100 ,250 );
+            this.setWorkShop(cakeBakeryView3,680/4,672/4, 70 ,450 );
         }else if(this.level == 4){
-            this.setWorkShop(cakeBakeryView4,704/4,680/4, 100 ,250 );
+            this.setWorkShop(cakeBakeryView4,704/4,680/4, 70 ,450 );
         }else {
-            this.setWorkShop(cakeBakeryView5,720/4,680/4, 100 ,250 );
+            this.setWorkShop(cakeBakeryView5,720/4,680/4, 70 ,450 );
         }
     }
     public void remove(){

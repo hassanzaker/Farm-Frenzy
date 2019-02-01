@@ -84,28 +84,28 @@ public class Helicopter {
     public void show(){
         if(this.level ==1) {
             helicopterView1.setX(600);
-            helicopterView1.setY(470);
+            helicopterView1.setY(570);
             this.mainRoot.getChildren().add(helicopterView1);
             helicopterView1.setOnMouseClicked(event -> {
                 //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
             });
         }else if(this.level == 2){
             helicopterView2.setX(600);
-            helicopterView2.setY(470);
+            helicopterView2.setY(570);
             this.mainRoot.getChildren().add(helicopterView2);
             helicopterView2.setOnMouseClicked(event -> {
                 //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
             });
         }else if(this.level == 3){
             helicopterView3.setX(600);
-            helicopterView3.setY(470);
+            helicopterView3.setY(570);
             this.mainRoot.getChildren().add(helicopterView3);
             helicopterView3.setOnMouseClicked(event -> {
                 //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
             });
         }else if(this.level == 4){
             helicopterView4.setX(600);
-            helicopterView4.setY(470);
+            helicopterView4.setY(570);
             this.mainRoot.getChildren().add(helicopterView4);
             helicopterView4.setOnMouseClicked(event -> {
                 //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash

@@ -1,7 +1,9 @@
 package Model;
 
+import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
@@ -19,7 +21,7 @@ public class Cell {
     private int y;
 
 
-    public Cell(int x, int y , Group mainRoot) {
+    public Cell(int x, int y , Group mainRoot, Ground ground) {
         this.mainRoot = mainRoot;
         this.x = x;
         this.y = y;
@@ -30,6 +32,16 @@ public class Cell {
         rectangle.setVisible(true);
         rectangle.setFill(Color.TRANSPARENT);
         rectangle.setStroke(Color.BLACK);
+        rectangle.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                try {
+                    ground.getWell().plant(ground, x, y);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         mainRoot.getChildren().add(rectangle);
     }

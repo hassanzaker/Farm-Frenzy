@@ -139,29 +139,29 @@ public class Truck {
     }
     public void show(){
         if(this.level ==1) {
-            truckView1.setX(280);
-            truckView1.setY(470);
+            truckView1.setX(200);
+            truckView1.setY(600);
             this.mainRoot.getChildren().add(truckView1);
             truckView1.setOnMouseClicked(event -> {
                 //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
             });
         }else if(this.level == 2){
-            truckView2.setX(280);
-            truckView2.setY(470);
+            truckView2.setX(200);
+            truckView2.setY(600);
             this.mainRoot.getChildren().add(truckView2);
             truckView2.setOnMouseClicked(event -> {
                 //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
             });
         }else if(this.level == 3){
-            truckView3.setX(280);
-            truckView3.setY(470);
+            truckView3.setX(200);
+            truckView3.setY(600);
             this.mainRoot.getChildren().add(truckView3);
             truckView3.setOnMouseClicked(event -> {
                 //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash
             });
         }else if(this.level == 4){
-            truckView4.setX(280);
-            truckView4.setY(470);
+            truckView4.setX(200);
+            truckView4.setY(600);
             this.mainRoot.getChildren().add(truckView4);
             truckView4.setOnMouseClicked(event -> {
                 //           mainRoot.getChildren(scene);//TODO : bayad benvisam secne ra barayash

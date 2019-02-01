@@ -35,7 +35,7 @@ public class Ground {
         this.cells = new Cell[40][40];
         for (int i = 0; i < 40; i++) {
             for (int j = 0; j < 40; j++) {
-                cells[i][j] = new Cell(i, j, mainRoot);
+                cells[i][j] = new Cell(i, j, mainRoot, this);
             }
         }
         this.mainRoot=mainRoot;

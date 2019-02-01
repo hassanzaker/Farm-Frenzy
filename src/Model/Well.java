@@ -19,9 +19,10 @@ public class Well {
     private int currentAmount;
     private int level;
     private int cost;
-    private  Ground ground;
+    private Ground ground;
     private Image WellImage1;
     ImageView wellView1;
+
     {
         try {
             WellImage1 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Well\\01.png"));
@@ -34,6 +35,7 @@ public class Well {
 
     private Image WellImage2;
     ImageView wellView2;
+
     {
         try {
             WellImage2 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Well\\02.png"));
@@ -46,10 +48,11 @@ public class Well {
 
     private Image WellImage3;
     ImageView wellView3;
+
     {
         try {
             WellImage3 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Well\\03.png"));
-             wellView3 = new ImageView(WellImage3);
+            wellView3 = new ImageView(WellImage3);
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -58,6 +61,7 @@ public class Well {
 
     private Image WellImage4;
     ImageView wellView4;
+
     {
         try {
             WellImage4 = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Service\\Well\\04.png"));
@@ -68,19 +72,20 @@ public class Well {
         }
     }
 
-    public Well(Group mainRoot , Ground ground) {
+    public Well(Group mainRoot, Ground ground) {
         this.mainRoot = mainRoot;
         this.level = 4;
         this.timeToFill = 10;
         this.capacity = 5;
         this.currentAmount = this.capacity;
         this.ground = ground;
-        cost=19;
+        cost = 19;
         this.show();
 
     }
-    public void setWell(ImageView imageView , int width , int height , double x , double y){
-        imageView.setViewport(new Rectangle2D(0 , 0 , width , height));
+
+    public void setWell(ImageView imageView, int width, int height, double x, double y) {
+        imageView.setViewport(new Rectangle2D(0, 0, width, height));
         imageView.setX(x);
         imageView.setY(y);
         this.mainRoot.getChildren().add(imageView);
@@ -98,18 +103,20 @@ public class Well {
 
         });
     }
-    public void show(){
-        if(this.level == 1) {
-            this.setWell(wellView1,600/4,544/4, 450,80 );
-        }else if(this.level == 2){
-            this.setWell(wellView2,592/4,600/4, 450 ,80 );
-        }else if(this.level == 3){
-            this.setWell(wellView3,576/4,632/4, 450 ,80 );
-        }else if(this.level == 4){
-            this.setWell(wellView4,592/4,536/4, 450 ,80 );
+
+    public void show() {
+        if (this.level == 1) {
+            this.setWell(wellView1, 600 / 4, 544 / 4, 450, 80);
+        } else if (this.level == 2) {
+            this.setWell(wellView2, 592 / 4, 600 / 4, 450, 80);
+        } else if (this.level == 3) {
+            this.setWell(wellView3, 576 / 4, 632 / 4, 450, 80);
+        } else if (this.level == 4) {
+            this.setWell(wellView4, 592 / 4, 536 / 4, 450, 80);
         }
     }
-    public void remove(){
+
+    public void remove() {
         this.mainRoot.getChildren().remove(wellView1);
         this.mainRoot.getChildren().remove(wellView2);
         this.mainRoot.getChildren().remove(wellView3);
@@ -118,22 +125,70 @@ public class Well {
     }
 
 
-
-
-    public void plant(Ground ground, int x, int y) throws Exception{
-        if (this.currentAmount==0){
+    public void plant(Ground ground, int x, int y) throws Exception {
+        if (this.currentAmount == 0) {
             throw new Exception("no water!");
         }
-        ground.getCells()[x - 1][y - 1].setGrassAmount(ground.getCells()[x - 1][y - 1].getGrassAmount() + 1);
-        ground.getCells()[x - 2][y - 1].setGrassAmount(ground.getCells()[x - 1][y - 1].getGrassAmount() + 1);
-        ground.getCells()[x - 1][y - 2].setGrassAmount(ground.getCells()[x - 1][y - 1].getGrassAmount() + 1);
-        ground.getCells()[x - 2][y - 2].setGrassAmount(ground.getCells()[x - 1][y - 1].getGrassAmount() + 1);
-        ground.getCells()[x ][y - 1].setGrassAmount(ground.getCells()[x - 1][y - 1].getGrassAmount() + 1);
-        ground.getCells()[x - 1][y].setGrassAmount(ground.getCells()[x - 1][y - 1].getGrassAmount() + 1);
-        ground.getCells()[x ][y ].setGrassAmount(ground.getCells()[x - 1][y - 1].getGrassAmount() + 1);
-        ground.getCells()[x - 2][y ].setGrassAmount(ground.getCells()[x - 1][y - 1].getGrassAmount() + 1);
-        ground.getCells()[x ][y - 2].setGrassAmount(ground.getCells()[x - 1][y - 1].getGrassAmount() + 1);
-        this.currentAmount--;
+        if (x > 0 && y > 0 && x < ground.getNumberOfRows() - 1 && y < ground.getNumberOfColumns() - 1) {
+            ground.getCells()[x][y].setGrassAmount(ground.getCells()[x][y].getGrassAmount() + 1);
+            ground.getCells()[x + 1][y].setGrassAmount(ground.getCells()[x + 1][y].getGrassAmount() + 1);
+            ground.getCells()[x - 1][y].setGrassAmount(ground.getCells()[x - 1][y].getGrassAmount() + 1);
+            ground.getCells()[x][y + 1].setGrassAmount(ground.getCells()[x][y + 1].getGrassAmount() + 1);
+            ground.getCells()[x][y - 1].setGrassAmount(ground.getCells()[x][y - 1].getGrassAmount() + 1);
+            ground.getCells()[x + 1][y + 1].setGrassAmount(ground.getCells()[x + 1][y + 1].getGrassAmount() + 1);
+            ground.getCells()[x + 1][y - 1].setGrassAmount(ground.getCells()[x + 1][y - 1].getGrassAmount() + 1);
+            ground.getCells()[x - 1][y + 1].setGrassAmount(ground.getCells()[x - 1][y + 1].getGrassAmount() + 1);
+            ground.getCells()[x - 1][y - 1].setGrassAmount(ground.getCells()[x - 1][y - 1].getGrassAmount() + 1);
+        } else if (x > 0 && y > 0 && x == ground.getNumberOfRows() - 1 && y < ground.getNumberOfColumns() - 1) {
+            ground.getCells()[x][y].setGrassAmount(ground.getCells()[x][y].getGrassAmount() + 1);
+            ground.getCells()[x - 1][y].setGrassAmount(ground.getCells()[x - 1][y].getGrassAmount() + 1);
+            ground.getCells()[x][y + 1].setGrassAmount(ground.getCells()[x][y + 1].getGrassAmount() + 1);
+            ground.getCells()[x][y - 1].setGrassAmount(ground.getCells()[x][y - 1].getGrassAmount() + 1);
+            ground.getCells()[x - 1][y + 1].setGrassAmount(ground.getCells()[x - 1][y + 1].getGrassAmount() + 1);
+            ground.getCells()[x - 1][y - 1].setGrassAmount(ground.getCells()[x - 1][y - 1].getGrassAmount() + 1);
+        } else if (x > 0 && y > 0 && x < ground.getNumberOfRows() - 1 && y == ground.getNumberOfColumns() - 1) {
+            ground.getCells()[x][y].setGrassAmount(ground.getCells()[x][y].getGrassAmount() + 1);
+            ground.getCells()[x + 1][y].setGrassAmount(ground.getCells()[x + 1][y].getGrassAmount() + 1);
+            ground.getCells()[x - 1][y].setGrassAmount(ground.getCells()[x - 1][y].getGrassAmount() + 1);
+            ground.getCells()[x][y - 1].setGrassAmount(ground.getCells()[x][y - 1].getGrassAmount() + 1);
+            ground.getCells()[x + 1][y - 1].setGrassAmount(ground.getCells()[x + 1][y - 1].getGrassAmount() + 1);
+            ground.getCells()[x - 1][y - 1].setGrassAmount(ground.getCells()[x - 1][y - 1].getGrassAmount() + 1);
+        } else if (x == 0 && y > 0 && x < ground.getNumberOfRows() - 1 && y < ground.getNumberOfColumns() - 1) {
+            ground.getCells()[x][y].setGrassAmount(ground.getCells()[x][y].getGrassAmount() + 1);
+            ground.getCells()[x + 1][y].setGrassAmount(ground.getCells()[x + 1][y].getGrassAmount() + 1);
+            ground.getCells()[x][y + 1].setGrassAmount(ground.getCells()[x][y + 1].getGrassAmount() + 1);
+            ground.getCells()[x][y - 1].setGrassAmount(ground.getCells()[x][y - 1].getGrassAmount() + 1);
+            ground.getCells()[x + 1][y + 1].setGrassAmount(ground.getCells()[x + 1][y + 1].getGrassAmount() + 1);
+            ground.getCells()[x + 1][y - 1].setGrassAmount(ground.getCells()[x + 1][y - 1].getGrassAmount() + 1);
+        } else if (x > 0 && y == 0 && x < ground.getNumberOfRows() - 1 && y < ground.getNumberOfColumns() - 1) {
+            ground.getCells()[x][y].setGrassAmount(ground.getCells()[x][y].getGrassAmount() + 1);
+            ground.getCells()[x + 1][y].setGrassAmount(ground.getCells()[x + 1][y].getGrassAmount() + 1);
+            ground.getCells()[x - 1][y].setGrassAmount(ground.getCells()[x - 1][y].getGrassAmount() + 1);
+            ground.getCells()[x][y + 1].setGrassAmount(ground.getCells()[x][y + 1].getGrassAmount() + 1);
+            ground.getCells()[x + 1][y + 1].setGrassAmount(ground.getCells()[x + 1][y + 1].getGrassAmount() + 1);
+            ground.getCells()[x - 1][y + 1].setGrassAmount(ground.getCells()[x - 1][y + 1].getGrassAmount() + 1);
+        } else if (x == 0 && y == 0 && x < ground.getNumberOfRows() - 1 && y < ground.getNumberOfColumns() - 1) {
+            ground.getCells()[x][y].setGrassAmount(ground.getCells()[x][y].getGrassAmount() + 1);
+            ground.getCells()[x + 1][y].setGrassAmount(ground.getCells()[x + 1][y].getGrassAmount() + 1);
+            ground.getCells()[x][y + 1].setGrassAmount(ground.getCells()[x][y + 1].getGrassAmount() + 1);
+            ground.getCells()[x + 1][y + 1].setGrassAmount(ground.getCells()[x + 1][y + 1].getGrassAmount() + 1);
+        } else if (x == 0 && y > 0 && x < ground.getNumberOfRows() - 1 && y == ground.getNumberOfColumns() - 1) {
+            ground.getCells()[x][y].setGrassAmount(ground.getCells()[x][y].getGrassAmount() + 1);
+            ground.getCells()[x + 1][y].setGrassAmount(ground.getCells()[x + 1][y].getGrassAmount() + 1);
+            ground.getCells()[x][y - 1].setGrassAmount(ground.getCells()[x][y - 1].getGrassAmount() + 1);
+            ground.getCells()[x + 1][y - 1].setGrassAmount(ground.getCells()[x + 1][y - 1].getGrassAmount() + 1);
+        } else if (x > 0 && y == 0 && x == ground.getNumberOfRows() - 1 && y < ground.getNumberOfColumns() - 1) {
+            ground.getCells()[x][y].setGrassAmount(ground.getCells()[x][y].getGrassAmount() + 1);
+            ground.getCells()[x - 1][y].setGrassAmount(ground.getCells()[x - 1][y].getGrassAmount() + 1);
+            ground.getCells()[x][y + 1].setGrassAmount(ground.getCells()[x][y + 1].getGrassAmount() + 1);
+            ground.getCells()[x - 1][y + 1].setGrassAmount(ground.getCells()[x - 1][y + 1].getGrassAmount() + 1);
+        } else if (x > 0 && y > 0 && x == ground.getNumberOfRows() - 1 && y == ground.getNumberOfColumns() - 1) {
+            ground.getCells()[x][y].setGrassAmount(ground.getCells()[x][y].getGrassAmount() + 1);
+            ground.getCells()[x - 1][y].setGrassAmount(ground.getCells()[x - 1][y].getGrassAmount() + 1);
+            ground.getCells()[x][y - 1].setGrassAmount(ground.getCells()[x][y - 1].getGrassAmount() + 1);
+            ground.getCells()[x - 1][y - 1].setGrassAmount(ground.getCells()[x - 1][y - 1].getGrassAmount() + 1);
+        }
+
 
     }
 
@@ -174,11 +229,11 @@ public class Well {
         this.currentAmount = currentAmount;
     }
 
-    public void fill() throws Exception{
-        if (ground.getMoney() < cost){
+    public void fill() throws Exception {
+        if (ground.getMoney() < cost) {
             throw new Exception("not enough money!");
         }
-        if (this.currentAmount > 0){
+        if (this.currentAmount > 0) {
             throw new Exception("well is not empty!");
         }
         this.currentAmount = this.capacity;
@@ -228,7 +283,7 @@ public class Well {
 
     @Override
     public String toString() {
-        String s = "" ;
+        String s = "";
         s += "well level : " + String.valueOf(this.level) + "\n" +
                 "capacity : " + String.valueOf(this.capacity) + "\n" +
                 "current amount : " + String.valueOf(this.currentAmount) + "\n" +

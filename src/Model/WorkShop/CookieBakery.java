@@ -92,15 +92,15 @@ public class CookieBakery extends WorkShop {
     }
     public void show(){
         if(this.level == 1) {
-            this.setWorkShop(cookieBakeryView1,536/4,568/4, 100 ,350 );
+            this.setWorkShop(cookieBakeryView1,536/4,568/4, 100 ,330 );
         }else if(this.level == 2){
-            this.setWorkShop(cookieBakeryView2,632/4,600/4, 100 ,350 );
+            this.setWorkShop(cookieBakeryView2,632/4,600/4, 110 ,330 );
         }else if(this.level == 3){
-            this.setWorkShop(cookieBakeryView3,632/4,664/4, 100 ,350 );
+            this.setWorkShop(cookieBakeryView3,632/4,664/4, 110 ,330 );
         }else if(this.level == 4){
-            this.setWorkShop(cookieBakeryView4,664/4,680/4, 100 ,350 );
+            this.setWorkShop(cookieBakeryView4,664/4,680/4, 110 ,330 );
         }else {
-            this.setWorkShop(cookieBakeryView5,744/4,736/4, 100 ,350 );
+            this.setWorkShop(cookieBakeryView5,744/4,736/4, 110 ,330 );
         }
 
     }
