@@ -140,6 +140,7 @@ public class GameHandel {
         this.stage = stage;
         this.gameScene = gameScene;
         this.stage.setScene(gameScene);
+
         build();
     }
 
@@ -159,6 +160,8 @@ public class GameHandel {
         imageView.setFitWidth(1000);
         mainRoot.getChildren().add(imageView);
         Controller controller = new Controller(levels, mainRoot);
+
+
         // WorkShop cook = new CakeBakery(mainRoot);
         controller.startWorkShop("CakeBakery");
         controller.startWorkShop("CookieBakery");
@@ -181,9 +184,7 @@ public class GameHandel {
 //        }
 
 
-//        javafx.scene.shape.Rectangle rectangle = new javafx.scene.shape.Rectangle(700, 20, 400, 60);
-//        rectangle.setFill(Color.WHITE);
-//        boolean add = mainRoot.getChildren().add(rectangle);
+
 
         buyButtons(controller);
 
@@ -212,6 +213,8 @@ public class GameHandel {
     }
 
     public void setButtons(ImageView imageView, int width, int height, double x, double y, String type, Controller controller) {
+
+
         imageView.setViewport(new Rectangle2D(0, 0, width, height));
         imageView.setX(x);
         imageView.setY(y);

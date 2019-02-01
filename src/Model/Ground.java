@@ -10,6 +10,7 @@ import Model.WorkShop.WorkShop;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 
 import java.util.ArrayList;
@@ -73,10 +74,16 @@ public class Ground {
     }
 
     public void showMoney() {
+        Rectangle rectangle = new Rectangle(600, 20, 400, 60);
+        rectangle.setFill(Color.WHITE);
+        mainRoot.getChildren().add(rectangle);
+        Rectangle r1 = new Rectangle(600, 20, 100, 60);
+        r1.setFill(Color.BLUE);
+        mainRoot.getChildren().add(r1);
         label = new Label();
-        label.setText(String.valueOf(this.money)+ "  $");
-        label.setLayoutY(50);
-        label.setLayoutX(650);
+        label.setText(String.valueOf(this.money)+ " $");
+        label.setLayoutY(30);
+        label.setLayoutX(605);
         label.setFont(Font.font(26));
         label.setTextFill(Color.GOLD);
         mainRoot.getChildren().add(label);
