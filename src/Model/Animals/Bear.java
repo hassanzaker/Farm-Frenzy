@@ -93,7 +93,7 @@ public class Bear extends WildAnimal {
 
     {
         try {
-            upRight = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Grizzly\\right_up.png"));
+            upRight = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Grizzly\\up_right.png"));
             upRightView = new ImageView(upRight);
 
         } catch (FileNotFoundException e) {
@@ -103,7 +103,7 @@ public class Bear extends WildAnimal {
 
     {
         try {
-            downRight = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Grizzly\\right_down.png"));
+            downRight = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Grizzly\\down_right.png"));
             downRightView = new ImageView(downRight);
 
         } catch (FileNotFoundException e) {
@@ -125,17 +125,27 @@ public class Bear extends WildAnimal {
 
     @Override
     public void moveLeft(Ground ground) {
-        this.show(rightView , 440/4 , 696/6 ,ground , 1 , 6 , 4);
+        this.show(leftView , 440/4 , 696/6 ,ground , 3 , 6 , 4);
     }
 
     @Override
     public void moveDown(Ground ground) {
-        this.show(rightView , 440/4 , 696/6 ,ground , 1 , 6 , 4);
+        this.show(downView , 480/4 , 648/6 ,ground , 4 , 6 , 4);
     }
 
     @Override
     public void moveUp(Ground ground) {
-        this.show(rightView , 440/4 , 696/6 ,ground , 1 , 6 , 4);
+        this.show(upView , 448/4 , 720/6 ,ground , 2 , 6 , 4);
+    }
+
+    @Override
+    public void caged(Ground ground) {
+
+    }
+
+    @Override
+    public void eat(Ground ground) {
+
     }
 
 

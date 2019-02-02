@@ -4,6 +4,7 @@ import Controller.Controller;
 import Controller.Level;
 import Model.Animals.*;
 import View.SpriteAnimation.SpriteAnimation;
+
 import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -30,7 +31,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-
+import View.*;
 import java.awt.*;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -191,7 +192,13 @@ public class GameHandel {
 
            @Override
             public void handle(long now) {
-               controller.cyclePass();
+               long lastcalled = 0;
+               long secondcalled = 100000000;
+               if(now>(secondcalled +lastcalled)) {
+                   controller.cyclePass();
+                 //  controller.getTime().next();
+                   lastcalled=now;
+               }
             }
         };
         animationTimer.start();
@@ -210,6 +217,7 @@ public class GameHandel {
 
        // tl.getKeyFrames().add(handler);
        // tl.play();
+       // Thread timeThread = new TimeThread(controller);
     }
 
     public void buyButtons(Controller controller) {
@@ -237,7 +245,7 @@ public class GameHandel {
             Random random = new Random();
             if (type.equals("Dog")) {
 
-                Animal animal = new Dog(random.nextInt(20), random.nextInt(20), "1", mainRoot);
+                Animal animal = new Dog(20, 20, "1", mainRoot);
                 try {
                     controller.getGrounds().get(controller.getLevel() - 1).buyAnimal(animal);
                 } catch (Exception e) {
@@ -245,7 +253,7 @@ public class GameHandel {
                 }
             } else if (type.equals("Cat1")) {
 
-                Animal animal = new Cat(random.nextInt(20), random.nextInt(20), "1", mainRoot);
+                Animal animal = new Cat(20, 20, "1", mainRoot);
                 try {
                     controller.getGrounds().get(controller.getLevel() - 1).buyAnimal(animal);
                 } catch (Exception e) {
@@ -253,7 +261,7 @@ public class GameHandel {
                 }
             } else if (type.equals("Hen")) {
 
-                Animal animal = new Hen(random.nextInt(20), random.nextInt(20), "1", mainRoot);
+                Animal animal = new Hen(20, 20, "1", mainRoot);
                 try {
                     controller.getGrounds().get(controller.getLevel() - 1).buyAnimal(animal);
                 } catch (Exception e) {
@@ -261,7 +269,7 @@ public class GameHandel {
                 }
             } else if (type.equals("Cow")) {
 
-                Animal animal = new Cow(random.nextInt(20), random.nextInt(20), "1", mainRoot);
+                Animal animal = new Cow(20, 20, "1", mainRoot);
                 try {
                     controller.getGrounds().get(controller.getLevel() - 1).buyAnimal(animal);
                 } catch (Exception e) {
@@ -269,7 +277,7 @@ public class GameHandel {
                 }
             } else if (type.equals("Sheep")) {
 
-                Animal animal = new Sheep(random.nextInt(40), random.nextInt(40), "1", mainRoot);
+                Animal animal = new Sheep(20, 20, "1", mainRoot);
                 try {
                     controller.getGrounds().get(controller.getLevel() - 1).buyAnimal(animal);
                 } catch (Exception e) {
@@ -277,7 +285,7 @@ public class GameHandel {
                 }
             } else if (type.equals("Cat2")) {
 
-                Animal animal = new Cat(random.nextInt(20), random.nextInt(20), "1", mainRoot);
+                Animal animal = new Cat(20, 20, "1", mainRoot);
                 ((Cat) animal).setLevel(2);
                 try {
                     controller.getGrounds().get(controller.getLevel() - 1).buyAnimal(animal);

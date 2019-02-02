@@ -114,6 +114,16 @@ public class Sheep extends ProducerAnimal {
 
     }
 
+    @Override
+    public void caged(Ground ground) {
+
+    }
+
+    @Override
+    public void eat(Ground ground) {
+
+    }
+
 
     @Override
     public void produce(Ground ground) {

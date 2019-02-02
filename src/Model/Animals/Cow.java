@@ -123,6 +123,16 @@ public class Cow extends ProducerAnimal {
         this.show(rightView , 480/3 , 880/8 ,ground , 1 , 8 , 3);
     }
 
+    @Override
+    public void caged(Ground ground) {
+
+    }
+
+    @Override
+    public void eat(Ground ground) {
+
+    }
+
 
     @Override
     public void produce(Ground ground) {

@@ -100,6 +100,16 @@ public class Lion extends WildAnimal {
     }
 
     @Override
+    public void caged(Ground ground) {
+
+    }
+
+    @Override
+    public void eat(Ground ground) {
+
+    }
+
+    @Override
     public void eat() {
 
     }

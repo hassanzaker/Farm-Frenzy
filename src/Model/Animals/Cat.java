@@ -85,21 +85,33 @@ public class Cat extends Animal {
 
     @Override
     public void moveRight(Ground ground) {
-
+        rightView=leftView;
+        rightView.setScaleX(-1);
+       show(rightView, 352/4 , 408/6 , ground , 1, 6 , 4);
     }
 
     @Override
     public void moveLeft(Ground ground) {
-
+        show(leftView, 352/4 , 408/6 , ground , 3, 6 , 4);
     }
 
     @Override
     public void moveDown(Ground ground) {
-
+        show(downView, 300/6 , 368/4 , ground , 4, 4 , 6);
     }
 
     @Override
     public void moveUp(Ground ground) {
+        show(upView, 288/6 , 336/4 , ground , 2, 4 , 6);
+    }
+
+    @Override
+    public void caged(Ground ground) {
+
+    }
+
+    @Override
+    public void eat(Ground ground) {
 
     }
 

@@ -74,6 +74,8 @@ public abstract class Animal {
     public abstract void moveLeft(Ground ground);
     public abstract void moveDown(Ground ground);
     public abstract  void moveUp(Ground ground);
+    public abstract void caged(Ground ground);
+    public abstract void eat(Ground ground);
     public void show(ImageView imageView, int width, int height , Ground ground , int direction , int row , int colmun) {
         int x = ground.getCells()[this.row][this.column].getWidth();
         int y =ground.getCells()[this.row][this.column].getHeight();
@@ -154,7 +156,7 @@ public abstract class Animal {
         switch (direction) {
             case 1:   // 1 ---->>  right
                 if (this.row > ground.getNumberOfRows() || this.column >= ground.getNumberOfColumns() || this.row < 0 || this.column < 0) {
-                    move(3, ground);
+                    move(5, ground);
                 }else {
                     this.makeChangesOnCell(ground.getCells()[this.row - 1][this.column - 1], -1);
                     this.column++;
@@ -164,7 +166,7 @@ public abstract class Animal {
                 break;
             case 2:   // 2 ---->>   up
                 if (this.row > ground.getNumberOfRows() || this.column > ground.getNumberOfColumns() || this.row <= 0 || this.column < 0) {
-                    move(4, ground);
+                    move(5, ground);
                 }else {
                     this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], -1);
                     this.row--;
@@ -174,7 +176,7 @@ public abstract class Animal {
                 break;
             case 3:   // 3  ---->>   left
                 if (this.row > ground.getNumberOfRows() || this.column > ground.getNumberOfColumns() || this.row < 0 || this.column <= 0) {
-                    move( 1, ground);
+                    move( 5, ground);
                 } else {
                     this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], -1);
                     this.column--;
@@ -184,7 +186,7 @@ public abstract class Animal {
                 break;
             case 4:   //  4  ---->>   down
                 if (this.row >= ground.getNumberOfRows() || this.column > ground.getNumberOfColumns() || this.row < 0 || this.column < 0) {
-                    move(2, ground);
+                    move(5, ground);
                 } else {
                     this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], -1);
                     this.row++;

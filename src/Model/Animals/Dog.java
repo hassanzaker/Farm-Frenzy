@@ -101,6 +101,16 @@ public class Dog extends Animal {
 
     }
 
+    @Override
+    public void caged(Ground ground) {
+
+    }
+
+    @Override
+    public void eat(Ground ground) {
+
+    }
+
     public int direction(Ground ground) {
         if (ground.getWildAnimals().size() == 0) {
             Random random = new Random();
