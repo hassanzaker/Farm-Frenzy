@@ -84,7 +84,7 @@ public abstract class Animal {
         imageView.relocate(x1, y1);
         final SpriteAnimation[] spriteAnimation = {new SpriteAnimation(imageView, Duration.millis(500), rows*colmuns,
                 colmuns, 0, 0, width, height)};
-        spriteAnimation[0].setCycleCount(3);
+        spriteAnimation[0].setCycleCount(1);
         spriteAnimation[0].play();
         AnimationTimer animationTimer = new AnimationTimer() {
             int i = 0;
@@ -97,6 +97,7 @@ public abstract class Animal {
                         imageView.relocate((x1 + i), (y1));
                     } else {
                         spriteAnimation[0].stop();
+                        mainRoot.getChildren().remove(spriteAnimation[0]);
                         mainRoot.getChildren().remove(imageView);
                        this.stop();
                     }
@@ -108,7 +109,8 @@ public abstract class Animal {
                         imageView.relocate((x1 - i), (y1));
                     } else {
                         spriteAnimation[0].stop();
-                        mainRoot.getChildren().remove(imageView);
+                        mainRoot.getChildren().remove(spriteAnimation[0]);
+                     mainRoot.getChildren().remove(imageView);
                         this.stop();
                     }
 
@@ -119,6 +121,8 @@ public abstract class Animal {
                         imageView.relocate((x1 - i), (y1));
                     } else {
                         spriteAnimation[0].stop();
+                        mainRoot.getChildren().remove(spriteAnimation[0]);
+                        mainRoot.getChildren().remove(imageView);
                         this.stop();
                     }
 
@@ -129,6 +133,7 @@ public abstract class Animal {
                         imageView.relocate((x1 + i), (y1));
                     } else {
                         spriteAnimation[0].stop();
+                        mainRoot.getChildren().remove(spriteAnimation[0]);
                         mainRoot.getChildren().remove(imageView);
                         this.stop();
                     }
@@ -151,6 +156,7 @@ public abstract class Animal {
             }
         };
         animationTimer.start();
+     //   mainRoot.getChildren().remove(imageView);
     }
 
     public void move(int  direction, Ground ground) throws Exception {

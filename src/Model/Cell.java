@@ -63,7 +63,7 @@ public class Cell {
         rectangle.setY(210 + 20 * y);
         rectangle.setVisible(true);
         rectangle.setFill(Color.TRANSPARENT);
-        rectangle.setStroke(Color.BLACK);
+//        rectangle.setStroke(Color.BLACK);
         mainRoot.getChildren().add(rectangle);
         final Group gp = mainRoot;
         rectangle.setOnMouseClicked(new EventHandler<MouseEvent>() {

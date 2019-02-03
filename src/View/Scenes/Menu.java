@@ -46,7 +46,7 @@ public class Menu {
         this.stage.setScene(this.MenuScene);
         MenuPictureView.setFitWidth(1000);
         MenuPictureView.setFitHeight(750);
-        circle = new Circle(500 , 500 , 50 , Color.BLACK);
+        circle = new Circle(550 , 150 , 40 , Color.BLACK);
         mainRoot.getChildren().add(MenuPictureView);
         PlayBotton();
        // mainRoot.getChildren().add(PlayPictureView);

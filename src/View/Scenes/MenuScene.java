@@ -37,7 +37,7 @@ public class MenuScene {
     }
 
     public void build(){
-        this.stage.setScene(this.MenuScene);
+        //this.stage.setScene(this.MenuScene);
         resume = new Button();
         resume.setLayoutX(20);
         resume.setLayoutY(20);
@@ -54,7 +54,12 @@ public class MenuScene {
         resume.setFont(Font.font(20));
         resume.setMinWidth(100);
 
-
+        resume.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                stage.setScene(gameScene);
+            }
+        });
         map = new Button("map");
         map.setFont(Font.font(20));
         map.setLayoutY(100);
@@ -75,7 +80,7 @@ public class MenuScene {
         exit.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+              stage.close();
             }
         });
 

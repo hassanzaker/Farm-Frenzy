@@ -182,7 +182,7 @@ public class GameHandel {
            @Override
             public void handle(long now) {
                long lastcalled = 0;
-               long secondcalled = 50000000;
+               long secondcalled = 5000000;
                if(now>(secondcalled +lastcalled)) {
                    controller.cyclePass();
                  //  controller.getTime().next();

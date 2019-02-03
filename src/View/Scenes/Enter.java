@@ -43,6 +43,7 @@ public class Enter {
             public void handle(ActionEvent event) {
                 user = textField.getText();
                 textField.clear();
+                stage.setScene(gameScene);
             }
         });
         mainRoot.getChildren().add(textField);
