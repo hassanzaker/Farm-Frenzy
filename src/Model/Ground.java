@@ -34,6 +34,8 @@ public class Ground {
     private int numberOfWorkShops;
     private Mission[] missions = new Mission[3];
     private Label label;
+    private Rectangle rectangle;
+    private Rectangle r1;
 
 
     public Ground(Level level, Group mainRoot) {
@@ -87,7 +89,12 @@ public class Ground {
         label.setLayoutX(605);
         label.setFont(Font.font(26));
         label.setTextFill(Color.GOLD);
+        System.out.println("1");
         mainRoot.getChildren().add(label);
+
+    }
+    public void removeMoney(){
+        mainRoot.getChildren().remove(label);
     }
 
     public void pickUp(int x, int y) throws Exception {
@@ -170,6 +177,7 @@ public class Ground {
                 }
 
             }
+
         }
         this.well.cehckTime();
         for (int i = 0; i < workShops.length; i++) {
@@ -190,6 +198,8 @@ public class Ground {
         for (int i = 0; i < this.wildAnimals.size(); i++) {
             this.wildAnimals.get(i).checkTime(this);
         }
+        this.removeMoney();
+        this.showMoney();
     }
 
     public Well getWell() {

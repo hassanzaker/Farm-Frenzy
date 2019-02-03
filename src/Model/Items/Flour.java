@@ -8,8 +8,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 public class Flour extends Item {
-    private Image image;
-    ImageView imageView;
+
     {
         try {
             image= new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Products\\Flour.png"));

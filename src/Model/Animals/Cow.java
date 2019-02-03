@@ -136,7 +136,7 @@ public class Cow extends ProducerAnimal {
 
     @Override
     public void produce(Ground ground) {
-        ground.getCells()[this.row-1][this.column-1].setItemAmount(ground.getCells()[this.row-1][this.column-1].getItemAmount()+1);
+        ground.getCells()[this.row][this.column].setItemAmount(ground.getCells()[this.row][this.column].getItemAmount()+1);
         ground.addItem(new Milk(this.row, this.column, "0",true , mainRoot));
     }
 

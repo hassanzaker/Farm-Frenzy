@@ -1,6 +1,10 @@
 package Model.Items;
 
+import javafx.event.EventHandler;
 import javafx.scene.Group;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 
 public abstract class Item {
     protected int volume;
@@ -12,11 +16,24 @@ public abstract class Item {
     protected String type;
     protected int sellPrice;
     protected int  buyPrice;
+    protected Image image;
+    protected ImageView imageView;
     public  void show(){
+      imageView.setX(250 + 26*column -13);
+      imageView.setY(210 + 20*row -10);
 
+      if(inGrounad ){
+          imageView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+              @Override
+              public void handle(MouseEvent event) {
+                  mainRoot.getChildren().remove(imageView);
+              }
+          });
+      }
+        mainRoot.getChildren().add(imageView);
     }
     public void remove(){
-
+mainRoot.getChildren().remove(imageView);
     }
     public Item(int x, int y , String ID , Boolean inGrounad , Group mainRoot ) {
         this.row = x;
