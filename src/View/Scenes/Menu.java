@@ -23,29 +23,30 @@ public class Menu {
     private Stage stage;
     private Group mainRoot;
     private Circle circle;
-    private Pane pane;
+    //private Pane pane;
     private Label label;
     private TextField textField;
 
     Scene MenuScene;
-    Scene gameScene;
+    Scene enterScene;
     private Image MenuPicture = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\MenuPicture.jpg"));;
     ImageView MenuPictureView= new ImageView(MenuPicture);
     private Image PlayPicture = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\PlayButton.png"));;
     ImageView PlayPictureView= new ImageView(PlayPicture);
 
    // Scene Gamescene = new Scene(mainRoot , 1000 , 750 );
-    public Menu(Group mainRoot ,  Scene MenuScene , Stage stage ,Scene gameScene) throws FileNotFoundException {
+    public Menu(Group mainRoot ,  Scene MenuScene , Stage stage ,Scene enterScene) throws FileNotFoundException {
         this.mainRoot = mainRoot;
         this.stage = stage;
         this.MenuScene = MenuScene;
-        this.gameScene = gameScene;
+        this.enterScene = enterScene;
         build();
     }
     public void build(){
         this.stage.setScene(this.MenuScene);
         MenuPictureView.setFitWidth(1000);
         MenuPictureView.setFitHeight(750);
+        circle = new Circle(500 , 500 , 50 , Color.BLACK);
         mainRoot.getChildren().add(MenuPictureView);
         PlayBotton();
        // mainRoot.getChildren().add(PlayPictureView);
@@ -53,11 +54,12 @@ public class Menu {
     }
     public void PlayBotton(){
    //     PlayPictureView.relocate(500 , 400);
-        PlayPictureView.setX(400);
-        PlayPictureView.setY(500);
-        this.mainRoot.getChildren().add(PlayPictureView);
-        PlayPictureView.setOnMouseClicked(event -> {
-           stage.setScene(gameScene);
+     //   PlayPictureView.setX(400);
+       // PlayPictureView.setY(500);
+      //  this.mainRoot.getChildren().add(PlayPictureView);
+        mainRoot.getChildren().add(circle);
+        circle.setOnMouseClicked(event -> {
+           stage.setScene(enterScene);
         });
 
         label = new Label("menu");

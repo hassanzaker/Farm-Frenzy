@@ -97,6 +97,7 @@ public abstract class Animal {
                         imageView.relocate((x1 + i), (y1));
                     } else {
                         spriteAnimation[0].stop();
+                        mainRoot.getChildren().remove(imageView);
                        this.stop();
                     }
 
@@ -107,6 +108,7 @@ public abstract class Animal {
                         imageView.relocate((x1 - i), (y1));
                     } else {
                         spriteAnimation[0].stop();
+                        mainRoot.getChildren().remove(imageView);
                         this.stop();
                     }
 
@@ -127,6 +129,7 @@ public abstract class Animal {
                         imageView.relocate((x1 + i), (y1));
                     } else {
                         spriteAnimation[0].stop();
+                        mainRoot.getChildren().remove(imageView);
                         this.stop();
                     }
 
@@ -138,7 +141,8 @@ public abstract class Animal {
                         imageView.relocate((x1 ), (y1));
                     } else {
                         spriteAnimation[0].stop();
-//                        this.stop();
+                        mainRoot.getChildren().remove(imageView);
+                       this.stop();
                     }
 
 

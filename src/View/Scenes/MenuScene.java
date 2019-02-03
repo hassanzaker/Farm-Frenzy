@@ -1,5 +1,6 @@
 package View.Scenes;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -71,6 +72,12 @@ public class MenuScene {
         exit.setLayoutY(200);
         exit.setLayoutX(20);
         exit.setMinWidth(100);
+        exit.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+            }
+        });
 
         mainRoot.getChildren().add(resume);
         mainRoot.getChildren().add(map);

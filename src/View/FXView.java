@@ -6,6 +6,7 @@ import Model.Time;
 import Model.Well;
 //import View.Buttons.WellButton;
 import Model.WorkShop.*;
+import View.Scenes.Enter;
 import View.Scenes.GameHandel;
 import View.Scenes.Menu;
 import javafx.animation.Animation;
@@ -23,6 +24,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 
+import javax.swing.*;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 
@@ -30,15 +32,18 @@ public class FXView extends Application {
     private Group mainRoot = new Group();
     private Group menuRoot = new Group();
     private Group missionRoot = new Group();
+    private Group enterRoot = new Group();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
        Scene gameScene = new Scene(mainRoot , 1000 , 750 );
         Scene MenuScene =  new Scene(menuRoot , 1000 , 750 );
         Scene missionScene = new Scene(missionRoot , 1000 , 750 );
+        Scene enterSene = new Scene(enterRoot , 500 , 750);
         GameHandel gameHandel = new GameHandel(mainRoot , gameScene,primaryStage);
      //   Menu menu = new Menu(menuRoot , MenuScene  , primaryStage);
-        View.Scenes.Menu menu1 = new Menu(menuRoot , MenuScene  , primaryStage , gameScene);
+        View.Scenes.Menu menu1 = new Menu(menuRoot , MenuScene  , primaryStage , enterSene);
+        Enter enter = new Enter(enterRoot , enterSene ,primaryStage , gameScene);
         primaryStage.show();
     }
 

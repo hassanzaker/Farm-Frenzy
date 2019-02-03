@@ -17,18 +17,18 @@ public class Enter {
     private Stage stage;
     private String user;
 
-    Scene MenuScene;
+    Scene enerScene;
     Scene gameScene;
-    public Enter(Group mainRoot , Scene MenuScene , Stage stage , Scene gameScene) throws FileNotFoundException {
+    public Enter(Group mainRoot , Scene enterScene , Stage stage , Scene gameScene) throws FileNotFoundException {
         this.mainRoot = mainRoot;
         this.stage = stage;
-        this.MenuScene = MenuScene;
+        this.enerScene = enterScene;
         this.gameScene = gameScene;
         build();
     }
 
     public void build(){
-        this.stage.setScene(this.MenuScene);
+        //this.stage.setScene(this.enerScene);
         Label label = new Label("enter your name");
         mainRoot.getChildren().add(label);
         label.setLayoutY(20);
@@ -56,6 +56,7 @@ public class Enter {
             public void handle(ActionEvent event) {
                 user = textField.getText();
                 textField.clear();
+                stage.setScene(gameScene);
             }
         });
         mainRoot.getChildren().add(button);
