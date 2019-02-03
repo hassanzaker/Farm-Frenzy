@@ -34,7 +34,7 @@ public class Hen extends ProducerAnimal {
 
     {
         try {
-            down = new Image(new FileInputStream("CC:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Ostrich\\down.png"));
+            down = new Image(new FileInputStream("C:\\Users\\zabba\\Desktop\\Textures\\Animals\\Africa\\Ostrich\\down.png"));
             downView = new ImageView(down);
 
         } catch (FileNotFoundException e) {
@@ -94,22 +94,24 @@ public class Hen extends ProducerAnimal {
 
     @Override
     public void moveRight(Ground ground) {
-
+        rightView = leftView;
+        rightView.setScaleX(-1);
+        this.show(rightView , 400/4 , 792/6 ,ground , 1 , 6 , 4);
     }
 
     @Override
     public void moveLeft(Ground ground) {
-
+        this.show(leftView , 400/4 , 792/6 ,ground , 3 , 6 , 4);
     }
 
     @Override
     public void moveDown(Ground ground) {
-
+        this.show(downView , 516/6 , 504/4 ,ground , 4 , 4 , 6);
     }
 
     @Override
     public void moveUp(Ground ground) {
-
+        this.show(rightView , 344/4 , 852/6 ,ground , 2 , 6 , 4);
     }
 
     @Override

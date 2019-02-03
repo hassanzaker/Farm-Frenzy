@@ -60,7 +60,7 @@ public abstract class Animal {
 
 
     public void checkTime(Ground ground) throws Exception {
-        move(direction(ground), ground);
+        move(this.direction(ground), ground);
     }
 
     public int getCost() {
@@ -76,15 +76,15 @@ public abstract class Animal {
     public abstract  void moveUp(Ground ground);
     public abstract void caged(Ground ground);
     public abstract void eat(Ground ground);
-    public void show(ImageView imageView, int width, int height , Ground ground , int direction , int row , int colmun) {
-        int x = ground.getCells()[this.row][this.column].getWidth();
-        int y =ground.getCells()[this.row][this.column].getHeight();
+    public void show(ImageView imageView, int width, int height , Ground ground , int direction , int rows , int colmuns) {
+        int x1 = ground.getCells()[this.row][this.column].getWidth();
+        int y1 =ground.getCells()[this.row][this.column].getHeight();
 
         mainRoot.getChildren().add(imageView);
-        imageView.relocate(x, y);
-        final SpriteAnimation[] spriteAnimation = {new SpriteAnimation(imageView, Duration.millis(1000), row*colmun,
-                column, 0, 0, width, height)};
-        spriteAnimation[0].setCycleCount(1);
+        imageView.relocate(x1, y1);
+        final SpriteAnimation[] spriteAnimation = {new SpriteAnimation(imageView, Duration.millis(500), rows*colmuns,
+                colmuns, 0, 0, width, height)};
+        spriteAnimation[0].setCycleCount(3);
         spriteAnimation[0].play();
         AnimationTimer animationTimer = new AnimationTimer() {
             int i = 0;
@@ -94,59 +94,56 @@ public abstract class Animal {
                     if (i < 26) {
                         spriteAnimation[0].setCycleCount(Animation.INDEFINITE);
                         spriteAnimation[0].play();
-                        imageView.relocate((x + i), (y));
+                        imageView.relocate((x1 + i), (y1));
                     } else {
                         spriteAnimation[0].stop();
-                        this.stop();
+                       this.stop();
                     }
 
-                    i++;
                 }else if (direction == 3){ //left
                     if (i < 26) {
                         spriteAnimation[0].setCycleCount(Animation.INDEFINITE);
                         spriteAnimation[0].play();
-                        imageView.relocate((x - i), (y));
+                        imageView.relocate((x1 - i), (y1));
                     } else {
                         spriteAnimation[0].stop();
                         this.stop();
                     }
 
-                    i++;
                 }else if(direction == 2){//up
                     if (i < 20) {
                         spriteAnimation[0].setCycleCount(Animation.INDEFINITE);
                         spriteAnimation[0].play();
-                        imageView.relocate((x - i), (y));
+                        imageView.relocate((x1 - i), (y1));
                     } else {
                         spriteAnimation[0].stop();
                         this.stop();
                     }
 
-                    i++;
                 }else if(direction == 4){//down
                     if (i < 20) {
                         spriteAnimation[0].setCycleCount(Animation.INDEFINITE);
                         spriteAnimation[0].play();
-                        imageView.relocate((x + i), (y));
+                        imageView.relocate((x1 + i), (y1));
                     } else {
                         spriteAnimation[0].stop();
                         this.stop();
                     }
 
-                    i++;
                 }
                 else if(direction ==5 || direction == 6){//death or eat
                     if (i < 20) {
                         spriteAnimation[0].setCycleCount(Animation.INDEFINITE);
                         spriteAnimation[0].play();
-                        imageView.relocate((x ), (y));
+                        imageView.relocate((x1 ), (y1));
                     } else {
                         spriteAnimation[0].stop();
-                        this.stop();
+//                        this.stop();
                     }
 
-                    i++;
+
                 }
+                i++;
             }
         };
         animationTimer.start();
@@ -155,42 +152,42 @@ public abstract class Animal {
     public void move(int  direction, Ground ground) throws Exception {
         switch (direction) {
             case 1:   // 1 ---->>  right
-                if (this.row > ground.getNumberOfRows() || this.column >= ground.getNumberOfColumns() || this.row < 0 || this.column < 0) {
-                    move(5, ground);
+                if ( this.column >= ground.getNumberOfColumns()-1 ) {
+                    move(3, ground);
                 }else {
-                    this.makeChangesOnCell(ground.getCells()[this.row - 1][this.column - 1], -1);
+                    this.makeChangesOnCell(ground.getCells()[this.row ][this.column ], -1);
                     this.column++;
-                    this.makeChangesOnCell(ground.getCells()[this.row - 1][this.column - 1], 1);
+                    this.makeChangesOnCell(ground.getCells()[this.row ][this.column ], 1);
                     this.moveRight(ground);
                 }
                 break;
             case 2:   // 2 ---->>   up
-                if (this.row > ground.getNumberOfRows() || this.column > ground.getNumberOfColumns() || this.row <= 0 || this.column < 0) {
-                    move(5, ground);
+                if ( this.row <= 0 ) {
+                    move(4, ground);
                 }else {
-                    this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], -1);
+                    this.makeChangesOnCell(ground.getCells()[this.row ][this.getColumn() ], -1);
                     this.row--;
-                    this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], 1);
+                    this.makeChangesOnCell(ground.getCells()[this.row ][this.getColumn() ], 1);
                     moveUp(ground);
                 }
                 break;
             case 3:   // 3  ---->>   left
-                if (this.row > ground.getNumberOfRows() || this.column > ground.getNumberOfColumns() || this.row < 0 || this.column <= 0) {
-                    move( 5, ground);
+                if ( this.column <= 0) {
+                    move( 1, ground);
                 } else {
-                    this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], -1);
+                    this.makeChangesOnCell(ground.getCells()[this.row ][this.getColumn() ], -1);
                     this.column--;
-                    this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], 1);
+                    this.makeChangesOnCell(ground.getCells()[this.row ][this.getColumn()], 1);
                     moveLeft(ground);
                 }
                 break;
             case 4:   //  4  ---->>   down
-                if (this.row >= ground.getNumberOfRows() || this.column > ground.getNumberOfColumns() || this.row < 0 || this.column < 0) {
-                    move(5, ground);
+                if (this.row >= ground.getNumberOfRows() -1) {
+                    move(2, ground);
                 } else {
-                    this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], -1);
+                    this.makeChangesOnCell(ground.getCells()[this.row ][this.getColumn() ], -1);
                     this.row++;
-                    this.makeChangesOnCell(ground.getCells()[this.row - 1][this.getColumn() - 1], 1);
+                    this.makeChangesOnCell(ground.getCells()[this.row ][this.getColumn() ], 1);
                     moveDown(ground);
                 }
                 break;

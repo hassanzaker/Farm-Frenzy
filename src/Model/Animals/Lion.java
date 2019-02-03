@@ -81,22 +81,24 @@ public class Lion extends WildAnimal {
 
     @Override
     public void moveRight(Ground ground) {
-
+        rightView = leftView;
+        rightView.setScaleX(-1);
+        this.show(rightView , 414/3 , 736/8 ,ground , 1 , 8 , 3);
     }
 
     @Override
     public void moveLeft(Ground ground) {
-
+        this.show(leftView , 414/3 , 736/8 ,ground , 3 , 8 , 3);
     }
 
     @Override
     public void moveDown(Ground ground) {
-
+        this.show(downView , 480/5 , 460/5 ,ground , 4 , 5 , 5);
     }
 
     @Override
     public void moveUp(Ground ground) {
-
+        this.show(upView , 564/6 , 464/4 ,ground , 2 , 4 , 6);
     }
 
     @Override

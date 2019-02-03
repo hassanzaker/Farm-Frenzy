@@ -110,17 +110,17 @@ public class Cow extends ProducerAnimal {
 
     @Override
     public void moveLeft(Ground ground) {
-        this.show(rightView , 480/3 , 880/8 ,ground , 1 , 8 , 3);
+        this.show(leftView , 480/3 , 880/8 ,ground , 3 , 8 , 3);
     }
 
     @Override
     public void moveDown(Ground ground) {
-        this.show(rightView , 480/3 , 880/8 ,ground , 1 , 8 , 3);
+        this.show(downView , 354/3 , 880/8 ,ground , 4 , 8 , 3);
     }
 
     @Override
     public void moveUp(Ground ground) {
-        this.show(rightView , 480/3 , 880/8 ,ground , 1 , 8 , 3);
+        this.show(rightView , 456/4 , 792/6 ,ground , 2, 6 , 4);
     }
 
     @Override

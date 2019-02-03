@@ -43,12 +43,12 @@ public class Cell {
     }
 
 
-    public Cell(int x, int y, Group mainRoot, Ground ground) {
+    public Cell(int y, int x, Group mainRoot, Ground ground) {
         this.mainRoot = mainRoot;
         this.x = x;
         this.y = y;
-        this.width=250 + 26 * x;
-        this.height = 210 + 20 * y;
+        this.width=250 + 26 * x - 13;
+        this.height = 210 + 20 * y - 10;
         setGrass(ground);
 
 

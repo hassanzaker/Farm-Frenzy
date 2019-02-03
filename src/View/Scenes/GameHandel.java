@@ -169,18 +169,7 @@ public class GameHandel {
         controller.startWorkShop("WevingFactory");
         controller.startWorkShop("SewingFactory");
 
-//
-//        for (int i=0 ; i<39 ; i++) {
-//            for (int j=0 ; j<39 ; j++) {
-//                Button button = new Button();
-//                button.setVisible(true);
-//                button.setLayoutX(250 + 13 * i);
-//                button.setLayoutY(210 + 10 * j);
-//                button.setScaleX(0.86);
-//                button.setScaleY(0.4);
-//                mainRoot.getChildren().add(button);
-//            }
-//        }
+
 
 
 
@@ -193,7 +182,7 @@ public class GameHandel {
            @Override
             public void handle(long now) {
                long lastcalled = 0;
-               long secondcalled = 100000000;
+               long secondcalled = 50000000;
                if(now>(secondcalled +lastcalled)) {
                    controller.cyclePass();
                  //  controller.getTime().next();
@@ -202,22 +191,7 @@ public class GameHandel {
             }
         };
         animationTimer.start();
-     //   Timeline tl = new Timeline();
-       // tl.setCycleCount(Animation.INDEFINITE);
-      //  KeyFrame handler = new KeyFrame(Duration.millis(1000),
-        //        new EventHandler<ActionEvent>() {
 
-          //          public void handle(ActionEvent event) {
-
-
-            //         controller.cyclePass();
-
-              //      }
-                //});
-
-       // tl.getKeyFrames().add(handler);
-       // tl.play();
-       // Thread timeThread = new TimeThread(controller);
     }
 
     public void buyButtons(Controller controller) {

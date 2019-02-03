@@ -83,22 +83,22 @@ public class Dog extends Animal {
 
     @Override
     public void moveRight(Ground ground) {
-
+        this.show(rightView , 648/6 , 344/4 ,ground , 1 , 4 , 6);
     }
 
     @Override
     public void moveLeft(Ground ground) {
-
+        this.show(leftView , 648/6 , 344/4 ,ground , 3 , 4 , 6);
     }
 
     @Override
     public void moveDown(Ground ground) {
-
+        this.show(downView , 396/6 , 336/4 ,ground , 4 , 4 , 6);
     }
 
     @Override
     public void moveUp(Ground ground) {
-
+        this.show(upView , 396/6 , 400/4 ,ground , 2 , 4 , 6);
     }
 
     @Override

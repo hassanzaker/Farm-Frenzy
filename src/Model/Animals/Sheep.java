@@ -96,22 +96,24 @@ public class Sheep extends ProducerAnimal {
 
     @Override
     public void moveRight(Ground ground) {
-
+        rightView = leftView;
+        rightView.setScaleX(-1);
+        this.show(rightView , 520/4 , 468/6 ,ground , 1 ,6  , 4);
     }
 
     @Override
     public void moveLeft(Ground ground) {
-
+        this.show(rightView , 520/4 , 468/6 ,ground , 3 ,6  , 4);
     }
 
     @Override
     public void moveDown(Ground ground) {
-
+        this.show(downView , 420/5 , 510/5 ,ground , 4 ,5  , 5);
     }
 
     @Override
     public void moveUp(Ground ground) {
-
+        this.show(upView , 410/5 , 480/5 ,ground , 2 ,5  , 5);
     }
 
     @Override
@@ -121,7 +123,7 @@ public class Sheep extends ProducerAnimal {
 
     @Override
     public void eat(Ground ground) {
-
+        this.show(eatView , 440/4 , 468/6 ,ground , 5 ,6  , 4);
     }
 
 

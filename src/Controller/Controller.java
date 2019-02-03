@@ -40,12 +40,12 @@ public class Controller {
         this.time.next();
         if (time.getCurrentTime() % 60 == 10) {
             if (flag) {
-                grounds.get(level - 1).addAnimal(new Bear(random.nextInt(40), random.nextInt(40), "" , mainRoot));
-                grounds.get(level - 1).addAnimal(new Bear(random.nextInt(40), random.nextInt(40), "", mainRoot));
+                grounds.get(level - 1).addAnimal(new Bear(20, 20, "" , mainRoot));
+                grounds.get(level - 1).addAnimal(new Bear(20, 20, "", mainRoot));
                 flag = false;
             } else {
-                grounds.get(level - 1).addAnimal(new Lion(random.nextInt(40), random.nextInt(40), "" , mainRoot));
-                grounds.get(level - 1).addAnimal(new Lion(random.nextInt(40), random.nextInt(40), "" , mainRoot));
+                grounds.get(level - 1).addAnimal(new Lion(20, 20, "" , mainRoot));
+                grounds.get(level - 1).addAnimal(new Lion(20, 20, "" , mainRoot));
                 flag = true;
             }
         }
